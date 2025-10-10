@@ -1,36 +1,217 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm}
+\usepackage{titlepic}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{cleveref}
 \usepackage[english]{babel}
 \usepackage[a4paper, left=0.85in,top=4cm,right=0.85in,bottom=2in]{geometry}
 \usepackage{graphicx}
+\usepackage{needspace}
+\usepackage{tcolorbox}
+\usepackage{ifthen}
+\usepackage{tikz}
+\usepackage{environ}
+
+\tcbuselibrary{skins,breakable}
 
 \author{Luis Vasquez}
 \title{Real Analysis - A Self-Taught Approach}
 
-\newcommand{\declaretheorem}[3]{%
-  \theoremstyle{#1}%
-  \newtheorem{#2}{#3}[section]%
+% Define colors for different theorem types
+\definecolor{defcolor}{RGB}{0,0,0}
+\definecolor{thmcolor}{RGB}{0,0,0}
+\definecolor{proofcolor}{RGB}{50,50,50}
+
+% Counter for theorems
+\newcounter{theorem}[section]
+\newcounter{definition}[section]
+\newcounter{axiom}[section]
+\newcounter{proposition}[section]
+\newcounter{corollary}[section]
+\newcounter{example}[section]
+
+% Format counters
+\renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
+\renewcommand{\thedefinition}{\thesection.\arabic{definition}}
+\renewcommand{\theaxiom}{\thesection.\arabic{axiom}}
+\renewcommand{\theproposition}{\thesection.\arabic{proposition}}
+\renewcommand{\thecorollary}{\thesection.\arabic{corollary}}
+\renewcommand{\theexample}{\thesection.\arabic{example}}
+
+% Main command for creating side-margin theorem boxes
+\newcommand{\sidetheorembox}[4]{%
+  % #1 = counter name (theorem, definition, etc.)
+  % #2 = display name (Theorem, Definition, etc.)
+  % #3 = optional title
+  % #4 = content
+  \refstepcounter{#1}%
+  \par\vspace{0.5\baselineskip}%
+  \noindent%
+  \needspace{5\baselineskip}%
+  \ifthenelse{\isodd{\value{page}}}{%
+    % Odd page: label on left
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      frame hidden,
+      colback=white,
+      left=0pt,
+      right=0pt,
+      top=3pt,
+      bottom=3pt,
+      boxsep=0pt,
+      arc=0pt,
+      outer arc=0pt,
+      boxrule=0pt,
+      leftrule=0pt,
+      rightrule=0pt,
+      width=\textwidth,
+      before skip=10pt,
+      after skip=10pt
+    ]
+    \begin{minipage}[t]{0.22\textwidth}
+      \raggedleft
+      \textbf{\MakeUppercase{#2}\\#3\csname the#1\endcsname}
+    \end{minipage}%
+    \hspace{0.03\textwidth}%
+    \begin{minipage}[t]{0.75\textwidth}
+      #4
+    \end{minipage}
+    \end{tcolorbox}
+  }{%
+    % Even page: label on right
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      frame hidden,
+      colback=white,
+      left=0pt,
+      right=0pt,
+      top=3pt,
+      bottom=3pt,
+      boxsep=0pt,
+      arc=0pt,
+      outer arc=0pt,
+      boxrule=0pt,
+      leftrule=0pt,
+      rightrule=0pt,
+      width=\textwidth,
+      before skip=10pt,
+      after skip=10pt
+    ]
+    \begin{minipage}[t]{0.75\textwidth}
+      #4
+    \end{minipage}%
+    \hspace{0.03\textwidth}%
+    \begin{minipage}[t]{0.22\textwidth}
+      \raggedright
+      \textbf{\MakeUppercase{#2}\\#3\csname the#1\endcsname}
+    \end{minipage}
+    \end{tcolorbox}
+  }%
+  \par\vspace{0.5\baselineskip}%
 }
 
-\declaretheorem{definition}{definition}{Definition}
-\declaretheorem{definition}{axiom}{Axiom}
-\declaretheorem{definition}{theorem}{Theorem}
-\declaretheorem{definition}{example}{Example}
-\declaretheorem{definition}{corollary}{Corollary}
+% Environment definitions using environ package (more robust)
+\NewEnviron{theorem}[1][]{%
+  \sidetheorembox{theorem}{Theorem}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+}
+
+\NewEnviron{definition}[1][]{%
+  \sidetheorembox{definition}{Definition}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+}
+
+\NewEnviron{axiom}[1][]{%
+  \sidetheorembox{axiom}{Axiom}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+}
+
+\NewEnviron{proposition}[1][]{%
+  \sidetheorembox{proposition}{Proposition}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+}
+
+\NewEnviron{corollary}[1][]{%
+  \sidetheorembox{corollary}{Corollary}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+}
+
+\NewEnviron{example}[1][]{%
+  \sidetheorembox{example}{Example}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+}
+
+% Proof environment
+\NewEnviron{bookproof}[1][Proof]{%
+  \par\vspace{0.5\baselineskip}%
+  \noindent%
+  \ifthenelse{\isodd{\value{page}}}{%
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      frame hidden,
+      colback=white,
+      left=0pt,
+      right=0pt,
+      top=3pt,
+      bottom=3pt,
+      boxsep=0pt,
+      arc=0pt,
+      outer arc=0pt,
+      boxrule=0pt,
+      width=\textwidth,
+      before skip=10pt,
+      after skip=10pt
+    ]
+    \begin{minipage}[t]{0.22\textwidth}
+      \raggedleft
+      \textbf{\MakeUppercase{#1}}
+    \end{minipage}%
+    \hspace{0.03\textwidth}%
+    \begin{minipage}[t]{0.75\textwidth}
+      \BODY\hfill$\square$
+    \end{minipage}
+    \end{tcolorbox}
+  }{%
+    \begin{tcolorbox}[
+      enhanced,
+      breakable,
+      frame hidden,
+      colback=white,
+      left=0pt,
+      right=0pt,
+      top=3pt,
+      bottom=3pt,
+      boxsep=0pt,
+      arc=0pt,
+      outer arc=0pt,
+      boxrule=0pt,
+      width=\textwidth,
+      before skip=10pt,
+      after skip=10pt
+    ]
+    \begin{minipage}[t]{0.75\textwidth}
+      \BODY\hfill$\square$
+    \end{minipage}%
+    \hspace{0.03\textwidth}%
+    \begin{minipage}[t]{0.22\textwidth}
+      \raggedright
+      \textbf{\MakeUppercase{#1}}
+    \end{minipage}
+    \end{tcolorbox}
+  }%
+  \par\vspace{0.5\baselineskip}%
+}
 
 \begin{document}
 	\begin{titlepage}
-	    \newgeometry{left=-0.525cm,top=0cm,right=0cm,bottom=0cm}
+	    \newgeometry{left=0cm,top=0cm,right=0cm,bottom=0cm}
 	    \thispagestyle{empty}
+	    \centering
+	    \includegraphics[width=\paperwidth,height=\paperheight]{assets/cover.png}
 	    \restoregeometry
 	\end{titlepage}
 
 	\begin{center}
-		{\Huge \textbf{REAL ANALYISIS}} \\
+		{\Huge \textbf{REAL ANALYSIS}} \\
 		\vspace{16pt}
 		{\Large{A Self-Taught Approach}} \\
 		\vspace{15cm}
@@ -44,8 +225,4 @@
 	\input{chapters/chap1-intro.tex}
 	\input{chapters/chap2-base-knowledge.tex}
 
-	%% Scroll margin
-	\newpage
-	\vspace{30cm}
-	.
 \end{document}
