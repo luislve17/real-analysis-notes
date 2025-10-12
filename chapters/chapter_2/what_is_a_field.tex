@@ -1,0 +1,55 @@
+\subsection{What is a Field}
+
+\textit{``We can verify that a set is a field by checking that multiplication is a well-defined operation, i.e., it is independent of the representative.''}\\
+
+For example, for arbitrary rational numbers $Q$:
+\[
+\frac{m_1}{n_1} \times \frac{p_1}{q_1}
+\]
+
+And evaluate an equivalent expression with different representatives of the same numbers:
+\[
+\frac{m_2}{n_2} \times \frac{p_2}{q_2}
+\]
+
+Given that:
+\[
+\frac{m_1}{n_1} = \frac{m_2}{n_2} \quad \text{and} \quad \frac{p_1}{q_1} = \frac{p_2}{q_2}
+\]
+
+We want to verify that both multiplication results are the same. To review this, we start from the tautology (intuitive truth):
+\begin{align*} 
+\frac{m_1}{n_1} = \frac{m_2}{n_2} &\iff m_1 \times n_2 = m_2 \times n_1 \tag{A} \\
+\frac{p_1}{q_1} = \frac{p_2}{q_2} &\iff p_1 \times q_2 = p_2 \times q_1 \tag{B}
+\end{align*}
+
+Then, operating the multiplication using both representatives:
+\begin{align*}
+\frac{m_1}{n_1} \times \frac{p_1}{q_1} &= \frac{m_1 \cdot p_1}{n_1 \cdot q_1} \\
+\frac{m_2}{n_2} \times \frac{p_2}{q_2} &= \frac{m_2 \cdot p_2}{n_2 \cdot q_2}
+\end{align*}
+
+Conveniently, we want to form $m_1 \times n_2$ to use the first ground truth:
+\begin{align*}
+\frac{m_1}{n_1} \times \frac{p_1}{q_1} \times n_2 &= \frac{m_1 \cdot n_2 \cdot p_1}{n_1 \cdot q_1} \\
+&= \frac{m_2 \cdot n_1 \cdot p_1}{n_1 \cdot q_1} \quad \text{(replacing using A)} \\
+&= \frac{m_2 \cdot p_1}{q_1} \quad \text{(simplifying $n_1$)}
+\end{align*}
+
+Applying the same logic for $p_1 \times q_2$ to use the second ground truth:
+\begin{align*}
+\frac{m_1}{n_1} \times \frac{p_1}{q_1} \times n_2 \times q_2 &= \frac{m_2 \cdot p_1 \cdot q_2}{q_1} \\
+&= \frac{m_2 \cdot p_2 \cdot q_1}{q_1} \quad \text{(replacing using B)} \\
+&= m_2 \cdot p_2 \quad \text{(simplifying $q_1$)}
+\end{align*}
+
+Finally, rearranging:
+\begin{align*}
+\frac{m_1}{n_1} \times \frac{p_1}{q_1} \times n_2 \times q_2 &= m_2 \cdot p_2 \\
+\frac{m_1}{n_1} \times \frac{p_1}{q_1} &= \frac{m_2 \cdot p_2}{n_2 \cdot q_2} \\
+\frac{m_1}{n_1} \times \frac{p_1}{q_1} &= \frac{m_2}{n_2} \times \frac{p_2}{q_2} \qquad \square
+\end{align*}
+
+This is not a rigorous demonstration, but gives us a first step to go from the intuition of a solution (particularly for $\mathbb{Q}$) to a more formal procedure based on the real definition of a field.
+
+\newpage

@@ -1,7 +1,6 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsthm}
-\usepackage{titlepic}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{cleveref}
@@ -10,19 +9,25 @@
 \usepackage{graphicx}
 \usepackage{needspace}
 \usepackage{tcolorbox}
-\usepackage{ifthen}
 \usepackage{tikz}
 \usepackage{environ}
+
+% ============================================
+% STYLE OPTION 1: Classic Palatino
+% ============================================
+% \usepackage{mathpazo} % Palatino font
+% \linespread{1.05} % Slightly more spacing
+
+% ============================================
+% PROFESSIONAL COLOR SCHEME
+% ============================================
+\definecolor{exampleshade}{RGB}{245,245,250}   % Very light blue-gray
+\definecolor{accentline}{RGB}{180,180,180}     % Light gray for lines
 
 \tcbuselibrary{skins,breakable}
 
 \author{Luis Vasquez}
 \title{Real Analysis - A Self-Taught Approach}
-
-% Define colors for different theorem types
-\definecolor{defcolor}{RGB}{0,0,0}
-\definecolor{thmcolor}{RGB}{0,0,0}
-\definecolor{proofcolor}{RGB}{50,50,50}
 
 % Counter for theorems
 \newcounter{theorem}[section]
@@ -40,81 +45,72 @@
 \renewcommand{\thecorollary}{\thesection.\arabic{corollary}}
 \renewcommand{\theexample}{\thesection.\arabic{example}}
 
-% Main command for creating side-margin theorem boxes
+% ============================================
+% PROFESSIONAL SECTION STYLING
+% ============================================
+\usepackage{titlesec}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{1em}  % Or 0pt for no indent with spacing
+
+% Professional page headers (add fancyhdr package)
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[RE]{\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ============================================
+% MAIN THEOREM BOX COMMAND (ALWAYS LEFT SIDE)
+% ============================================
 \newcommand{\sidetheorembox}[4]{%
-  % #1 = counter name (theorem, definition, etc.)
-  % #2 = display name (Theorem, Definition, etc.)
+  % #1 = counter name
+  % #2 = display name
   % #3 = optional title
   % #4 = content
   \refstepcounter{#1}%
   \par\vspace{0.5\baselineskip}%
   \noindent%
   \needspace{5\baselineskip}%
-  \ifthenelse{\isodd{\value{page}}}{%
-    % Odd page: label on left
-    \begin{tcolorbox}[
-      enhanced,
-      breakable,
-      frame hidden,
-      colback=white,
-      left=0pt,
-      right=0pt,
-      top=3pt,
-      bottom=3pt,
-      boxsep=0pt,
-      arc=0pt,
-      outer arc=0pt,
-      boxrule=0pt,
-      leftrule=0pt,
-      rightrule=0pt,
-      width=\textwidth,
-      before skip=10pt,
-      after skip=10pt
-    ]
-    \begin{minipage}[t]{0.22\textwidth}
-      \raggedleft
-      \textbf{\MakeUppercase{#2}\\#3\csname the#1\endcsname}
-    \end{minipage}%
-    \hspace{0.03\textwidth}%
-    \begin{minipage}[t]{0.75\textwidth}
-      #4
-    \end{minipage}
-    \end{tcolorbox}
-  }{%
-    % Even page: label on right
-    \begin{tcolorbox}[
-      enhanced,
-      breakable,
-      frame hidden,
-      colback=white,
-      left=0pt,
-      right=0pt,
-      top=3pt,
-      bottom=3pt,
-      boxsep=0pt,
-      arc=0pt,
-      outer arc=0pt,
-      boxrule=0pt,
-      leftrule=0pt,
-      rightrule=0pt,
-      width=\textwidth,
-      before skip=10pt,
-      after skip=10pt
-    ]
-    \begin{minipage}[t]{0.75\textwidth}
-      #4
-    \end{minipage}%
-    \hspace{0.03\textwidth}%
-    \begin{minipage}[t]{0.22\textwidth}
-      \raggedright
-      \textbf{\MakeUppercase{#2}\\#3\csname the#1\endcsname}
-    \end{minipage}
-    \end{tcolorbox}
-  }%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    break at=-5cm/0pt,
+    frame hidden,
+    colback=white,
+    left=0pt,
+    right=0pt,
+    top=3pt,
+    bottom=3pt,
+    boxsep=0pt,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=0pt,
+    leftrule=0pt,
+    rightrule=0pt,
+    width=\textwidth,
+    before skip=10pt,
+    after skip=10pt
+  ]
+  \begin{minipage}[t]{0.17\textwidth}
+    \raggedleft
+    {\bfseries\scshape#2}\\[2pt]
+    {#3\csname the#1\endcsname}
+  \end{minipage}%
+  \hspace{0.015\textwidth}%
+  {\color{accentline}\vrule width 0.5pt}%
+  \hspace{0.015\textwidth}%
+  \begin{minipage}[t]{0.78\textwidth}
+    #4
+  \end{minipage}
+  \end{tcolorbox}
   \par\vspace{0.5\baselineskip}%
 }
 
-% Environment definitions using environ package (more robust)
+% ============================================
+% THEOREM ENVIRONMENTS
+% ============================================
 \NewEnviron{theorem}[1][]{%
   \sidetheorembox{theorem}{Theorem}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
 }
@@ -136,70 +132,69 @@
 }
 
 \NewEnviron{example}[1][]{%
-  \sidetheorembox{example}{Example}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \refstepcounter{example}%
+  \par\vspace{0.5\baselineskip}%
+  \noindent%
+  \needspace{5\baselineskip}%
+  \begin{tcolorbox}[
+    enhanced,
+    breakable,
+    break at=-5cm/0pt,
+    frame hidden,
+    colback=exampleshade,
+    left=0pt,
+    right=0pt,
+    top=8pt,
+    bottom=8pt,
+    boxsep=0pt,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=0pt,
+    width=\textwidth,
+    before skip=10pt,
+    after skip=10pt
+  ]
+  \begin{minipage}[t]{0.17\textwidth}
+    \raggedleft
+    {\bfseries\scshape Example}\\[2pt]
+    {\ifx\relax#1\relax\else#1\\\fi\theexample}
+  \end{minipage}%
+  \hspace{0.015\textwidth}%
+  {\color{accentline}\vrule width 0.5pt}%
+  \hspace{0.015\textwidth}%
+  \begin{minipage}[t]{0.78\textwidth}
+    \BODY
+  \end{minipage}
+  \end{tcolorbox}
+  \par\vspace{0.5\baselineskip}%
 }
 
-% Proof environment
+% ============================================
+% PROOF ENVIRONMENT (ALWAYS LEFT SIDE)
+% ============================================
 \NewEnviron{bookproof}[1][Proof]{%
   \par\vspace{0.5\baselineskip}%
   \noindent%
-  \ifthenelse{\isodd{\value{page}}}{%
-    \begin{tcolorbox}[
-      enhanced,
-      breakable,
-      frame hidden,
-      colback=white,
-      left=0pt,
-      right=0pt,
-      top=3pt,
-      bottom=3pt,
-      boxsep=0pt,
-      arc=0pt,
-      outer arc=0pt,
-      boxrule=0pt,
-      width=\textwidth,
-      before skip=10pt,
-      after skip=10pt
-    ]
-    \begin{minipage}[t]{0.22\textwidth}
-      \raggedleft
-      \textbf{\MakeUppercase{#1}}
-    \end{minipage}%
-    \hspace{0.03\textwidth}%
-    \begin{minipage}[t]{0.75\textwidth}
-      \BODY\hfill$\square$
-    \end{minipage}
-    \end{tcolorbox}
-  }{%
-    \begin{tcolorbox}[
-      enhanced,
-      breakable,
-      frame hidden,
-      colback=white,
-      left=0pt,
-      right=0pt,
-      top=3pt,
-      bottom=3pt,
-      boxsep=0pt,
-      arc=0pt,
-      outer arc=0pt,
-      boxrule=0pt,
-      width=\textwidth,
-      before skip=10pt,
-      after skip=10pt
-    ]
-    \begin{minipage}[t]{0.75\textwidth}
-      \BODY\hfill$\square$
-    \end{minipage}%
-    \hspace{0.03\textwidth}%
-    \begin{minipage}[t]{0.22\textwidth}
-      \raggedright
-      \textbf{\MakeUppercase{#1}}
-    \end{minipage}
-    \end{tcolorbox}
-  }%
+  \needspace{8\baselineskip}%
+  \noindent\begin{minipage}[t]{0.17\textwidth}
+    \raggedleft
+    {\bfseries\scshape#1}
+  \end{minipage}%
+  \hspace{0.015\textwidth}%
+  {\color{accentline}\vrule width 0.5pt}%
+  \hspace{0.015\textwidth}%
+  \begin{minipage}[t]{0.78\textwidth}
+    \BODY\hfill$\square$
+  \end{minipage}%
   \par\vspace{0.5\baselineskip}%
 }
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{definition}{Definition}{Definitions}
+\crefname{axiom}{Axiom}{Axioms}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{example}{Example}{Examples}
 
 \begin{document}
 	\begin{titlepage}
@@ -222,7 +217,6 @@
 	\tableofcontents
 	\newpage
 
-	\input{chapters/chap1-intro.tex}
-	\input{chapters/chap2-base-knowledge.tex}
-
+	\input{chapters/chapter_1/main.tex}
+	\input{chapters/chapter_2/main.tex}
 \end{document}

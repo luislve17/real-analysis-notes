@@ -1,0 +1,51 @@
+\subsection{Order}
+
+\begin{definition}[Ordered sets]
+A set $S$ is \textbf{ordered} when it has an ordering ``$<$'' such that for all $x, y \in S$, exactly one of the following properties holds:
+\begin{enumerate}
+\item $x = y$
+\item $x < y$
+\item $y < x$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Ordered fields]\label{def:ordered-fields}
+A field $\mathbb{F}$ is \textbf{ordered} if it is also an ordered set. As a consequence, the following properties apply:
+\begin{itemize}
+\item $x, y \in \mathbb{F}, x < y \implies \forall z \in \mathbb{F}, x \oplus z < y \oplus z$
+\item $x, y \in \mathbb{F}, 0 < x, y \implies 0 < x \otimes y$
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+Given $\mathbb{F}$ an ordered field. If $x < y$ and $0 < z$, then $x \otimes z < y \otimes z$.
+\end{theorem}
+
+\begin{bookproof}
+We prove by contradiction. Assume the opposite:
+\[
+x \otimes z \geq y \otimes z
+\]
+
+Then adding $(-x \otimes z)$ on both sides, we maintain the ordering of the expression:
+\begin{align*}
+x \otimes z \oplus (-x \otimes z) &\geq y \otimes z \oplus (-x \otimes z) \\
+0 &\geq y \otimes z \oplus (-x \otimes z)
+\end{align*}
+
+Now, using \Cref{ax:distributive}, we get:
+\[
+0 \geq z \otimes (y \oplus (-x))
+\]
+
+From the initial conditions, $x < y$ implies $y \oplus (-x) > 0$. Since we also have $z > 0$, we would expect the product of these two to be $> 0$ by \Cref{def:ordered-fields} (second property). Hence:
+\[
+0 \geq z \otimes (y \oplus (-x)) \quad \text{and} \quad 0 < z \otimes (y \oplus (-x))
+\]
+
+This is a contradiction.
+\end{bookproof}
+
+From this point forward, for better readability, $+$ and $\cdot$ (or $\times$) will be used instead of $\oplus$ and $\otimes$. They will still represent the abstraction of a field's addition and multiplication operations, without necessarily being the familiar operations we might expect them to be.
+
+\newpage

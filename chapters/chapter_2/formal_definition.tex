@@ -1,0 +1,60 @@
+\subsection{Formal definition}
+
+\begin{definition}[Field]
+A \textbf{field} $\mathbb{F}$ is a set with two operations: addition ($\oplus$) and multiplication ($\otimes$), with the following properties:
+\begin{itemize}
+\item $x, y \in \mathbb{F} \implies x \oplus y \in \mathbb{F}$
+\item $x, y \in \mathbb{F} \implies x \oplus y = y \oplus x$
+\item $x, y, z \in \mathbb{F} \implies (x \oplus y) \oplus z = x \oplus (y \oplus z)$
+\item $\exists\, 0 \in \mathbb{F}$ such that $\forall x \in \mathbb{F}, x \oplus 0 = x$
+\item $\forall x \in \mathbb{F}, \exists\, (-x) \in \mathbb{F}$ such that $x \oplus (-x) = 0$
+\item $x, y \in \mathbb{F} \implies x \otimes y \in \mathbb{F}$
+\item $x, y \in \mathbb{F} \implies x \otimes y = y \otimes x$
+\item $x, y, z \in \mathbb{F} \implies (x \otimes y) \otimes z = x \otimes (y \otimes z)$
+\item $\exists\, 1 \in \mathbb{F}$ such that $\forall x \in \mathbb{F}, x \otimes 1 = x$
+\item $\forall x \in \mathbb{F} \setminus \{0\}, \exists\, x^{-1} \in \mathbb{F}$ such that $x \otimes x^{-1} = 1$
+\end{itemize}
+\end{definition}
+
+The first five properties correspond to the addition operation, and the last five to the multiplication operation. In order to relate both sets of properties, the following axiom is stated:
+
+\begin{axiom}[Distributive law]\label{ax:distributive}
+Let $x, y, z \in \mathbb{F}$. Then
+\[
+x \otimes (y \oplus z) = x \otimes y \oplus x \otimes z
+\]
+\end{axiom}
+
+\begin{theorem}[Zero uniqueness]
+For any field $\mathbb{F}$, there exists only one zero element.
+\end{theorem}
+
+\begin{bookproof}
+Assume $0_1$ and $0_2$ are zeros for a field $\mathbb{F}$. Then
+\[
+\forall x \in \mathbb{F}: \quad
+\begin{cases}
+	0_1 + x = x & \text{(A)} \\
+	0_2 + x = x & \text{(B)}
+\end{cases}
+\]
+
+For both cases, let $x$ be $0_2$ and $0_1$ respectively:
+\begin{align*}
+x = 0_2 \implies \text{(A)}: \quad 0_1 + 0_2 &= 0_2 \tag{C} \\
+x = 0_1 \implies \text{(B)}: \quad 0_2 + 0_1 &= 0_1 \tag{D}
+\end{align*}
+
+From (C) and commutativity:
+\[
+0_2 + 0_1 = 0_2
+\]
+
+Comparing this result with (D):
+\begin{align*}
+0_2 + 0_1 = 0_2 \quad &\text{and} \quad 0_2 + 0_1 = 0_1 \\
+&\implies 0_1 = 0_2
+\end{align*}
+\end{bookproof}
+
+\newpage
