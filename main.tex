@@ -109,26 +109,41 @@
 }
 
 % ============================================
-% THEOREM ENVIRONMENTS
+% THEOREM ENVIRONMENTS WITH TOC SUPPORT
 % ============================================
 \NewEnviron{theorem}[1][]{%
   \sidetheorembox{theorem}{Theorem}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thetheorem}#1}%
+  \fi%
 }
 
 \NewEnviron{definition}[1][]{%
   \sidetheorembox{definition}{Definition}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thedefinition}#1}%
+  \fi%
 }
 
 \NewEnviron{axiom}[1][]{%
   \sidetheorembox{axiom}{Axiom}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theaxiom}#1}%
+  \fi%
 }
 
 \NewEnviron{proposition}[1][]{%
   \sidetheorembox{proposition}{Proposition}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theproposition}#1}%
+  \fi%
 }
 
 \NewEnviron{corollary}[1][]{%
   \sidetheorembox{corollary}{Corollary}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thecorollary}#1}%
+  \fi%
 }
 
 \NewEnviron{example}[1][]{%
@@ -165,7 +180,10 @@
   \begin{minipage}[t]{0.78\textwidth}
     \BODY
   \end{minipage}
-  \end{tcolorbox}
+  \end{tcolorbox}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theexample}#1}%
+  \fi%
   \par\vspace{0.5\baselineskip}%
 }
 
