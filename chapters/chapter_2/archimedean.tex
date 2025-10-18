@@ -1,0 +1,44 @@
+\subsection{Archimedean property}
+
+Now that we achieved completeness on an ordered field, we can now extend the definitions and properties into a theorem/property that uses the result from the \textit{Least Upper Bound principle} (\cref{th:lub-principle}).
+
+\begin{theorem}
+% ∀x∈F,∃n∈N such that n>x
+Let $\mathbb{F}$ be a complete ordered field, then $$\forall x \in \mathbb{F}, \exists! n \in \mathbb{N} \subset \mathbb{F}: n > x$$
+\end{theorem}
+
+\begin{bookproof}
+We first define the subset $\mathbb{N} \subset \mathbb{F}$ \textbf{inductively}, to work with a generalized version of the set of \textquotedblleft natural numbers"
+\begin{enumerate}
+\item $1_{\mathbb{F}}$ is the multiplicative identity in $\mathbb{F}$
+\item $n + 1_{\mathbb{F}} \in \mathbb{N}, \forall n \in \mathbb{N}$ defines the induction step over $\mathbb{N}$, using the addition operation from the field $\mathbb{F}$
+\end{enumerate}
+
+We now proceed to prove by contradiction, assuming $\exists x \in \mathbb{F}, \forall n \in \mathbb{N}:$
+$$
+n \leq x
+$$
+
+Meaning that $\mathbb{N}$ is bounded above. Now, since $\mathbb{N}$ is not empty, and is bounded by an element of the (complete ordered) field that contains it ($x \in \mathbb{F}$), then by \textit{L.U.B. principle} (\cref{th:lub-principle}), $\mathbb{N}$ must have a supremum.
+\\\\
+Let $s := \sup{\mathbb{N}} \in \mathbb{F}$ be that supremum of $\mathbb{N}$. Then, since $s$ is the least upper bound, any element that is less than $s$ will no longer be an upper bound for $\mathbb{N}$. Conveniently we take $s - 1_{\mathbb{F}}$:
+\begin{align*}
+\exists n_0 \in \mathbb{N}:& s - 1_{\mathbb{F}} < n_0\\
+&\Rightarrow s < n_0 + 1_{\mathbb{F}}
+\end{align*}
+
+But by our inductive definition of $\mathbb{N}: (n_0 + 1_{\mathbb{F}}) \in \mathbb{N}$. So we found out that $s$ ($\sup{\mathbb{N}}$) fails to be an upper bound for an element in $\mathbb{N}$.
+\\\\
+Therefore, our original assumption of $x$ must be wrong.
+\end{bookproof}
+
+Now, is important to notice that $\mathbb{F}$ implies an archimedien field, but the opposite won't necessarily be true.
+
+\begin{example}
+Using an Archimedean field, that is not complete, lets take $\mathbb{F} = \mathbb{Q}$
+$$x \in \mathbb{Q} \wedge n \in \mathbb{N} \subset \mathbb{Q}$$
+It is true that, for any $x$ there is a natural number $n$ so that $$n>x$$But invoking the previous example (\cref{ex:s-in-q-not-bounded}) we can take a subset of $\mathbb{Q}$ that is not bounded in $\mathbb{Q}$, failing to properly form a complete set.
+\end{example}
+
+Closing this chapter, lets emphazise the fact that the construction of $\mathbb{N} \subset \mathbb{F}$ by induction was crucial to generalize the property for any complete ordered field. Next we will explain why this wasn't necessary at all.
+

@@ -47,11 +47,11 @@ Lets break this down by element
 \begin{itemize}
 \item $(\forall s^{\prime} < s)$: Considering any arbitrary $s^{\prime}$ smaller than our upper bound $s$
 \item $\exists x^{\prime} \in X$: There will be an element $x^\prime$ in $X$, so that...
-\item $(s^{\prime} < x^{\prime})$: It is larger than the $s^\prime$, making $s^\prime$ to \textbf{fail} to be an upper bound.
+\item $(s^{\prime} < x^{\prime})$: It is larger than the $s^{\prime}$, making $s^{\prime}$ to \textbf{fail} to be an upper bound.
 \end{itemize}
 \end{itemize}
 
-So in summary, $s$ is $\sup{X}$ if and only if, $s$ is an upper bound, and no smaller number $s^\prime$ is an upper bound of $X$, because we can find an $x^\prime$ that is not bounded by it.
+So in summary, $s$ is $\sup{X}$ if and only if, $s$ is an upper bound, and no smaller number $s^{\prime}$ is an upper bound of $X$, because we can find an $x^\prime$ that is not bounded by it.
 
 \begin{definition}[Greatest Lower Bound]
 Similarly, the greatest $i \in X \subset \mathbb{F}$ that bounds $X$ below is called the \textit{greatest lower bound of X}, and denoted $\inf X$ (read "the infimum of X")
@@ -92,7 +92,7 @@ Therefore, the supremum is unique.
 
 The proof for the uniqueness of the infimum is analogous.
 
-\begin{example}
+\begin{example}\label{ex:s-in-q-not-bounded}
 Consider the ordered field $\mathbb{Q}$ of rational numbers, and let:
 $$S = \{x \in \mathbb{Q} \ | \ x^2 < 2\}$$
 
@@ -123,7 +123,7 @@ Now, $X$ is bounded below by the proposition, so there exists $c \in \mathbb{F}$
 \forall x \in X&, \quad -x \leq -c
 \end{align*}
 
-Since $-x \in X^prime$ and $-c \in \mathbb{F}$, we can be sure that $X^prime$ is bounded above in $\mathbb{F}$.
+Since $-x \in X^{\prime}$ and $-c \in \mathbb{F}$, we can be sure that $X^{\prime}$ is bounded above in $\mathbb{F}$.
 
 Considering $\mathbb{F}$ is complete, and we proved $X'$ is nonempty and bounded above, $X'$ has a supremum in $\mathbb{F}$.
 \vspace{.75cm}
@@ -159,7 +159,7 @@ s \leq -\ell\\
 Showing that $-s$ is greater than or equal to every lower bound of $X$. Therefore, $-s = \inf X$.
 \end{bookproof}
 
-\begin{theorem}[Least Upper Bound Principle]
+\begin{theorem}[Least Upper Bound Principle]\label{th:lub-principle}
 Let $\mathbb{F}$ be a complete ordered field. Every nonempty subset of $\mathbb{F}$ that is bounded above has a unique least upper bound in $\mathbb{F}$.
 \end{theorem}
 
