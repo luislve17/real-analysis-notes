@@ -1,3 +1,71 @@
 \subsection{$\mathbb{F}$ is $\mathbb{R}$}
 
-Basically, turns out that there is a reason why it is called \textbf{\textit{Real}} Analysis.
+Turns out that there is a reason why it is called \textbf{\textit{Real}} Analysis. So far we have worked over a generic \textit{Complete Ordered Field} $\mathbb{F}$, that was also an \textit{Archimedean} following the expected properties. We have finally reached the point were we can state that \textbf{any} set that manages to follow all these properties is actually identical to the set of real numbers $\mathbb{R}$. In fact, $\mathbb{R}$ is the only set that accomplishes this.
+
+Most Real Analysis courses don't go into proving this, but as I already mentioned in the first chapter, I want to cover all doubts and missing point existent during a course like this.
+
+We will go through the initial proofs needed to understand the main one. At the beginning its possible that some of them look unecessary or trivial, but I don't want to assume that much. Better to be safe than sorry.
+
+\subsubsection{Isomorphism}
+
+Our starting point will be defining what it means to have \textquotedblleft equal fields".
+
+
+\begin{definition}[Field homomorphism]
+Let $F, F^\prime$ fields. A function $\phi: F \rightarrow F^\prime$ is a homomorphism between $F$ and $F^\prime$ iif. it preserves the defined operations in both fields:
+\begin{align*}
+\phi(x + y) &= \phi(x) + \phi(y), \forall x, y \in F\\
+\phi(x . y) &= \phi(x) . \phi(y), \forall x, y \in F
+\end{align*}
+\end{definition}
+
+\begin{definition}[Field isomorphism]
+Let $F, F^\prime$ fields. A function $\phi: F \rightarrow F^\prime$ is a isomorphism iif. it is a homomorphism and also a bijection
+\end{definition}
+
+\begin{lemma}[Injectivity by order preservation]
+Let $F, F^\prime$ fields, $\phi: F \rightarrow F^\prime$. If $\phi$ preserves order from $\mathbb{F}$:
+$$x < y \Rightarrow \phi(x) < \phi(y), x, y \in F$$
+Then $\phi$ is injective.
+\end{lemma}
+
+\begin{bookproof}
+To prove injectivity, we need to show that for any two identical images of the function $\phi$, we get that their arguments were the same, guaranteeing the uniqueness of the image:
+
+Let $x, y \in \mathbb{F}$ so that $$\phi(x) = \phi(y)$$
+
+Using the tricotomy over $F$:
+
+Case 1: $x < y$: $$\rightarrow \phi(x) < \phi(y) (\rightarrow\leftarrow)$$
+Case 2: $y < x$: $$\rightarrow \phi(y) < \phi(x) (\rightarrow\leftarrow)$$
+
+$$\Rightarrow x = y$$
+
+Then, $\phi$ is injective.
+\end{bookproof}
+
+
+\begin{lemma}[Surjectivity by construction]
+Let $F, F^\prime$ fields, $\phi: F \rightarrow F^\prime$. Define: $$\text{Im}_F := \{\phi(x), x \in F\}$$
+Then, the bounded function $\phi^\prime: F \rightarrow \text{Im}_F$ is surjective
+\end{lemma}
+
+\begin{bookproof}
+To prove surjectivity, we need to show that every element in $y \in \text{Im}_F$ has a $x \in F$ such that $\phi^\prime(x) = y$
+
+Using the definition of our constructed set:
+\begin{align*}
+\forall y \in \text{Im}_F \Leftrightarrow y \in \{\phi(x), x \in F\}\\
+\Rightarrow \exists x \in F / \forall y \in \text{Im}_F: y = \phi^\prime(x)\\
+\end{align*}
+
+Finally proving that for any image of $\phi^\prime \in \text{Im}_F$ we will have a preimage $x \in F$.
+
+Then $\phi^\prime$ is surjective.
+\end{bookproof}
+
+On this first part, this surjectiveness by construction might be the bit that doesn't quite seem correct. Isn't it trivial to have surjectiveness if we grab the method $\phi$ and limit it to its image $\phi^\prime$?
+
+The key here is that we defined the set of images $\text{Im}_F$ first, and \textit{then} proved the surjectiveness in it. The lemma confirms that the set we defined was \textit{just right}. Not so big to leave some elements unreached, and not too small to make undefined preimages at some spots.
+
+\subsubsection{Sets construction}

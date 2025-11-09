@@ -36,6 +36,7 @@
 \newcounter{proposition}[section]
 \newcounter{corollary}[section]
 \newcounter{example}[section]
+\newcounter{lemma}[section]
 
 % Format counters
 \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
@@ -44,6 +45,7 @@
 \renewcommand{\theproposition}{\thesection.\arabic{proposition}}
 \renewcommand{\thecorollary}{\thesection.\arabic{corollary}}
 \renewcommand{\theexample}{\thesection.\arabic{example}}
+\renewcommand{\thelemma}{\thesection.\arabic{lemma}}
 
 % ============================================
 % PROFESSIONAL SECTION STYLING
@@ -146,6 +148,13 @@
   \fi%
 }
 
+\NewEnviron{lemma}[1][]{%
+  \sidetheorembox{lemma}{Lemma}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thelemma}#1}%
+  \fi%
+}
+
 \NewEnviron{example}[1][]{%
   \refstepcounter{example}%
   \par\vspace{0.5\baselineskip}%
@@ -213,6 +222,7 @@
 \crefname{proposition}{Proposition}{Propositions}
 \crefname{corollary}{Corollary}{Corollaries}
 \crefname{example}{Example}{Examples}
+\crefname{lemma}{Lemma}{Lemmas}
 
 \begin{document}
 	\begin{titlepage}
