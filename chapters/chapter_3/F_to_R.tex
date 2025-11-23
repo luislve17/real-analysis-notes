@@ -51,7 +51,7 @@ Then, the bounded function $\phi^\prime: F \rightarrow \text{Im}_F$ is surjectiv
 \end{lemma}
 
 \begin{bookproof}
-To prove surjectivity, we need to show that every element in $y \in \text{Im}_F$ has a $x \in F$ such that $\phi^\prime(x) = y$
+To prove surjectivity, we need to show that every element in $y \in \text{Im}_F$ has an $x \in F$ such that $\phi^\prime(x) = y$
 
 Using the definition of our constructed set:
 \begin{align*}
@@ -69,3 +69,43 @@ On this first part, this surjectiveness by construction might be the bit that do
 The key here is that we defined the set of images $\text{Im}_F$ first, and \textit{then} proved the surjectiveness in it. The lemma confirms that the set we defined was \textit{just right}. Not so big to leave some elements unreached, and not too small to make undefined preimages at some spots.
 
 \subsubsection{Sets construction}
+
+Now, to make it reasonable for a complete ordered field $\mathbb{F}$ to be isomorphic to our known $\mathbb{R}$, we need to start shaping it using the parts that make it up. Think of $\mathbb{R}$ as the joint set of irrational and rational numbers, which contain the other types of number as well.
+
+\input{assets/real-numbers-diagram.tex}
+
+From this idea, we need to build $\mathbb{N_F}$, $\mathbb{Z_F}$, $\mathbb{Q_F}$ and $\mathbb{I_F}$ to finall get this $\mathbb{F}$ we want to make some proofs on. This will all make sense in the last bit of the process, and I promise that the only tricky part will be to construct $\mathbb{I_F}$ from $\mathbb{Q_F}$, but we need to go step by step.
+
+
+\begin{definition}[$\mathbb{N}_{\mathbb{F}}$ by induction]
+Let $\mathbb{F}$ be \textit{the} complete ordered field. Using $1_\mathbb{F}$: multiplicative neutral of $\mathbb{F}$, we declare the following element contruction:
+
+\begin{align*}
+&1_\mathbb{F} := 1_\mathbb{F}\\
+&2_\mathbb{F} := 1_\mathbb{F} + 1_\mathbb{F}\\
+&3_\mathbb{F} := 1_\mathbb{F} + 1_\mathbb{F} + 1_\mathbb{F}\\
+\vdots\\
+&n_\mathbb{F} := \sum_{1}^{n}{1_F}
+\end{align*}
+
+Finally, we define the set:
+$$\mathbb{N_F} := \{1_\mathbb{F}, 2_\mathbb{F}, 3_\mathbb{F}, \dots\} = \{n_\mathbb{F}: n \in \mathbb{N} \}$$
+\end{definition}
+
+\begin{definition}[$\mathbb{Z}_\mathbb{F}$ by extension]
+Within field $\mathbb{F}$, let the following:
+\begin{enumerate}
+\item $0_\mathbb{F}$: Additive identity
+\item $-x$: Additive inverse
+\end{enumerate}
+
+We define the set:
+$$\mathbb{Z_F} = \{0_\mathbb{F}\} \cup \mathbb{N_F} \cup \{-x_\mathbb{F}, \forall n_\mathbb{F} \in N_\mathbb{F}\}$$
+\end{definition}
+
+\begin{definition}[$\mathbb{Q}_\mathbb{F}$ by operation]
+Within field $\mathbb{F}$, we define the set:
+$$\mathbb{Q_F} := \{\frac{a}{b}: a \in \mathbb{Z_F}, b \in \mathbb{N_F}\}$$
+\end{definition}
+
+Starting similarly to \cref{th:archimedean} (Archimedean property) we use the inductive approach to reach $\mathbb{N_F}$. Fancy but not complicated at all. Later, we just extend integers in $\mathbb{F}$ to build by $\mathbb{Z_F}$. Notice how we only used existent elements from $\mathbb{F}$ computed using the field's operations and nothing else.
