@@ -1,0 +1,234 @@
+\subsection{Isomorphism in $\mathbb{Q}s$}
+\begin{definition}[$\phi$ function]
+Let $\phi: \mathbb{Q_F} \rightarrow \mathbb{Q}$ defined as:
+$$\phi(\frac{m}{n}) := \frac{m_\mathbb{F}}{n_\mathbb{F}}$$
+
+Where:
+\begin{itemize}
+\item $m, n \in \mathbb{Q} \ (m \in \mathbb{Z}, n \in \mathbb{Z^+})$
+\item $m_\mathbb{F}, n_\mathbb{F} \in \mathbb{Q_F}$
+\end{itemize}
+\end{definition}
+
+\begin{lemma}\label{le:phi-homomorphism}
+$\phi: \mathbb{Q_F} \rightarrow \mathbb{Q}$
+$$\phi(\frac{m}{n}) := \frac{m_\mathbb{F}}{n_\mathbb{F}}$$ is an homomorphism
+\end{lemma}
+
+\begin{bookproof}
+For $m_1/n_1, m_2/n_2 \in \mathbb{Q}$
+
+\begin{enumerate}
+\item $\phi(x + y) = \phi(x) + \phi(y)$
+\begin{align*}
+\phi(m_1/n_1 + m_2/n_2) &= \phi(\frac{m_1.n_2 + m_2.n_1}{n_1.n_2}) \\
+&= \frac{(m_1.n_2 + m_2.n_1)_\mathbb{F}}{(n_1.n_2)_\mathbb{F}} \\ 
+&= \frac{(m_1.n_2)_\mathbb{F} + (m_2.n_1)_\mathbb{F}}{(n_1)_\mathbb{F}.(n_2)_\mathbb{F}} \\
+&= \frac{(m_1)_\mathbb{F}.(n_2)_\mathbb{F} + (m_2)_\mathbb{F}.(n_1)_\mathbb{F}}{(n_1)_\mathbb{F}.(n_2)_\mathbb{F}} \\
+&= \frac{(m_1)_\mathbb{F}}{(n_1)_\mathbb{F}} + \frac{(m_2)_\mathbb{F}}{(n_2)_\mathbb{F}} \\\\
+\phi(m_1/n_1 + m_2/n_2) &= \phi(m_1/n_1) + \phi(m_2/n_2)
+\end{align*}
+
+\item $\phi(x.y) = \phi(x) . \phi(y)$
+\begin{align*}
+\phi(m_1/n_1 . m_2/n_2) &= \phi(\frac{m_1.m_2}{n_1.n_2}) \\
+&= \frac{(m_1.m_2)_\mathbb{F}}{(n_1.n_2)_\mathbb{F}} \\
+&= \frac{(m_1)_\mathbb{F}.(m_2)_\mathbb{F}}{(n_1)_\mathbb{F}.(n_2)_\mathbb{F}} \\
+&= \frac{(m_1)_\mathbb{F}}{(n_1)_\mathbb{F}} . \frac{(m_2)_\mathbb{F}}{(n_2)_\mathbb{F}} \\\\
+\phi(m_1/n_1 . m_2/n_2) &= \phi(m_1/n_1) . \phi(m_2/n_2)
+\end{align*}
+\end{enumerate}
+
+Finally, $\phi$ is an homomorphism.
+\end{bookproof}
+
+Now comes the monster. In order to get the isomorphism, we need to make sure $\phi$ preserves order to prove injectivity by \cref{le:inj-by-order}, and this step alone takes several previous lemmas to cover it fully, and of course we will see them all. Just remember we are having fun.
+
+\begin{lemma}[Ordering in $\mathbb{N_F}$]
+For $n, k \in \mathbb{N}, n_\mathbb{F}, k_\mathbb{F} \in \mathbb{N_F}$
+\begin{enumerate}
+\item If $n < k \rightarrow n_\mathbb{F}< k_\mathbb{F}$
+\item If $n = k \rightarrow n_\mathbb{F}= k_\mathbb{F}$
+\item If $n > k \rightarrow n_\mathbb{F}> k_\mathbb{F}$
+\end{enumerate}
+\end{lemma}
+
+\begin{bookproof}
+\begin{enumerate}
+\item $n = k \rightarrow n_\mathbb{F} = k_\mathbb{F}$
+
+$$n_\mathbb{F} := \sum_{1}^{n}{1_F} = \sum_{1}^{k}{1_F} = n_\mathbb{F}$$
+
+\item $n < k \rightarrow n_\mathbb{F} < k_\mathbb{F}$
+
+$$n < k \Leftrightarrow \exists p \in \mathbb{N}: n + p = k$$
+
+Now, $k_\mathbb{F}$ can be expressed as:
+$$k_\mathbb{F} := \sum_{1}^{k}{1_F} = \sum_{1}^{n}{1_F} + \sum_{1}^{p}{1_F}  = n_\mathbb{F} + p_\mathbb{F}$$
+
+Since $p > 1$, using order preservation in addition for fields (\cref{def:ordered-fields}) we have:
+$$k_\mathbb{F} = n_\mathbb{F} + p_\mathbb{F} > n_\mathbb{F} + 0_\mathbb{F} > n_\mathbb{F}$$
+
+\item $n > k \rightarrow n_\mathbb{F} > k_\mathbb{F}$
+
+$$n > k \leftrightarrow k < n$$
+From 2.
+$$n_\mathbb{n} > k_\mathbb{n} $$
+\end{enumerate}
+\end{bookproof}
+
+\begin{lemma}[Ordering in $\mathbb{Z_F}$]\label{le:ordering-Z}
+For $n, k \in \mathbb{Z}, n_\mathbb{F}, k_\mathbb{F} \in \mathbb{Z_F}$
+\begin{enumerate}
+\item If $n < k \rightarrow n_\mathbb{F}< k_\mathbb{F}$
+\item If $n = k \rightarrow n_\mathbb{F}= k_\mathbb{F}$
+\item If $n > k \rightarrow n_\mathbb{F}> k_\mathbb{F}$
+\end{enumerate}
+\end{lemma}
+
+\begin{bookproof}
+\begin{enumerate}
+\item $n = k \rightarrow n_\mathbb{F} = k_\mathbb{F}$
+\begin{enumerate}
+\item $n, k >= 0$: Same as the proof for $\mathbb{N_F}$
+\item $n, k < 0$: $$n = k \leftrightarrow -k = -n \rightarrow -k, -n \in \mathbb{N}$$
+\end{enumerate}
+We now proceed exactly as the proof for $\mathbb{N_F}$
+
+\item $n < k \rightarrow n_\mathbb{F} < k_\mathbb{F}$, similarly to $\mathbb{N_F}$:
+\begin{align*}
+n < k \Leftrightarrow \exists p \in \mathbb{N}: n + p = k
+\end{align*}
+
+\begin{enumerate}
+\item $n >= 0$: Since $n \in \mathbb{N} \rightarrow (n + p)_\mathbb{F} = n_\mathbb{F} + p_\mathbb{F}$
+
+\item $n < 0$: Labeling $n = -t$ just to indicate it is negative by sign:
+\begin{align*}
+&\rightarrow n = -t \leftrightarrow n_\mathbb{F} = -t_\mathbb{F} \wedge (-t) + p = k \\
+&\rightarrow p = k + t \\
+&\rightarrow p_\mathbb{F} = k_\mathbb{F} + t_\mathbb{F} \\
+&\rightarrow p_\mathbb{F} = k_\mathbb{F} - n_\mathbb{F} \\
+&\rightarrow n_\mathbb{F} + p_\mathbb{F} = k_\mathbb{F} \\
+&\rightarrow n_\mathbb{F} + p_\mathbb{F} = k_\mathbb{F} = (n + p)_\mathbb{F}
+\end{align*}
+Therefore, we prooved for any case of $n, k \in \mathbb{Z}: n < k \rightarrow n_\mathbb{F} < k_\mathbb{F}$
+\end{enumerate}
+
+\item $n > k \rightarrow n_\mathbb{F}> k_\mathbb{F}$
+\\\\
+Labeling acrodingly: $n > k \leftrightarrow -n^\prime > -k^\prime \leftrightarrow n^\prime < k^\prime (n^\prime, k^\prime \in \mathbb{N})$\\
+With this we just proceed as in 2
+\end{enumerate}
+\end{bookproof}
+
+So far so \textquotedblleft good\textquotedblright. Now, before moving to $\mathbb{Q}$ we need an extra tool for operating multiplications in $\mathbb{Z_F}$.
+
+\begin{lemma}[Multiplication in $\mathbb{Z_F}$]\label{le:mult-in-Z}
+For any $n, k \in \mathbb{Z}$ \\
+$$(n.k)_\mathbb{F} = n_\mathbb{F} . k_\mathbb{F} \in \mathbb{F}$$
+\end{lemma}
+
+\begin{bookproof}
+\begin{enumerate}
+\item $n, k > 0:$\\\\
+We have:
+$$(n . k)_\mathbb{F} = \sum_{1}^{n.k} 1_\mathbb{F} = \sum_{1}^{n} \sum_{1}^{k} 1_\mathbb{F} =  \sum_{1}^{n} k_\mathbb{F} = n_\mathbb{F} . k_\mathbb{F}$$
+Which is just adding the additive neutral $n.k$ times.
+
+
+\item $n > 0, k < 0:$ \\\\
+Writing $k$ as $-m$ to denote negativeness, we have:
+$$(n.k)_\mathbb{F} = (n(-m))_\mathbb{F} = (-n.m)_\mathbb{F} = -(n.m)_\mathbb{F}$$
+From 1:
+$$(n.k)_\mathbb{F} = -n_\mathbb{F}.m_\mathbb{F} = n_\mathbb{F}.-m_\mathbb{F} = n_\mathbb{F}.k_\mathbb{F}$$
+\end{enumerate}
+\end{bookproof}
+
+\begin{lemma}[Ordering in $\mathbb{Q}$]\label{le:ordering-Q}
+Let $\frac{m_1}{n_1}, \frac{m_2}{n_2} \in \mathbb{Q}$ \\
+$$\frac{m_1}{n_1} < \frac{m_2}{n_2} \rightarrow (\frac{m_1}{n_1})_\mathbb{F} < (\frac{m_2}{n_2})_\mathbb{F}$$
+\end{lemma}
+
+\begin{bookproof}
+Arbitrary locking $n_1, n_2 \in \mathbb{N}$ without losing generalization, we have:
+$$\frac{m_1}{n_1} < \frac{m_2}{n_2} \leftrightarrow m_1.n_2 < m_2.n_1$$
+Maintaing the inequality direction
+Now, from \cref{le:ordering-Z}:
+$$m_1.n_2 < m_2.n_1 \leftrightarrow (m_1.n_2)_\mathbb{F} < (m_2.n_1)_\mathbb{F}$$
+Next, from \cref{le:mult-in-Z}:
+$$(m_1.n_2)_\mathbb{F} < (m_2.n_1)_\mathbb{F} \leftrightarrow (m_1)_\mathbb{F}.(n_2)_\mathbb{F} < (m_2)_\mathbb{F}.(n_1)_\mathbb{F}$$
+Now, since we fixed $n1, n2 \in \mathbb{N}$, we can use $(n1.n2)_\mathbb{F}$ to divide the expression:
+$$(m_1)_\mathbb{F}.(n_2)_\mathbb{F} < (m_2)_\mathbb{F}.(n_1)_\mathbb{F} \leftrightarrow \frac{(m_1)_\mathbb{F}.(n_2)_\mathbb{F}}{(n_1.n_2)_\mathbb{F}} . \frac{(m_2)_\mathbb{F}.(n_1)_\mathbb{F}}{(n_1.n_2)_\mathbb{F}}$$
+Next, we just distribute and simplify:
+$$\frac{(m_1)_\mathbb{F}.(n_2)_\mathbb{F}}{(n_1.n_2)_\mathbb{F}} . \frac{(m_2)_\mathbb{F}.(n_1)_\mathbb{F}}{(n_1.n_2)_\mathbb{F}} \leftrightarrow \frac{(m_1)_\mathbb{F}}{(n_1)_\mathbb{F}} . \frac{(m_2)_\mathbb{F}}{(n_1)_\mathbb{F}}$$
+
+Finally, we have:
+$$\frac{m_1}{n_1} < \frac{m_2}{n_2} \leftrightarrow \frac{(m_1)_\mathbb{F}}{(n_1)_\mathbb{F}} . \frac{(m_2)_\mathbb{F}}{(n_1)_\mathbb{F}}$$
+\\
+$$\frac{m_1}{n_1} < \frac{m_2}{n_2} \leftrightarrow (\frac{m_1}{n_1})_\mathbb{F} < (\frac{m_2}{n_2})_\mathbb{F}$$
+\end{bookproof}
+
+Now if we recall, we did all of this as a previous step for proving the injectivity of $\phi$. We can make it happen now.
+
+\begin{lemma}\label{le:phi-injective}
+$\phi: \mathbb{Q_F} \rightarrow \mathbb{Q}$
+$$\phi(\frac{m}{n}) := \frac{m_\mathbb{F}}{n_\mathbb{F}}$$ is injective
+\end{lemma}
+
+\begin{bookproof}
+Let $\frac{m_1}{n_1}, \frac{m_2}{n_2} \in \mathbb{Q}$, such that:
+
+$$\frac{m_1}{n_1} < \frac{m_2}{n_2}$$
+
+By \cref{le:ordering-Q}, we have:
+
+$$\frac{m_1}{n_1} < \frac{m_2}{n_2} \rightarrow (\frac{m_1}{n_1})_\mathbb{F} < (\frac{m_2}{n_2})_\mathbb{F}$$
+
+By definition of $\phi$, we can replace:
+
+\begin{align*}
+\frac{m_1}{n_1} < \frac{m_2}{n_2} &\rightarrow \frac{(m_1)_\mathbb{F}}{(n_1)_\mathbb{F}} < \frac{(m_2)_\mathbb{F}}{(n_2)_\mathbb{F}} \\\\
+\frac{m_1}{n_1} < \frac{m_2}{n_2} &\rightarrow \phi(\frac{m_1}{n_1}) < \phi(\frac{m_1}{n_1}) \\
+\end{align*}
+$$\Rightarrow \phi : \mathbb{Q} \rightarrow \mathbb{Q_F} \text{ preserves order.}$$ \\
+
+Finally, from \cref{le:inj-by-order} (Injectivity by order preservation) we assert:\\
+
+$$\Rightarrow \phi : \mathbb{Q} \rightarrow \mathbb{Q_F} \text{ is injective.}$$
+\end{bookproof}
+
+\begin{lemma}\label{le:phi-surjective}
+$\phi: \mathbb{Q_F} \rightarrow \mathbb{Q}$
+$$\phi(\frac{m}{n}) := \frac{m_\mathbb{F}}{n_\mathbb{F}}$$ is surjective
+\end{lemma}
+
+\begin{bookproof}
+By set construction (\cref{le:sur-by-construction}) we defined $\phi: \mathbb{Q_F} \rightarrow \mathbb{Q}$, meaning that:
+$$\mathbb{Q} = Im(\mathbb{Q_F})$$
+Then
+$$\phi \text{ is surjective.}$$
+\end{bookproof}
+
+And thus, we got home.
+
+\begin{lemma}
+$\phi: \mathbb{Q_F} \rightarrow \mathbb{Q}$
+$$\phi(\frac{m}{n}) := \frac{m_\mathbb{F}}{n_\mathbb{F}}$$ is an isomorphism
+\end{lemma}
+
+\begin{bookproof}
+\begin{enumerate}
+\item By \cref{le:phi-homomorphism}, $\phi$ is an homomorphism.
+\item By \cref{le:phi-injective} and \cref{le:phi-surjective}, $\phi$ is bijective
+\end{enumerate}
+Then, by \cref{def:field-isomorphism}
+
+$$\Rightarrow \phi \text{ is an isomorphism}.$$
+\end{bookproof}
+
+Securing this is a big step, and recalling our strategy we now need to use this isomorphism $\phi$ in $\mathbb{Q_F} \rightarrow \mathbb{Q}$, and somehow transform it into a $\Phi$ that extends this to the whole $\mathbb{F} \rightarrow \mathbb{R}$.
+
+Althought this has being a long ride, personally I don't think this was a complex construction, or a hard-to-follow implementation of $\phi$. Everything just landed in place.
+
+The tricky part begins when we introduce $\Phi$ and try to understand what it really is. Still, I wouldn’t include anything that I wouldn’t find clear or satisfactory from a student’s perspective (keep in mind I'm also learning while writing). If something feels confusing or lacks intuition, I prefer to leave it out entirely and try again.

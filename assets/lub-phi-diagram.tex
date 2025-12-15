@@ -1,0 +1,23 @@
+\begin{figure}[H]
+\centering
+\small
+\begin{tikzcd}[column sep=scriptsize, row sep=small, scale=0.85]
+	&&&&&&&&& {\textit{LUB}} \\
+	{\mathbb{Q}} & {q_1} & {q_2} & \dots & q && {} & {q^\prime} & r & {} \\
+	\\
+	\\
+	{\mathbb{Q}_F} & {\phi(q_1)} & {\phi(q_2)} & \dots & {\phi(q)} && M & {\phi(q^\prime)} & {\phi(r)} & {} \\
+	&&&&& {} &&&& {}
+	\arrow[shift right=4, from=2-1, to=2-10]
+	\arrow["\phi"{description}, Rightarrow, from=2-1, to=5-1]
+	\arrow[from=2-2, to=5-2]
+	\arrow[from=2-3, to=5-3]
+	\arrow[from=2-5, to=5-5]
+	\arrow["{{\epsilon_M/2}}"{description}, shift left=5, between={0.3}{0.7}, no head, from=2-7, to=2-10]
+	\arrow[from=2-8, to=5-8]
+	\arrow[shift left=2, curve={height=18pt}, between={0}{0.9}, from=2-9, to=1-10]
+	\arrow[from=2-9, to=5-9]
+	\arrow[shift left=4, from=5-1, to=5-10]
+	\arrow["{{\epsilon_M}}"{description}, shift left=2, between={0.2}{0.8}, no head, from=6-6, to=6-10]
+\end{tikzcd}
+\end{figure}
