@@ -223,7 +223,7 @@ Finally, $\alpha < \beta \Rightarrow \Phi(\alpha) < \Phi(\beta)$.
 
 Now comes the final sprint to proof that $\Phi$ maps $\mathbb{F}$ and $\mathbb{R}$ perfectly. Just as we did with $\phi$, we need to prove isomorphism by proving bijection and homomorphism. From this last part, the only tricky step is for surjectiveness, since it uses a method that we haven't seeing before. We are almost there!
 
-\begin{lemma}[Injectivity in $\Phi$]
+\begin{lemma}[Injectivity in $\Phi$]\label{le:Phi-injective}
 Given $\Phi: \mathbb{R} \rightarrow \mathbb{F}$
 , for $\alpha, \beta \in \mathbb{R}:$
 $$\alpha \neq \beta \rightarrow \Phi(\alpha) \neq \Phi(\beta)$$
@@ -237,7 +237,7 @@ From proven order preservation in \cref{le:order-Phi}, if $\alpha \neq \beta$
 \end{enumerate}
 \end{bookproof}
 
-\begin{lemma}[Surjectivity in $\Phi$]
+\begin{lemma}[Surjectivity in $\Phi$]\label{le:Phi-surjective}
 Given $\Phi: \mathbb{R} \rightarrow \mathbb{F}$:
 $$\forall \  a \in \mathbb{F},\exists \ \alpha \in \mathbb{R}: \Phi(\alpha) = a$$
 \end{lemma}
@@ -246,80 +246,327 @@ $$\forall \  a \in \mathbb{F},\exists \ \alpha \in \mathbb{R}: \Phi(\alpha) = a$
 Lets support the following ideas on the next diagram:
 \input{assets/surjec-diagram.tex}
 
-Picking an arbitrary $a \in \mathbb{Q_F}$, we define the subset bounded above by this $a$:
-$$\{\phi(q) = q_\mathbb{F} \in \mathbb{Q_F}, q_\mathbb{F} < a\}$$
+Picking an arbitrary $a \in \mathbb{F}$, we consider the set of rational elements of $\mathbb{F}$ that are strictly smaller than $a$:
+$$
+\{q_\mathbb{F} \in \mathbb{Q_F} : q_\mathbb{F} < a\}.
+$$
 
-Now, since we already know that $\phi$ is a isomorphism (and hence, is injective), we know that its inverse $\phi ^{-1}$ exists. Applying it to the defined set we create $A$:
-
+Now, since $\phi : \mathbb{Q} \to \mathbb{Q_F}$ is an isomorphism (and hence injective), its inverse $\phi^{-1}$ exists. Applying $\phi^{-1}$ to the set above, we define
 \begin{align*}
-A &= \phi ^{-1}(\{q_\mathbb{F} \in \mathbb{Q_F}, q_\mathbb{F} < a\}) \\
-&= \phi ^{-1}(\{\phi(q), q \in \mathbb{Q}, \phi(q) < a\}) \\
-&= \{q \in \mathbb{Q}, \phi(q) < a\})
+A
+&= \phi^{-1}(\{q_\mathbb{F} \in \mathbb{Q_F} : q_\mathbb{F} < a\}) \\
+&= \phi^{-1}(\{\phi(q) : q \in \mathbb{Q},\ \phi(q) < a\}) \\
+&= \{q \in \mathbb{Q} : \phi(q) < a\}.
 \end{align*}
 
-Now lets consider $\alpha = \sup(A)$, lets first prove that $\alpha$ exists:
+Now lets consider $\alpha = \sup(A)$. We first show that $\alpha$ exists.
 
 \begin{enumerate}
 \item $A$ is non-empty:
 
-Let an arbitrary $q \in \mathbb{Q}$, then $\phi(q) = q_\mathbb{F} \in \mathbb{Q_F}$. This means that $\phi(q) < a$, and by definition of $A$, $q \in A$.
+Since $\mathbb{Q_F}$ is dense in $\mathbb{F}$ and $a \in \mathbb{F}$, there exists $q_\mathbb{F} \in \mathbb{Q_F}$ such that $q_\mathbb{F} < a$. By surjectivity of $\phi$ onto $\mathbb{Q_F}$, there exists $q \in \mathbb{Q}$ with $\phi(q) = q_\mathbb{F}$. Hence $\phi(q) < a$ and therefore $q \in A$.
 
 \item $A$ is bounded above:
 
-Using the archimedean property in $\mathbb{F}: \exists n_\mathbb{F} \in \mathbb{N_\mathbb{F}}: n_\mathbb{F} > a$. But from the definition of $A, \exists q \in \mathbb{Q}: \phi(q) < a$. Then $\phi(a) < a < n_\mathbb{F}$. Since $\phi$ is order-preserving, we evaluate its inverse in the interval and get $\phi^{-1}(\phi(a)) < \phi^{-1}(n_\mathbb{F})$. Then, $a < n$ shows that $n$ is an upper bound for $A$.
+Using the Archimedean property in $\mathbb{F}$, there exists $n_\mathbb{F} \in \mathbb{N_F}$ such that $a < n_\mathbb{F}$. Since $\phi$ is order-preserving and maps $\mathbb{N}$ onto $\mathbb{N_F}$, there exists $n \in \mathbb{N}$ with $\phi(n) = n_\mathbb{F}$.  
+
+For every $q \in A$ we have $\phi(q) < a < n_\mathbb{F} = \phi(n)$, and by order preservation of $\phi$ this implies $q < n$. Hence $n$ is an upper bound for $A$.
 \end{enumerate}
 
-$\Rightarrow \alpha = \sup(A)$ exists
+Therefore, $\alpha = \sup(A)$ exists.
 \end{bookproof}
 
 \begin{bookproof}
-Now, want we want to achieve is that given this arbitrary $a$, we reach the preimage $\alpha$ by expanding se $A$ enough to declare that $\alpha$ is its supremum. That way, we match the definition of $\Phi$ and that would be it.
-\\\\
-Claim: $$\{q \in \mathbb{Q}: q < \alpha\} = A$$
+Now, what we want to achieve is that, given this arbitrary $a \in \mathbb{F}$, we reach a real number $\alpha$ such that $\Phi(\alpha) = a$. To do this, we show that the set $A$ constructed above coincides with all rationals strictly smaller than its supremum.
+
+\medskip
+\textbf{Claim:}
+$$
+\{q \in \mathbb{Q} : q < \alpha\} = A.
+$$
 
 \begin{itemize}
 \item $\subseteq$:
 
-Let $q \in \mathbb{Q}: q < \alpha$. If we fix an arbitrary $q^\prime \in A$ and using the fact that $\alpha = \sup(A)$, then there is an $\epsilon$ small enough (the minimal in fact) that $q^\prime + \epsilon > \alpha$. Now, ordering:
-
-\begin{align*}
-&q < q^\prime < \alpha &\text{ (choosing the smallest $\epsilon$)} \\
-&\rightarrow q < q^\prime \\
-&\rightarrow \phi(q) < \phi(q^\prime) &\text{ (due $\phi$ preserving order)}
-\end{align*}
-
-Since $\phi(q^\prime) \in \mathbb{Q_F}$, $\phi(q^\prime) < a$ (as the diagram implies from our initial assumptions)
-
-$$\rightarrow \phi(q) < \phi(q^\prime) < a$$
-$$\rightarrow q \in A$$
+Let $q \in \mathbb{Q}$ with $q < \alpha$. Since $\alpha = \sup(A)$, $q$ cannot be an upper bound for $A$. Hence there exists $q' \in A$ such that
+$$
+q < q' \le \alpha.
+$$
+Since $\phi$ is order-preserving, we have
+$$
+\phi(q) < \phi(q').
+$$
+But $q' \in A$ implies $\phi(q') < a$, and therefore
+$$
+\phi(q) < a,
+$$
+which shows that $q \in A$.
 
 \item $\supseteq$:
 
-Let $q \in A$. By definition, $\phi(q) < a$ and, since $\alpha = \sup(A), q < \alpha$.
-
-$$\rightarrow q \in \{q \in \mathbb{Q}: q < \alpha\}$$
+Let $q \in A$. By definition, $\phi(q) < a$. Since $\alpha = \sup(A)$, every element of $A$ is smaller than or equal to $\alpha$, and therefore
+$$
+q < \alpha.
+$$
+Thus $q \in \{q \in \mathbb{Q} : q < \alpha\}$.
 \end{itemize}
 
-$$\Rightarrow \{q \in \mathbb{Q}: q < \alpha\} = A$$
+Hence,
+$$
+\{q \in \mathbb{Q} : q < \alpha\} = A.
+$$
 
-So far we proved that:
+So far we have shown that:
 \begin{enumerate}
-\item $\sup(A) = \alpha$ exists
-\item $A = \{q \in \mathbb{Q}: q < \alpha\}$
+\item $\alpha = \sup(A)$ exists,
+\item $A = \{q \in \mathbb{Q} : q < \alpha\}$.
 \end{enumerate}
 
-Lets combine the two:
-
+Combining these, we obtain
 $$
-\sup(A) = \sup\{q \in \mathbb{Q}: q < \alpha\}
+\sup(A) = \sup\{q \in \mathbb{Q} : q < \alpha\}.
 $$
 
-And from the definition:
+By definition of $\Phi$, we have
 \begin{align*}
-\Phi(\alpha) &= \sup\{\phi(q), q \in \mathbb{Q}, q < \alpha\} \\
-&= \sup\{\phi(q), q \in A\} \\
+\Phi(\alpha)
+&= \sup\{\phi(q) : q \in \mathbb{Q},\ q < \alpha\} \\
+&= \sup\{\phi(q) : q \in A\}.
 \end{align*}
 
-But from the original definition of $A = \phi ^{-1}(\{q_\mathbb{F} \in \mathbb{Q_F}, q_\mathbb{F} < a\})$, and replacing:
+But by construction of $A$,
+$$
+\{\phi(q) : q \in A\} = \{q_\mathbb{F} \in \mathbb{Q_F} : q_\mathbb{F} < a\}.
+$$
 
+Since $\mathbb{Q_F}$ is dense in $\mathbb{F}$ and $a$ is an upper bound for this set, it follows that
+$$
+\sup\{q_\mathbb{F} \in \mathbb{Q_F} : q_\mathbb{F} < a\} = a.
+$$
+
+Therefore,
+$$
+\Phi(\alpha) = a,
+$$
+which proves that $\Phi$ is surjective.
 \end{bookproof}
+
+Now that this is done, we can conclude that $\Phi$ is a bijection. Next we will just cover the requirements to proof homomorphism and finish the whole demonstration. But first, a handy property:
+
+\begin{lemma}\label{le:sup-addition}
+Let sets $X, Y$, then:
+\begin{align*}
+\sup(X + Y) = \sup(X) + \sup(Y)
+\end{align*}
+\end{lemma}
+
+\begin{bookproof}
+As always, to prove that something is a supremum of a set, we need to prove both the bound is what we expect, and that it is in fact the \textit{Least Upper Bound}
+
+\begin{enumerate}
+\item Bound:
+
+We have:
+\begin{align*}
+X + Y &:= \{x + y, x \in X, y \in Y\} \\
+&\rightarrow \forall x \in X, x \leq \sup(X) \\
+&\rightarrow \forall y \in Y, y \leq \sup(Y) \\
+&\rightarrow x + y \leq \sup(X) + \sup(Y) \\
+&\Rightarrow \sup(X) + \sup(Y) \text{ bounds } X + Y
+\end{align*}
+
+\item $\sup(X) + \sup(Y)$ is \textit{L.U.B}
+
+Assume a new upper bound $M$ so that $M < \sup(X) + \sup(Y)$. Then
+$$
+\epsilon = (\sup X + \sup Y - M) > 0
+$$
+
+Now, since $x < \sup X$ and $y < \sup Y, \forall x \in X, y \in Y$ respectively, we can take any small amount $\epsilon / 2$ that would satisfy:
+
+\begin{align*}
+x + \epsilon / 2 > \sup X \rightarrow x > \sup X - \epsilon / 2 \\
+y + \epsilon / 2 > \sup Y \rightarrow y > \sup Y - \epsilon / 2
+\end{align*}
+
+Adding up:
+\begin{align*}
+x + y > \sup X + \sup Y - \epsilon = M
+\end{align*}
+The, we found an $x + y \in X + Y$ that is not bounded by $M$. \\
+$\Rightarrow M$ fails to bound $X + Y$ \\
+$\Rightarrow \sup X + \sup Y$ is the \textit{L.U.B} of $X + Y$
+\end{enumerate}
+\end{bookproof}
+
+\begin{lemma}[Homomorphism in $\Phi$]\label{le:Phi-homomorphism}
+$\Phi: \mathbb{R} \rightarrow \mathbb{F}$ is an homomorphism
+\end{lemma}
+
+\begin{bookproof}
+As we already know, we need to prove preservation of addition and multiplication. Let $\alpha, \beta \in \mathbb{R}$
+\begin{enumerate}
+\item $\Phi(\alpha + \beta) = \Phi(\alpha) + \Phi(\beta)$
+
+\textbf{Claim:} Recalling the definition of $S(\alpha) := \{\phi(q), q \in \mathbb{Q}, q < \alpha\}$, we will proof $S(\alpha + \beta) = S(\alpha) + S(\beta)$
+
+\textbf{i. $\subseteq$:}
+
+Let $\phi(q) \in S(\alpha + \beta)$
+\begin{align*}
+\rightarrow q < \alpha + \beta \text{ (by definition of S)}
+\rightarrow q - \alpha < \beta
+\end{align*}
+
+Next, by density in $\mathbb{Q}$, there must be an arbitrary $q^\prime$ such that:
+\begin{align*}
+&\rightarrow q - \alpha < q^\prime < \beta \\\\
+&\rightarrow_{1} q - \alpha < q^\prime \leftrightarrow q - q^\prime < \alpha \\
+&\rightarrow_{2} q^\prime < \beta \\\\
+&\rightarrow_{1} q - q^\prime \in S(\alpha) \\
+&\rightarrow_{2} q^\prime \in S(\beta)
+\end{align*}
+
+Finally, with some clever operations in $\phi$ using its property for preserving addition:
+
+$$\phi(q) = \phi(q - q^\prime + q^\prime) = \phi(q - q^\prime) + \phi(q^\prime)$$
+$$\Rightarrow \phi(q) \in S(\alpha) + S(\beta)$$
+
+\textbf{ii. $\supseteq$:}
+
+Let $\phi(q_1) + \phi(q_2) \in S(\alpha) + S(\beta)$, where $q_1 < \alpha \wedge q_2 < \beta$
+
+\begin{align*}
+\rightarrow q_1 + q_2 < \alpha + \beta \wedge q_1 + q_2 \in \mathbb{Q} \\
+\rightarrow q_1 + q_2 \in S(\alpha) + S(\beta)
+\end{align*}
+
+Concluding that $S(\alpha + \beta) = S(\alpha) + S(\beta)$.
+Applying supremum to both sides, we have:
+
+$$\sup(S(\alpha + \beta)) = \sup(S(\alpha) + S(\beta))$$
+
+And from \cref{le:sup-addition}:
+
+$$\sup(S(\alpha + \beta)) = \sup(S(\alpha)) + \sup(S(\beta))$$
+$$\Rightarrow \Phi(\alpha + \beta) = \Phi(\alpha) + \Phi(\beta)$$
+\end{enumerate}
+\end{bookproof}
+
+\begin{bookproof}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item $\Phi(\alpha \cdot \beta) = \Phi(\alpha) \cdot \Phi(\beta)$
+
+\textbf{i. $\Phi(\alpha)\Phi(\beta)$: Upper Bound for $S(\alpha\beta)$}
+
+Lets take any $\phi(q) \in S(\alpha\beta)$ where $q < \alpha\beta$.
+
+By density of $\mathbb{Q}$ in $\mathbb{R}$, we can write:
+$$q = q_1 \cdot q_2$$
+where $q_1, q_2 \in \mathbb{Q}$ with $q_1 < \alpha$ and $q_2 < \beta$.
+
+Since $q_1 < \alpha$ and $q_1 \in \mathbb{Q}$:
+$$\phi(q_1) \in S(\alpha)$$
+
+Therefore:
+$$\phi(q_1) \leq \sup S(\alpha) = \Phi(\alpha)$$
+
+Similarly, since $q_2 < \beta$ and $q_2 \in \mathbb{Q}$:
+$$\phi(q_2) \leq \Phi(\beta)$$
+
+Since $\phi$ preserves multiplication on rationals:
+$$\phi(q) = \phi(q_1 q_2) = \phi(q_1) \cdot \phi(q_2)$$
+
+Since all values are positive, we can multiply the inequalities:
+$$\phi(q) = \phi(q_1) \cdot \phi(q_2) \leq \Phi(\alpha) \cdot \Phi(\beta)$$
+
+This holds for every element of $S(\alpha\beta)$.
+
+$\Rightarrow \Phi(\alpha)\Phi(\beta)$ is an upper bound for $S(\alpha\beta)$
+\\
+
+\textbf{ii. $\Phi(\alpha)\Phi(\beta)$: \textit{L.U.B.} of $S(\alpha\beta)$}
+
+We need to prove that for any $q \in S(\alpha . \beta)$, it will be bounded by $\Phi(\alpha) \cdot \Phi(\beta)$. This is equivalent to proof that there is an $\epsilon _\mathbb{F} > 0$, the smallest of them all, that makes $\phi(q) + \epsilon _\mathbb{F} > \Phi(\alpha) \cdot \Phi(\beta)$.
+
+Let $q = q_1 . q_2, q_1 < \alpha \wedge q_2 < \beta$. Next, we define a distance $\delta$ small enough that:
+$$
+q_1 + \delta > \alpha \wedge q_2 + \delta > \beta
+$$
+Knowing this, our $\delta$ must be a positive number in $\mathbb{Q}$. So lets define it as
+$$
+\delta \in \mathbb{Q}, 0 < \delta < 1
+$$
+We will revisit this definition of $\delta$ later. Next we operate:
+\begin{align*}
+\rightarrow \alpha < q_1 + \delta &\leftrightarrow \Phi(\alpha) < \Phi(q_1 + \delta) \\
+&\leftrightarrow \Phi(\alpha) < \Phi(q_1 + \delta) \\
+&\leftrightarrow \Phi(\alpha) < \phi(q_1 + \delta) \text{ ($q_1 + \delta \in \mathbb{Q}$)}
+\end{align*}
+Identically, we make the same operation for $\beta$ and $q_2$
+\begin{align*}
+&\rightarrow \Phi(\alpha) < \phi(q_1 + \delta) \\
+&\rightarrow \Phi(\beta) < \phi(q_2 + \delta)
+\end{align*}
+\end{enumerate}
+\end{bookproof}
+
+\begin{bookproof}
+Multiplying both inequalities we have:
+\begin{align*}
+&\Phi(\alpha) \cdot \Phi(\beta) < \phi(q_1 + \delta) \cdot \phi(q_2 + \delta) \\
+&\Phi(\alpha) \cdot \Phi(\beta) < \phi((q_1 + \delta) \cdot (q_2 + \delta)) \text{ ($\phi$: isomorphism allows multiplication distribution)} \\
+&\Phi(\alpha) \cdot \Phi(\beta) < \phi(q_1.q_2 + \delta(q_1 + q_2) + \delta^2) \\
+&\Phi(\alpha) \cdot \Phi(\beta) < \phi(q_1.q_2) + \phi(\delta(q_1 + q_2) + \delta ^2)
+\end{align*}
+
+Lets leave the inequality there to see more deeply what we want to achieve using $\delta$. The intuiton here is to find a value for $\delta$ that allows the inequality to hold, no matter what.
+
+From the definition:
+$$\delta < 1 \rightarrow \delta ^2 < \delta$$
+Also:
+$$q_1 + q_2 < \alpha + \beta$$
+Multiplying both:
+\begin{align*}
+\delta (q_1 + q_2) < \delta (\alpha + \beta) \\
+\delta (q_1 + q_2) + \delta ^2 < \delta (\alpha + \beta) + \delta \\
+\delta (q_1 + q_2) + \delta ^2 < \delta (\alpha + \beta + 1) \\
+\end{align*}
+
+Now allow me to do a \textquotedblleft cleanup\textquotedblright. Lets redefine $\delta$ (still between $0$ and $1$) as:
+$$0 < \delta < min\{\frac{\epsilon}{\alpha + \beta + 1}, 1\}, \epsilon >0 \in \mathbb{Q}$$
+
+But why? Just to do a clean simplification and end up with an isolated $\epsilon \in \mathbb{Q}$, independent from anything else.
+
+Going back to the inequality, we notice that the terms start to unfold:
+
+\begin{align*}
+\Phi(\alpha) \cdot \Phi(\beta) &< \phi(q_1.q_2) + \phi(\delta(q_1 + q_2) + \delta ^2) \\
+\rightarrow &< \phi(q) + \phi(\delta (q_1 + q_2) + \delta ^2) < \phi(q) + \phi(\delta (\alpha + \beta + 1) ) = \phi(q) + \phi(\epsilon) \\ 
+\rightarrow \Phi(\alpha) \cdot \Phi(\beta) &< \phi(q) + \phi(\epsilon) \\
+\rightarrow \Phi(\alpha) \cdot \Phi(\beta) &< \phi(q) + \epsilon _\mathbb{F} \\
+\end{align*} 
+This means that, by choosing a correct $\delta$ dependent of $\alpha$ and $\beta$, we get an arbitrary positive distance (margin) $\epsilon$, which shows that $\Phi(\alpha) \cdot \Phi(\beta)$ is \textit{L.U.B.} of $\phi(q)$.
+
+$$\Rightarrow \Phi(\alpha . \beta) = \sup\{\phi(q),q \in \mathbb{Q}, q < \alpha.\beta\} = \Phi(\alpha) \cdot \Phi(\beta)$$
+$$\Rightarrow \Phi: \text{ Homomorphism}$$
+\end{bookproof}
+
+\newpage
+Finally, we reached Rome
+
+\begin{lemma}[Isomorphism $\Phi$]
+$\Phi: \mathbb{R} \rightarrow \mathbb{F}$ is an isomorphism
+\end{lemma}
+
+\begin{bookproof}
+\begin{enumerate}
+\item By \cref{le:Phi-injective} and \cref{le:Phi-surjective}, $\Phi$ is bijective.
+\item By \cref{le:Phi-homomorphism}, $\Phi$ is an homomorphism
+\end{enumerate}
+For any complete ordered field $\mathbb{R}$, there exists an isomorphism $\Phi$ such that:
+$$\Phi: \mathbb{R} \rightarrow \mathbb{F}$$
+\end{bookproof}
+
+Personally, is the first time that I have being this rigurous with a proof, and covering as much as I wanted the result is not just landing the final conclusion. For me it was the joy of knowing that I understood all the pieces to build the puzzle, and I hope you did as well.
