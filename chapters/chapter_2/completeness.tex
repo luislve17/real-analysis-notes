@@ -37,17 +37,17 @@ The smallest $s \in X \subset \mathbb{F}$ that bounds $X$ from above is called t
 \end{align*}
 \end{definition}
 
-Lets break this down by element
+Let us unpack this definition:
 
 \begin{itemize}
-\item $\forall x \in X$: The following definition applies to the whole set $X$.
+\item $\forall x \in X$: The following definition applies to every element in $X$.
 \item $(x \leq s)$: Given that $s$ is an upper bound for $X$...
 \item $(\forall s^{\prime} < s) \exists x^{\prime} \in X (s^{\prime} < x^{\prime})$:
 
 \begin{itemize}
 \item $(\forall s^{\prime} < s)$: Considering any arbitrary $s^{\prime}$ smaller than our upper bound $s$
 \item $\exists x^{\prime} \in X$: There will be an element $x^\prime$ in $X$, so that...
-\item $(s^{\prime} < x^{\prime})$: It is larger than the $s^{\prime}$, making $s^{\prime}$ to \textbf{fail} to be an upper bound.
+\item $(s^{\prime} < x^{\prime})$: It is larger than the $s^{\prime}$, showing that $s^{\prime}$ is not an upper bound.
 \end{itemize}
 \end{itemize}
 
@@ -96,7 +96,7 @@ The proof for the uniqueness of the infimum is analogous.
 Consider the ordered field $\mathbb{Q}$ of rational numbers, and let:
 $$S = \{x \in \mathbb{Q} \ | \ x^2 < 2\}$$
 
-The set $S$ is nonempty (for instance, $1 \in S$) and bounded above (for instance, $2 \in \mathbb{F}$ is an upper bound). However, $S$ does not have a supremum in $\mathbb{Q}$, since if it had, it would have to equal $\sqrt{2} \notin \mathbb{Q}$, so $S$ has no least upper bound within the rational numbers.
+The set $S$ is nonempty (for instance, $1 \in S$) and bounded above (for instance, $2 \in \mathbb{F}$ is an upper bound). However, $S$ has no supremum in $\mathbb{Q}$:  if such a supremum existed, it would equal $\sqrt{2} \notin \mathbb{Q}$, so $S$ has no least upper bound within the rational numbers.
 
 This shows that not every ordered field has the property that bounded sets possess suprema.
 \end{example}

@@ -23,7 +23,7 @@ With this idea, we can intuit that any \textbf{real number is actually defined b
 
 The fact is that $\sqrt{2}$ is the only number placed in the boundary between these to sequences.
 
-More formally:
+Formally:
 $$\sqrt{2} := \sup \{q \in \mathbb{Q}: q < \sqrt{2}\}$$
 Relating an irrational number, with all the rationals below it.
 
@@ -32,7 +32,7 @@ For any $\alpha \in \mathbb{R}$, define $\Phi: \mathbb{R} \rightarrow \mathbb{F}
 $$\Phi(\alpha) := \sup\{\phi(q): q \in \mathbb{Q}, q < \alpha \}$$
 \end{definition}
 
-This new function $\Phi$ using the former isomorphism $\phi$ defined in $\mathbb{Q}$ does the exact same thing that $\sqrt{2}$ did in our example: bounds $\mathbb{Q}$. Since our main focus is to somehow extend the properties of the original $\phi$, lets take the time to emphazise why this new $\Phi$ is not just an arbitrary function.
+This new function $\Phi$ using the former isomorphism $\phi$ defined in $\mathbb{Q}$ does the exact same thing that $\sqrt{2}$ did in our example: bounds $\mathbb{Q}$. Since our main focus is to somehow extend the properties of the original $\phi$, let us take the time to emphazise why this new $\Phi$ is not just an arbitrary function.
 
 \begin{lemma}
 For $r \in \mathbb{Q}$
@@ -42,7 +42,7 @@ For $r \in \mathbb{Q}$
 \end{lemma}
 
 \begin{bookproof}
-First, lets check the definition:
+First, let us check the definition:
 $$\Phi(\alpha) := \sup\{\phi(q): q \in \mathbb{Q}, q < \alpha \}$$
 
 If $\alpha$ happens to be a rational number $r$, it means that the supremum of all the rational values before this particular $r$ are limited by $\phi(r)$, and this is the \textit{Least Upper Bound} of the set.
@@ -63,7 +63,7 @@ $\Rightarrow \phi(r)$ bounds the set.
 \setcounter{enumi}{1}
 \item $\phi(r)$ is the L.U.B. of $\{\phi(q): q \in \mathbb{Q}, q < r \}$
 \\\\
-Lets visualize the approach
+let us visualize the approach
 
 \input{assets/lub-phi-diagram.tex}
 
@@ -72,9 +72,9 @@ Assume $M$ is an arbitrary upper bound, trying to make $\phi(r)$ not the \textit
 \rightarrow M < \phi(r)
 \rightarrow \phi(r) - M > 0
 \end{align*}
-Lets call $\epsilon_M$ to the distance between this assumed $M$ and $\phi(r)$.
+Let us denote $\epsilon_M$ as the distance between this assumed $M$ and $\phi(r)$.
 
-Now, lets not forget that by density in $\mathbb{Q}$ we are able to locate an arbitrary rational number between two other arbitrary rationals, or even better for our use case: we can position an arbitrary rational $q^\prime$ as close as we want to any other arbitrary rational.
+Now, let us not forget that by density in $\mathbb{Q}$ we are able to locate an arbitrary rational number between two other arbitrary rationals, or even better for our use case: we can position an arbitrary rational $q^\prime$ as close as we want to any other arbitrary rational.
 
 Developing that idea:
 \begin{align*}
@@ -165,7 +165,7 @@ $$\alpha < \beta \rightarrow \Phi(\alpha) < \Phi(\beta)$$
 \end{lemma}
 
 \begin{bookproof}
-Lets start with two evaluations of set $S$:
+let us start with two evaluations of set $S$:
 \begin{itemize}
 \item $S(\alpha) := \{\phi(q): q \in \mathbb{Q}, q < \alpha \}$
 \item $S(\beta) := \{\phi(q): q \in \mathbb{Q}, q < \beta \}$
@@ -243,7 +243,7 @@ $$\forall \  a \in \mathbb{F},\exists \ \alpha \in \mathbb{R}: \Phi(\alpha) = a$
 \end{lemma}
 
 \begin{bookproof}
-Lets support the following ideas on the next diagram:
+let us support the following ideas on the next diagram:
 \input{assets/surjec-diagram.tex}
 
 Picking an arbitrary $a \in \mathbb{F}$, we consider the set of rational elements of $\mathbb{F}$ that are strictly smaller than $a$:
@@ -259,7 +259,7 @@ A
 &= \{q \in \mathbb{Q} : \phi(q) < a\}.
 \end{align*}
 
-Now lets consider $\alpha = \sup(A)$. We first show that $\alpha$ exists.
+Now let us consider $\alpha = \sup(A)$. We first show that $\alpha$ exists.
 
 \begin{enumerate}
 \item $A$ is non-empty:
@@ -460,7 +460,7 @@ $$\Rightarrow \Phi(\alpha + \beta) = \Phi(\alpha) + \Phi(\beta)$$
 
 \textbf{i. $\Phi(\alpha)\Phi(\beta)$: Upper Bound for $S(\alpha\beta)$}
 
-Lets take any $\phi(q) \in S(\alpha\beta)$ where $q < \alpha\beta$.
+let us take any $\phi(q) \in S(\alpha\beta)$ where $q < \alpha\beta$.
 
 By density of $\mathbb{Q}$ in $\mathbb{R}$, we can write:
 $$q = q_1 \cdot q_2$$
@@ -494,7 +494,7 @@ Let $q = q_1 . q_2, q_1 < \alpha \wedge q_2 < \beta$. Next, we define a distance
 $$
 q_1 + \delta > \alpha \wedge q_2 + \delta > \beta
 $$
-Knowing this, our $\delta$ must be a positive number in $\mathbb{Q}$. So lets define it as
+Knowing this, our $\delta$ must be a positive number in $\mathbb{Q}$. So let us define it as
 $$
 \delta \in \mathbb{Q}, 0 < \delta < 1
 $$
@@ -521,7 +521,7 @@ Multiplying both inequalities we have:
 &\Phi(\alpha) \cdot \Phi(\beta) < \phi(q_1.q_2) + \phi(\delta(q_1 + q_2) + \delta ^2)
 \end{align*}
 
-Lets leave the inequality there to see more deeply what we want to achieve using $\delta$. The intuiton here is to find a value for $\delta$ that allows the inequality to hold, no matter what.
+let us leave the inequality there to see more deeply what we want to achieve using $\delta$. The intuiton here is to find a value for $\delta$ that allows the inequality to hold, no matter what.
 
 From the definition:
 $$\delta < 1 \rightarrow \delta ^2 < \delta$$
@@ -534,7 +534,7 @@ Multiplying both:
 \delta (q_1 + q_2) + \delta ^2 < \delta (\alpha + \beta + 1) \\
 \end{align*}
 
-Now allow me to do a \textquotedblleft cleanup\textquotedblright. Lets redefine $\delta$ (still between $0$ and $1$) as:
+Now allow me to do a \textquotedblleft cleanup\textquotedblright. let us redefine $\delta$ (still between $0$ and $1$) as:
 $$0 < \delta < min\{\frac{\epsilon}{\alpha + \beta + 1}, 1\}, \epsilon >0 \in \mathbb{Q}$$
 
 But why? Just to do a clean simplification and end up with an isolated $\epsilon \in \mathbb{Q}$, independent from anything else.

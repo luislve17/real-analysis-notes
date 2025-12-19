@@ -30,11 +30,11 @@ Then $\phi$ is injective.
 \end{lemma}
 
 \begin{bookproof}
-To prove injectivity, we need to show that for any two identical images of the function $\phi$, we get that their arguments were the same, guaranteeing the uniqueness of the image:
+To establish injectivity, we must show that for any two identical images of the function $\phi$, we get that their arguments were the same, guaranteeing the uniqueness of the image:
 
 Let $x, y \in \mathbb{F}$ so that $$\phi(x) = \phi(y)$$
 
-Using the tricotomy over $F$:
+By tricotomy of $F$:
 
 Case 1: $x < y$: $$\rightarrow \phi(x) < \phi(y) (\rightarrow\leftarrow)$$
 Case 2: $y < x$: $$\rightarrow \phi(y) < \phi(x) (\rightarrow\leftarrow)$$
@@ -64,5 +64,5 @@ Then $\phi^\prime$ is surjective.
 
 On this first part, this surjectiveness by construction might be the bit that doesn't quite seem correct. Isn't it trivial to have surjectiveness if we grab the method $\phi$ and limit it to its image $\phi^\prime$?
 
-The key here is that we defined the set of images $\text{Im}_F$ first, and \textit{then} proved the surjectiveness in it. The lemma confirms that the set we defined was \textit{just right}. Not so big to leave some elements unreached, and not too small to make undefined preimages at some spots.
+The key here is that we first defined the set of images $\text{Im}_F$, and \textit{then} proved the surjectiveness in it. The lemma confirms that the set we defined was \textit{just right}. Not so big to leave some elements unreached, and not too small to make undefined preimages at some spots.
 

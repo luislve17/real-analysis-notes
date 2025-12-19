@@ -14,7 +14,7 @@ We first define the subset $\mathbb{N} \subset \mathbb{F}$ \textbf{inductively},
 \item $n + 1_{\mathbb{F}} \in \mathbb{N}, \forall n \in \mathbb{N}$ defines the induction step over $\mathbb{N}$, using the addition operation from the field $\mathbb{F}$
 \end{enumerate}
 
-We now proceed to prove by contradiction, assuming $\exists x \in \mathbb{F}, \forall n \in \mathbb{N}:$
+We proceed by contradiction. Suppose $\exists x \in \mathbb{F}, \forall n \in \mathbb{N}:$
 $$
 n \leq x
 $$
@@ -35,10 +35,10 @@ Therefore, our original assumption of $x$ must be wrong.
 Now, is important to notice that $\mathbb{F}$ implies an archimedien field, but the opposite won't necessarily be true.
 
 \begin{example}
-Using an Archimedean field, that is not complete, lets take $\mathbb{F} = \mathbb{Q}$
+Using an Archimedean field, that is not complete, let us take $\mathbb{F} = \mathbb{Q}$
 $$x \in \mathbb{Q} \wedge n \in \mathbb{N} \subset \mathbb{Q}$$
 It is true that, for any $x$ there is a natural number $n$ so that $$n>x$$But invoking the previous example (\cref{ex:s-in-q-not-bounded}) we can take a subset of $\mathbb{Q}$ that is not bounded in $\mathbb{Q}$, failing to properly form a complete set.
 \end{example}
 
-Closing this chapter, lets emphazise the fact that the construction of $\mathbb{N} \subset \mathbb{F}$ by induction was crucial to generalize the property for any complete ordered field. Next we will explain why this wasn't necessary at all.
+Closing this chapter, let us emphazise the fact that the construction of $\mathbb{N} \subset \mathbb{F}$ by induction was crucial to generalize the property for any complete ordered field. Next we will explain why this wasn't necessary at all.
 
