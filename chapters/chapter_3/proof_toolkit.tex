@@ -2,7 +2,7 @@
 \subsection*{A. Proof Techniques Toolkit}
 \addcontentsline{toc}{subsection}{A. Proof Techniques Toolkit}
 
-Throughout this chapter, we have employed several fundamental proof techniques. This appendix collects these methods with their definitions, intuitive explanations, and worked examples. Mastering these techniques is essential for working through proofs in real analysis and beyond.
+I wanted to take the time to review the proof techniques used per chapter. This appendix collects these with an example on each.
 
 \subsubsection*{A.1 Archimedean Property}
 
@@ -10,14 +10,16 @@ Throughout this chapter, we have employed several fundamental proof techniques. 
 For any complete ordered field $F$, given any $x \in F$, there exists $n \in \mathbb{N}_F$ such that $n > x$.
 
 \textbf{Intuition:}
-No matter how large a number you pick, you can always find a natural number bigger than it. This means the natural numbers are unbounded—they grow without limit. We use this property to:
+No matter how large a number you pick, you can always find a natural number bigger than it. This means the natural numbers are unbounded—they grow without limit.
+
+Used to:
 \begin{itemize}
     \item Show sets are bounded (by finding an $n$ that works as an upper bound)
     \item Show sets are non-empty (by finding a negative $n$ that serves as a lower element)
     \item Construct rationals or integers around arbitrary real numbers
 \end{itemize}
 
-\textbf{Exercise Example:}
+\textbf{Example:}
 
 \textit{Problem:} Let $S = \{1 - \frac{1}{n} : n \in \mathbb{N}\}$. Show that $S$ is bounded above.
 
@@ -40,7 +42,7 @@ The rationals are ``everywhere'' in the reals—no matter how close two real num
     \item Bridge constructions between $\mathbb{Q}$ and $\mathbb{R}$
 \end{itemize}
 
-\textbf{Exercise Example:}
+\textbf{Example:}
 
 \textit{Problem:} Show that between $\sqrt{2}$ and $\sqrt{3}$, there exists a rational number.
 
@@ -61,7 +63,7 @@ To prove a statement $P$, assume $\neg P$ and derive a contradiction. Since assu
     \item You want to prove a uniqueness property (by assuming two things exist and deriving a contradiction)
 \end{itemize}
 
-\textbf{Exercise Example:}
+\textbf{Example:}
 
 \textit{Problem:} Prove that $\sqrt{2}$ is irrational.
 
@@ -96,7 +98,7 @@ Like dominoes—if the first one falls (base case) and each falling domino knock
     \item Building sequences or recursive structures
 \end{itemize}
 
-\textbf{Exercise Example:}
+\textbf{Example:}
 
 \textit{Problem:} Prove that for all $n \in \mathbb{N}$, the sum $1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}$.
 
@@ -135,7 +137,7 @@ The supremum is the ``ceiling'' of a set—nothing in the set exceeds it, but yo
     \item Bridge rational approximations to real limits
 \end{itemize}
 
-\textbf{Exercise Example:}
+\textbf{Example:}
 
 \textit{Problem:} Let $S = \{1 - \frac{1}{n} : n \in \mathbb{N}\}$. Prove that $\sup(S) = 1$.
 
@@ -169,7 +171,7 @@ Any two elements are either equal or one is strictly larger—no other options e
     \item Establishing contradictions in order-preservation arguments
 \end{itemize}
 
-\textbf{Exercise Example:}
+\textbf{Example:}
 
 \textit{Problem:} Prove that if $x^2 = y^2$ in an ordered field $F$, then $x = y$ or $x = -y$.
 
