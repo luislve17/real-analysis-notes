@@ -1,0 +1,189 @@
+\newpage
+\subsection*{A. Proof Techniques Toolkit}
+\addcontentsline{toc}{subsection}{A. Proof Techniques Toolkit}
+
+Throughout this chapter, we have employed several fundamental proof techniques. This appendix collects these methods with their definitions, intuitive explanations, and worked examples. Mastering these techniques is essential for working through proofs in real analysis and beyond.
+
+\subsubsection*{A.1 Archimedean Property}
+
+\textbf{Definition:}
+For any complete ordered field $F$, given any $x \in F$, there exists $n \in \mathbb{N}_F$ such that $n > x$.
+
+\textbf{Intuition:}
+No matter how large a number you pick, you can always find a natural number bigger than it. This means the natural numbers are unbounded—they grow without limit. We use this property to:
+\begin{itemize}
+    \item Show sets are bounded (by finding an $n$ that works as an upper bound)
+    \item Show sets are non-empty (by finding a negative $n$ that serves as a lower element)
+    \item Construct rationals or integers around arbitrary real numbers
+\end{itemize}
+
+\textbf{Exercise Example:}
+
+\textit{Problem:} Let $S = \{1 - \frac{1}{n} : n \in \mathbb{N}\}$. Show that $S$ is bounded above.
+
+\textit{Solution:} By the Archimedean property, for the number $2$, there exists $n \in \mathbb{N}$ with $n > 2$. For any element $1 - \frac{1}{n} \in S$, we have 
+\[1 - \frac{1}{n} < 1 < 2 < n.\]
+Hence $2$ is an upper bound for $S$. \qed
+
+\subsubsection*{A.2 Density of $\mathbb{Q}$ in $\mathbb{R}$}
+
+\textbf{Definition:}
+Between any two real numbers $\alpha < \beta$, there exists a rational number $r$ such that $\alpha < r < \beta$.
+
+Formally: $\forall \alpha, \beta \in \mathbb{R}$ with $\alpha < \beta$, $\exists r \in \mathbb{Q}$ such that $\alpha < r < \beta$.
+
+\textbf{Intuition:}
+The rationals are ``everywhere'' in the reals—no matter how close two real numbers are, you can always squeeze a rational between them. This allows us to:
+\begin{itemize}
+    \item Approximate irrational numbers by rational numbers
+    \item Find elements ``as close as we want'' to a target value
+    \item Bridge constructions between $\mathbb{Q}$ and $\mathbb{R}$
+\end{itemize}
+
+\textbf{Exercise Example:}
+
+\textit{Problem:} Show that between $\sqrt{2}$ and $\sqrt{3}$, there exists a rational number.
+
+\textit{Solution:} We have $\sqrt{2} \approx 1.414\ldots$ and $\sqrt{3} \approx 1.732\ldots$. Take $r = \frac{3}{2} = 1.5$. Since $1.414 < 1.5 < 1.732$, we have 
+\[\sqrt{2} < \frac{3}{2} < \sqrt{3},\]
+and $\frac{3}{2} \in \mathbb{Q}$. \qed
+
+\subsubsection*{A.3 Proof by Contradiction}
+
+\textbf{Definition:}
+To prove a statement $P$, assume $\neg P$ and derive a contradiction. Since assuming $\neg P$ leads to something impossible, $P$ must be true.
+
+\textbf{Intuition:}
+``If assuming the opposite leads to nonsense, then the original must be true.'' This technique is especially powerful when:
+\begin{itemize}
+    \item Direct proof is difficult or unclear
+    \item You want to prove something doesn't exist
+    \item You want to prove a uniqueness property (by assuming two things exist and deriving a contradiction)
+\end{itemize}
+
+\textbf{Exercise Example:}
+
+\textit{Problem:} Prove that $\sqrt{2}$ is irrational.
+
+\textit{Solution:} Suppose $\sqrt{2} \in \mathbb{Q}$. Then $\sqrt{2} = \frac{p}{q}$ where $p, q \in \mathbb{Z}$, $q \neq 0$, and $\gcd(p,q) = 1$ (in lowest terms). 
+
+Squaring both sides: $2 = \frac{p^2}{q^2}$, so $p^2 = 2q^2$. 
+
+Thus $p^2$ is even, which implies $p$ is even (if $p$ were odd, $p^2$ would be odd). Write $p = 2k$ for some $k \in \mathbb{Z}$. 
+
+Then $(2k)^2 = 2q^2$, so $4k^2 = 2q^2$, hence $q^2 = 2k^2$. 
+
+Thus $q^2$ is even, so $q$ is even. 
+
+But then both $p$ and $q$ are even, contradicting $\gcd(p,q) = 1$. 
+
+Therefore $\sqrt{2} \notin \mathbb{Q}$. \qed
+
+\subsubsection*{A.4 Mathematical Induction}
+
+\textbf{Definition:}
+To prove a statement $P(n)$ holds for all $n \in \mathbb{N}$:
+\begin{enumerate}
+    \item \textit{Base case:} Show $P(1)$ is true
+    \item \textit{Inductive step:} Assume $P(k)$ is true (inductive hypothesis), then prove $P(k+1)$ is true
+\end{enumerate}
+
+\textbf{Intuition:}
+Like dominoes—if the first one falls (base case) and each falling domino knocks over the next (inductive step), then all dominoes fall. We use induction for:
+\begin{itemize}
+    \item Constructing $\mathbb{N}_F$ step-by-step
+    \item Proving properties that hold ``for all natural numbers''
+    \item Building sequences or recursive structures
+\end{itemize}
+
+\textbf{Exercise Example:}
+
+\textit{Problem:} Prove that for all $n \in \mathbb{N}$, the sum $1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}$.
+
+\textit{Solution:} 
+
+\textit{Base case ($n=1$):} $\text{LHS} = 1$, $\text{RHS} = \frac{1(2)}{2} = 1$. \checkmark
+
+\textit{Inductive step:} Assume the formula holds for $n = k$, i.e., 
+\[1 + 2 + \cdots + k = \frac{k(k+1)}{2}.\]
+We must show it holds for $n = k+1$:
+\begin{align*}
+1 + 2 + \cdots + k + (k+1) &= \frac{k(k+1)}{2} + (k+1) \\
+&= (k+1)\left[\frac{k}{2} + 1\right] \\
+&= (k+1)\cdot\frac{k+2}{2} \\
+&= \frac{(k+1)(k+2)}{2}
+\end{align*}
+
+This is exactly the formula for $n = k+1$. By induction, the formula holds for all $n \in \mathbb{N}$. \qed
+
+\subsubsection*{A.5 Supremum Arguments}
+
+\textbf{Definition:}
+To prove $s = \sup(S)$, we must show:
+\begin{enumerate}
+    \item $s$ is an upper bound: $\forall x \in S$, $x \leq s$
+    \item $s$ is the \textit{least} upper bound: $\forall \varepsilon > 0$, $\exists x \in S$ such that $s - \varepsilon < x \leq s$
+\end{enumerate}
+
+Equivalently for (2): For any $s' < s$, there exists $x \in S$ with $x > s'$ (so $s'$ is not an upper bound).
+
+\textbf{Intuition:}
+The supremum is the ``ceiling'' of a set—nothing in the set exceeds it, but you can get arbitrarily close to it from below. This technique is used constantly to:
+\begin{itemize}
+    \item Define functions via suprema of rational approximations
+    \item Show that bounds are tight (no smaller bound works)
+    \item Bridge rational approximations to real limits
+\end{itemize}
+
+\textbf{Exercise Example:}
+
+\textit{Problem:} Let $S = \{1 - \frac{1}{n} : n \in \mathbb{N}\}$. Prove that $\sup(S) = 1$.
+
+\textit{Solution:} 
+
+1. \textit{Upper bound:} For any $n \in \mathbb{N}$, we have $\frac{1}{n} > 0$, so $1 - \frac{1}{n} < 1$. Thus $1$ is an upper bound for $S$.
+
+2. \textit{Least upper bound:} Let $\varepsilon > 0$. By the Archimedean property, there exists $N \in \mathbb{N}$ with $N > \frac{1}{\varepsilon}$, so $\frac{1}{N} < \varepsilon$. 
+
+Then $1 - \frac{1}{N} \in S$ and 
+\[1 - \left(1 - \frac{1}{N}\right) = \frac{1}{N} < \varepsilon,\]
+meaning $1 - \varepsilon < 1 - \frac{1}{N} \leq 1$. 
+
+So within any $\varepsilon$-neighborhood of $1$, there exists an element of $S$. Thus $1$ is the least upper bound. \qed
+
+\subsubsection*{A.6 Trichotomy in Ordered Fields}
+
+\textbf{Definition:}
+In an ordered field $F$, for any $x, y \in F$, exactly one of the following holds:
+\begin{enumerate}
+    \item $x = y$
+    \item $x < y$  
+    \item $x > y$
+\end{enumerate}
+
+\textbf{Intuition:}
+Any two elements are either equal or one is strictly larger—no other options exist. This fundamental property is used in:
+\begin{itemize}
+    \item Proof by cases (exhaustively considering all three possibilities)
+    \item Proving injectivity (if $f(x) = f(y)$, then $x$ cannot be $<$ or $>$ than $y$)
+    \item Establishing contradictions in order-preservation arguments
+\end{itemize}
+
+\textbf{Exercise Example:}
+
+\textit{Problem:} Prove that if $x^2 = y^2$ in an ordered field $F$, then $x = y$ or $x = -y$.
+
+\textit{Solution:} We have $x^2 - y^2 = 0$, so $(x-y)(x+y) = 0$. 
+
+In a field, a product equals zero if and only if at least one factor equals zero. Thus $x - y = 0$ or $x + y = 0$.
+
+\begin{itemize}
+    \item If $x - y = 0$, then $x = y$.
+    \item If $x + y = 0$, then $x = -y$.
+\end{itemize}
+
+By trichotomy, these are the only possibilities (we cannot have both $x - y \neq 0$ and $x + y \neq 0$ simultaneously if $x^2 = y^2$). \qed
+
+\vspace{1em}
+
+These techniques form the backbone of rigorous analysis. As you progress through more advanced topics, you'll find these methods appearing repeatedly, often in combination. Mastering them now will make future proofs significantly more accessible.
