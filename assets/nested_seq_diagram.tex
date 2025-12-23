@@ -1,0 +1,14 @@
+\begin{figure}[H]
+\centering
+\small
+\begin{tikzcd}[column sep=scriptsize, row sep=scriptsize]
+	{} & {a_1} & {a_2} & \dots & {a_k} & {b_k} & \dots & {b_2} & {b_1} & {} \\
+	{} &&&& {} & {} &&&& {}
+	\arrow[shift left=3, tail reversed, from=1-1, to=1-10]
+	\arrow[shift left=3, between={0.1}{0.9}, tail reversed, from=1-1, to=1-10]
+	\arrow[shift left=3, between={0.1}{0.9}, tail reversed, from=1-2, to=1-9]
+	\arrow["c"{inner sep=.8ex}, "\shortmid"{marking}, shift left=3, between={0.3}{0.7}, tail reversed, from=1-4, to=1-7]
+	\arrow["A"{description}, shift left=5, between={0.1}{0.9}, no head, from=2-1, to=2-6]
+	\arrow["B"{description}, shift left=5, between={0.1}{0.9}, no head, from=2-5, to=2-10]
+\end{tikzcd}\
+\end{figure}

@@ -1,0 +1,61 @@
+\subsection{Consequences of completeness}
+
+Being completely honest, Proving $\mathbb{R}$ uniquess drained me completely, so is fair to just check a few smaller extensions (consequence of this proof) to see how the visited properties are used in other, more specific lemmas. They also use cool last names to name them, so we can brag about knowing about the \textit{Weierstrass-Cauchy-DiCaprio-Cumberbatch principle of boiling water in $\mathbb{R}^6$}, and a great excuse to give some color to the notes with some diagrams.
+
+\begin{definition}
+A function $f: \mathbb{N} \rightarrow X$ is a \textit{sequence} of elements of $X$.
+So that:
+$$f(n) := x_n, x_n \in X$$
+\end{definition}
+
+\begin{definition}
+Let $X_1, X_2, \dots, X_n, \dots$ be a sequence of sets. If $X_1 \supset X_2 \supset \dots X_n \dots \supset \dots, \forall n \in \mathbb{N}$, we say the sequence is \textit{nested}.
+\end{definition}
+
+\begin{lemma}[Cauchy-Cantor principle]
+\textbf{Nested Interval Lemma:}
+Let a sequence of closed intervals:
+$$
+I_1 \supset I_2 \supset I_3 \supset \dots I_n \supset
+$$
+Then, there exists a point $c \in \mathbb{R}$ belonging to all the intervals in the sequence.
+Additionally, if for any $\epsilon > 0$, there exists an interval $I_k$ such that $\left\lVert I_k \right\rVert < \epsilon$, then the element $c$ is unique.
+\end{lemma}
+
+\begin{bookproof}
+Defining clearly $I_k = [a_k, b_k]$, as any arbitrary closed interval in the nested sequence. Then the sets:
+$$A := \{a_k, k \in \mathbb{N} \}, B := \{b_k, k \in \mathbb{N} \}$$
+Are formed using the left and right limits of the intervals mentioned.
+
+\input{assets/nested_seq_diagram.tex}
+
+Since $A$ is a subset of $\mathbb{R}$, by density of $\mathbb{Q}$:
+$$\exists c = \sup(A) \in \mathbb{R}, \forall a_k: a_k < c$$
+
+Additionally (and supported by the diagram) all elements from $B$ bound $A$:
+$$\forall b_k \in B, \forall a_k in A: a_k < b_k$$
+
+Now, $c = \sup(A)$ is the least upper bound, so any element from $B$ must be greater than $c$.
+$$\rightarrow a_k < c < b_k$$
+
+Finally, take special care of how \textit{for all} $a_k, b_k$ we found that exists a real number $c$ that satisfies this inequality, meaning that $c$ belongs to any interval $I_k$ in the nested sequence.
+
+For the second part, condition says that for any distance $\epsilon > 0$, there is an interval $I_k$ smaller in length than $\epsilon$. Now, assuming there is $c1, c2 \in \mathbb{R}$, and for all $a_k, b_k$ limits of the nested intervals:
+
+\begin{align*}
+a_k < c_1 < c_2 < b_k \\
+\rightarrow -c_1 < -a_k \wedge c_2 < b_k \\
+\rightarrow c_2 - c_1 < b_k - a_k
+\end{align*}
+
+Then, making $b_k = a_k + \epsilon$:
+
+$$\rightarrow c_2 - c_1 < \epsilon, \forall \epsilon > 0$$
+
+Then, the distance between $c_1$ and $c_2$ must be less than any positive number.
+
+\begin{align*}
+&\rightarrow c_2 - c_1 = 0 \\
+&\Rightarrow c = c_2 = c_1 \text{ is unique.}
+\end{align*}
+\end{bookproof}
