@@ -15,6 +15,7 @@
 \usepackage{quiver}
 \usepackage{caption}
 \usepackage{float}
+\usepackage{tocloft}
 
 % ============================================
 % STYLE OPTION 1: Classic Palatino
@@ -228,12 +229,48 @@
 \crefname{example}{Example}{Examples}
 \crefname{lemma}{Lemma}{Lemmas}
 
+% ============================================
+% TOC STYLING
+% ============================================
+% --- Contents title: plain, centered, minimal ---
+\renewcommand{\contentsname}{CONTENTS}
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{%
+  \hfill\null\\[2pt]
+  \rule{\textwidth}{0.8pt}
+  \vspace{1.5em}
+}
+
+\renewcommand{\cftdotsep}{\cftnodots}
+
+% --- SECTIONS: plain, bold, no size jump — just weight ---
+\renewcommand{\cftsecfont}{\normalfont\bfseries}
+\renewcommand{\cftsecpagefont}{\normalfont\bfseries}
+\renewcommand{\cftsecpresnum}{\normalfont\bfseries}
+\renewcommand{\cftsecaftersnum}{.}
+\setlength{\cftsecnumwidth}{2.2em}
+\setlength{\cftbeforesecskip}{10pt}
+\setlength{\cftsecindent}{0pt}
+
+% --- SUBSECTIONS: plain roman, same family, just unbolded ---
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecpresnum}{\normalfont}
+\renewcommand{\cftsubsecaftersnum}{.}
+\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftsubsecindent}{2.2em}
+
+% --- SUBSUBSECTIONS: smaller, quieter, still plain ---
+\renewcommand{\cftsubsubsecfont}{\normalfont\small}
+\renewcommand{\cftsubsubsecpagefont}{\normalfont\small}
+\setlength{\cftsubsubsecindent}{3.8em}
+
 \begin{document}
 	\begin{titlepage}
 	    \newgeometry{left=0cm,top=0cm,right=0cm,bottom=0cm}
 	    \thispagestyle{empty}
 	    \centering
-	    \includegraphics[width=\paperwidth,height=\paperheight]{assets/cover.png}
+	    \includegraphics[width=\paperwidth,height=\paperheight]{assets/cover.jpg}
 	    \restoregeometry
 	\end{titlepage}
 
