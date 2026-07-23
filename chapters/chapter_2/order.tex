@@ -9,6 +9,23 @@ A set $S$ is \textbf{ordered} when it has an ordering ``$<$'' such that for all 
 \end{enumerate}
 \end{definition}
 
+\begin{definition}[Partial Orderign]
+A relation ``$<$'' between pairs of elements of a set $X$ is called a partial Ordering if it follows the properties:
+\begin{enumerate}
+\item $a<a$ (reflexividad);
+\item $(a<b) \wedge (b<c) \Rightarrow a < c $ (transitividad);
+\item $(a<b) \wedge (b<a) \Rightarrow a <> c $ (antisymmetry).
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Total Orderign]
+A relation ``$<$'' between pairs of elements of a set $X$ is called a total ordering (or just \textit{Ordering}) if it follows the properties:
+\begin{enumerate}
+\item $<$ is a partial ordering;
+\item $\forall a, b \in X: a < b \lor b < a$ (Comparability).
+\end{enumerate}
+\end{definition}
+
 \begin{definition}[Ordered fields]\label{def:ordered-fields}
 A field $\mathbb{F}$ is \textbf{ordered} if it is also an ordered set. As a consequence, the following properties apply:
 \begin{itemize}
