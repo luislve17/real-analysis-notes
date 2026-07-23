@@ -16,6 +16,7 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{tocloft}
+\usepackage{enumitem}
 
 % ============================================
 % STYLE OPTION 1: Classic Palatino
@@ -42,6 +43,8 @@
 \newcounter{corollary}[section]
 \newcounter{example}[section]
 \newcounter{lemma}[section]
+\newcounter{problem}[section]
+\newcounter{solution}[section]
 
 % Format counters
 \renewcommand{\thetheorem}{\thesection.\arabic{theorem}}
@@ -51,6 +54,8 @@
 \renewcommand{\thecorollary}{\thesection.\arabic{corollary}}
 \renewcommand{\theexample}{\thesection.\arabic{example}}
 \renewcommand{\thelemma}{\thesection.\arabic{lemma}}
+\renewcommand{\theproblem}{\thesection.\arabic{problem}}
+\renewcommand{\thesolution}{\thesection.\arabic{solution}}
 
 % ============================================
 % PROFESSIONAL SECTION STYLING
@@ -160,6 +165,26 @@
   \fi%
 }
 
+\NewEnviron{problem}[1][]{%
+  \refstepcounter{problem}%
+  \par\vspace{0.8\baselineskip}%
+  \needspace{4\baselineskip}%
+  \noindent{\color{accentline}\rule{\textwidth}{0.4pt}}\par\vspace{4pt}%
+  \noindent{\bfseries Problem \theproblem.}%
+  \ifx\relax#1\relax\else\ \textit{(#1)}\fi
+  \quad\BODY%
+  \par\vspace{0.4\baselineskip}%
+  \ifx\relax#1\relax\else%
+    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theproblem}#1}%
+  \fi%
+}
+
+\NewEnviron{solution}{%
+  \par\vspace{0.5\baselineskip}\nobreak%
+  \noindent{\bfseries\scshape Solution.}\ \BODY\hfill{\small$\blacksquare$}%
+  \par\vspace{1\baselineskip}%
+}
+
 \NewEnviron{example}[1][]{%
   \refstepcounter{example}%
   \par\vspace{0.5\baselineskip}%
@@ -228,6 +253,8 @@
 \crefname{corollary}{Corollary}{Corollaries}
 \crefname{example}{Example}{Examples}
 \crefname{lemma}{Lemma}{Lemmas}
+\crefname{problem}{Problem}{Problems}
+\crefname{solution}{Solution}{Solutions}
 
 % ============================================
 % TOC STYLING

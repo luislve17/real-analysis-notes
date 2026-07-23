@@ -1,0 +1,159 @@
+\newpage
+\subsection{Problems \& Exercises}
+
+\begin{problem}
+If $A \subset B \subset \mathbb{R} \Rightarrow \  \sup{A} \leq \sup{B} \wedge \ \inf{A} \geq \inf{B}$
+\end{problem}
+
+\begin{solution}
+Using the definiton for both supremum and infimum:
+\begin{align*}
+\sup{A} &:= \min\{S_A \in A / \forall a \in A: a \leq S_A \} \\
+\inf{A} &:= \max\{S_B \in B / \forall b \in B: b \leq S_B \}
+\end{align*}
+
+\begin{enumerate}[label=\roman*)]
+\item $$\forall a \in A : a \in B.\ \text{Let } a = \sup{A} \rightarrow \sup{A} \in B$$
+$$\text{From the definiton: } \forall b \in B: b \leq \sup{B} \Rightarrow \sup{A} \leq \sup{B}$$
+
+\item $$\forall a \in A : a \in B.\ \text{Let } a = \inf{A} \rightarrow \inf{A} \in B$$
+$$\text{From the definiton: } \forall b \in B: b \geq \inf{B} \Rightarrow \inf{A} \geq \inf{B}$$
+\end{enumerate}
+\end{solution}
+
+\begin{problem}\label{prob:dedekind}
+Let $X, Y \neq \O \subset \mathbb{R}$. If $\forall x, y \in X, Y \  \text{respectively: } x \leq y$\\
+$\Rightarrow X:$ bounded above, $Y:$ bounded below, and $\sup{X} \leq \inf{Y}$
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}[label=\roman*)]
+	\item $\forall x \in X, \exists y \in Y\text{: bounds X from the top}$
+	\item $\forall y \in Y, \exists x \in X\text{: bounds Y from the bottom}$
+	\item $\forall x \in X: x \leq \sup{X} \  \wedge \sup{X} \in X \rightarrow \sup{X} \leq y \ (\forall y \in Y)$. Taking $y = \inf{Y} \Rightarrow \sup{X} \leq \inf{Y}$
+\end{enumerate}
+\end{solution}
+
+\begin{problem}\label{prob:dedekind-2}
+Assuming the same sets $X, Y$ from \cref{prob:dedekind}, and now $X \cup Y = \mathbb{R}$, then $\sup{X} = \inf{Y}$
+\end{problem}
+
+\begin{solution}
+From the previous result, we have: $\sup{X} \leq \inf{Y}$.
+Now, lets assume that $\sup{X} < \inf{Y}$ strictly, and try to reach the absurd. Intuition tells me that the idea is to expect items between $X$ and $Y$, and to proof that this would violate the initial conditions.
+
+\input{assets/dedekind-diagram.tex}
+
+Assuming $\sup{X} < \inf{Y}:$
+\begin{align*}
+\exists r \in \mathbb{R}: \sup{X} < r \ &\wedge r < \inf{Y} \\
+\rightarrow \mathcal{R} := \{r \in \mathbb{R} / \sup{X} < r \ &\wedge r < \inf{Y}\} \neq \O \\
+\rightarrow X \cup Y = \mathbb{R} &\cup \mathcal{R} \neq \mathbb{R} \ (\rightarrow\leftarrow)
+\end{align*}
+\end{solution}
+
+\begin{problem}
+\textit{Dedekind's Theorem}: Assuming the same sets $X, Y$ from \cref{prob:dedekind-2}, then either $X$ has a maximal element, or $Y$ has a minimal element.
+\end{problem}
+
+\begin{solution}
+Assuming $X$ is not bounded above: 
+\begin{align*}
+\exists \ x' \in X / \sup{X} < x' \\
+\text{Since } \sup{X} = \inf{Y} \rightarrow \inf{Y} < x' \\
+\text{Then } \exists \ y = \inf{Y} \in Y : y < x' \ (\rightarrow\leftarrow)
+\end{align*}
+
+Similarly, assuming $Y$ is not bounded: 
+\begin{align*}
+\exists \ y' \in Y / y' < \inf{Y} \\
+\text{Since } \sup{X} = \inf{Y} \rightarrow y' < \sup{X} \\
+\text{Then } \exists \ x = \sup{X} \in X : y' < x \ (\rightarrow\leftarrow)
+\end{align*}
+
+$$\Rightarrow X \text{ has a maximal element, or } Y \text{ has a minimal element.}$$
+\end{solution}
+
+\begin{problem}
+Let $A, B \subset \mathbb{R}$, and sets defined:
+
+\begin{itemize}
+\item $A + B = \{a + b, a \in A, b \in B\}$
+\item $A . B = \{a . b, a \in A, b \in B\}$
+\end{itemize}
+
+Determine if the following is true:
+
+\begin{enumerate}[label=\roman*)]
+\item $\sup{(A + B)} = \sup{A} + \sup{B}$
+\item $\sup{(A . B)} = \sup{A} . \sup{B}$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+\\i) $\forall a, b \in A, B \ \text{resp.} \rightarrow a \leq \sup{A} &\wedge \ b \leq \sup{B}$
+
+Adding up both inequalities:
+
+\begin{align*}
+a + b \leq \sup{A} + &\sup{B}, \ \forall a, b \in A, B \\
+\Rightarrow sup{(A + B)}&: \text{upper bound of } A + B
+\end{align*}
+
+By definition, the least upper bound suffices that:
+$$\forall \epsilon > 0 , \exists x \in X: \sup{X} - \epsilon < x \leq \sup{X}$$
+Then:
+\begin{align*}
+\forall \epsilon_A > 0, \exists a \in A: \sup{A} - \epsilon_A < a \leq \sup{A}\\
+\forall \epsilon_B > 0, \exists b \in B: \sup{B} - \epsilon_B < b \leq \sup{B}\\
+\end{align*}
+
+Adding both inequalities, with $\epsilon = \epsilon_A + \epsilon_B$:
+$$
+\forall \epsilon > 0, \exists a+b \in A+ B: \sup{A} + \sup{B} - \epsilon < a+b \leq \sup{A} + \sup{B}
+$$
+
+\begin{align*}
+\Rightarrow sup{A} + \sup{B}&: \text{least upper bound of } A + B \\
+\therefore \ sup{(A + B)} &= sup{A} + \sup{B}
+\end{align*}
+
+
+ii) By counter-example, let $A = \{1, 2\}, B = \{-3, -4\}$, then:
+\begin{align*}
+A . B = \{-3, -4&, -6, -8\} \\
+\sup{(A.B)} = -3 &\neq (2 . -3) = \sup{A} . \sup{B}
+\end{align*}
+
+\end{solution}
+
+\begin{problem}
+Let $-A$ be the set of numbers of the form -a, where $a \in A \subset \mathbb{R}$.
+
+Show that $\sup{(-A)} = -\inf{A}$.
+\end{problem}
+
+\begin{solution}
+Having $\sup{(-A)} := \{-a' \in -A / \forall -a \in A: -a \leq -a' \}$
+\begin{align*}
+\forall -a \in A: -a \leq \sup{(-A)} \\
+\rightarrow -(-a) \geq -\sup{(-A)} \\
+\rightarrow -sup(-A) \leq a \\
+\rightarrow -sup(-A) : \text{lower bound of } A
+\end{align*}
+
+Additionally, for $-A$ we have by the supremum definition:
+\begin{align*}
+\forall \epsilon > 0, &\exists x \in -A: \sup{(-A)} - \epsilon < x \leq \sup{(-A)}\\
+(\text{mul.} -1)&: -\sup{(-A)} + \epsilon > -x \geq -\sup{(-A)}, -x \in A\\
+(\text{fixing ineq. side})&: -\sup{(-A)} \leq -x < -\sup{(-A)} + \epsilon \\
+\Rightarrow -sup{(-A)}&: \text{greatest lower bound of } A \\
+\end{align*}
+
+Finally:
+\begin{align*}
+-sup(-A) = inf(A) \\
+\therefore sup(-A) = -\inf(A)
+\end{align*}
+
+\end{solution}
