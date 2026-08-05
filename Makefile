@@ -16,5 +16,10 @@ setup-tex:
 		echo "DONE (installed)"; \
 	fi
 
+# watch-container: setup-tex
+# 	find . -name "*.tex" | entr -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -interaction=nonstopmode main.tex
+
 watch-container: setup-tex
-	find . -name "*.tex" | entr -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -interaction=nonstopmode main.tex
+	while true; do \
+		find . -name "*.tex" | entr -d -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -interaction=nonstopmode main.tex; \
+	done

@@ -157,3 +157,194 @@ Finally:
 \end{align*}
 
 \end{solution}
+
+\begin{problem}\label{prob:inclusion-partial-order}
+Show that the inclusion relation is a partial ordering relation on sets (but not a linear ordering).
+\end{problem}
+
+\begin{solution}
+By definition of partial ordering, proving each property for arbitrary sets $A, B, C$:
+\begin{enumerate}[label=\roman*)]
+	\item Reflexivity: $A \subset A \equiv$ True
+	\item Transitivity: $A \subset B \land B \subset C \rightarrow A \subset C \equiv$ True
+	\item Antisymmetry: $A \subset B \land B \subset A \rightarrow A = B \equiv$ True
+\end{enumerate}
+
+However, let $A, B:$ disjoint. Then:
+
+\begin{align*}
+\exists a \in A / a \notin B &\rightarrow A \backslash B \neq \O \\
+\rightarrow A \not\subset B &\land B \not\subset A
+\end{align*}
+
+Which fails to confirm the comparability property.
+\end{solution}
+
+\begin{problem}
+Let $A$, $B$, and $C$ be sets such that $A \subset C$, $B \subset C$, $A \setminus B \neq \O$, and $B \setminus A \neq \O$. We introduce a partial ordering into this triple of sets as in \cref{prob:inclusion-partial-order}. Exhibit the maximal and minimal elements of the set $\{A,B,C\}$.
+\end{problem}
+
+\begin{solution}
+This is the setup that the problem proposes:
+\input{assets/partial-order-set-diag.tex}
+Where $A \backslash B \land B \backslash A$ are not empty. Then for set $\{A, B, C\}$:
+
+\begin{align*}
+A \subset C \land B \subset C \rightarrow A \subset B \subset C \\
+\rightarrow \text{max}_{\subset}\{A, B, C\} = C \\
+\end{align*}
+
+Now, since $A \not\subset B \land B \not\subset A$:
+\begin{align*}
+\rightarrow \text{min}_{\subset}\{A, B, C\} \text{ is not unique.}
+\end{align*}
+
+Both $A$ and $B$ are minimal elements (sets) but none of them is the \textit{least}.
+\end{solution}
+
+\begin{problem}
+Show that, just like the set $\mathbb{Q}$ of rational numbers, the set $\mathbb{Q}(\sqrt{n})$ of numbers of the form $a+b\sqrt{n}$, where $a,b \in \mathbb{Q}$ and $n$ is a fixed natural number that is not the square of any integer, is an ordered set satisfying the principle of Archimedes but not the axiom of completeness.
+\end{problem}
+
+\begin{solution}
+Considering that $a, b \in \mathbb{Q}$ and that \mathbb{Q} is an Archimedean (Ordered Field), we can conveniently say:
+$$\exists N_a, N_b \in \mathbb{N}: |a| < N_A \land |b| < N_B$$
+And since $n \in \mathbb{N}$ is a fixed number, it also satifies:
+$$\sqrt{n} < n + 1$$
+Correctly adding and multiplying these three inequalities:
+
+\begin{align*}
+|a| &< N_A \\
+|b| &< N_B \\
+\sqrt{n} &< n + 1 \\
+\rightarrow |a| + |b|\sqrt{n} &< N_A + N_B (n + 1)
+\end{align*}
+
+On the left side, we can consider $|a| + |b|\sqrt{n} = |a| + |b.\sqrt{n}|$, since we are just working with natural numbers. Then, using the triangle inequality:
+\begin{align*}
+|a + b.\sqrt{n}| \leq |a| + |b\sqrt{n}| = |a| + |b|\sqrt{n}
+\rightarrow |a + b\sqrt{n}| < N_A + N_B (n + 1)
+\end{align*}
+
+Finally, by simple absolute value property
+\begin{align*}
+a + b\sqrt{n} \leq |a + b\sqrt{n}|
+\end{align*}
+
+Now, let $x = a + b\sqrt{n} \in \mathbb{Q}(\sqrt{n})$, and $N = N_A + N_B (n + 1) \in \mathbb{N}$:
+\begin{align*}
+\Rightarrow x < N, x \in &\mathbb{Q}(\sqrt{n}), N \in \mathbb{N}\\
+\therefore \mathbb{Q}(\sqrt{n})&: \text{Archimedean}.
+\end{align*}
+
+Now, to proof that this is not a complete field, we need to form a subset $q \subset \mathbb{Q}(\sqrt{n})$ that somehow has its supremum outside of $\mathbb{Q}(\sqrt{n})$. I found out myself that this could go one of two ways: the \textit{skadoodle-out-of-thin-air} answer, or the \textit{intuitively-looking-for-an-answer} answer. Of course I will do the second one, but in case this is too ugly for the sake of an arbitrary exercise, please feel free to skip (by the way, answer is $\sqrt[4]{n}$).
+
+Now to build $q$ we could start with this rough idea:
+
+\input{assets/q-sqrt-n-not-complete.tex}
+
+Let's first assume there exists a $k$ outside of $\mathbb{Q}(\sqrt{n})$, so that our choosen set $q$ is:
+
+$$q = \{x \in \mathbb{Q}(\sqrt{n}), x < k\}$$
+
+By doing this, we guarantee that $k$ bounds $q$. Again, we are trying to proof that this is the supremum in such a way that we guarantee its existence outside of $\mathbb{Q}(\sqrt{n})$.
+To proof that this is the lowest upper bound, lets assume the ``real'' supremumis actually a $k'$:
+
+\begin{enumerate}[label=\roman*)]
+\item Assume $\exists k': k' < k$. By density in $\mathbb{Q}:$
+
+\begin{align*}
+\exists x \in \mathbb{Q}&: k' < x < k \\
+\text{Since } \mathbb{Q} \subset \mathbb{Q}(\sqrt{n}) \rightarrow \exists x \in \mathbb{Q}(\sqrt{n})&: k' < x < k. \\
+\rightarrow x &\in q \\
+\rightarrow k' &\text{not L.U.B of } q
+\end{align*}
+	
+\item Assume $\exists k': k < k'$. Similarly, by density in $\mathbb{Q}:$
+\begin{align*}
+\exists x \in \mathbb{Q}&: k < x < k' \\
+\text{Again, since } \mathbb{Q} \subset \mathbb{Q}(\sqrt{n}) \rightarrow \exists x \in \mathbb{Q}(\sqrt{n})&: k < x < k'. \\
+\rightarrow x &\in q \\
+\rightarrow \exists x \in q: x &\text{ does not bound } q \land x < k' \\
+\rightarrow k' &\text{not L.U.B of } q
+\end{align*}
+\end{enumerate}
+
+And so, just by failing to find a more tight upper bound for $q$, we prove that $k = \sup{(q)}$.
+
+Now, this is just half of the proof. At the beginning we assumed that this $k$ exists, and I don't appreciate left over assumptions. The next proof is to make sure that there is at least a number that allows us to create $q$. Let's call it $\lambda$ and try to proof $\exists \lambda \in \mathbb{R}: \lambda \not\in \mathbb{Q}(\sqrt{n})$.
+
+\begin{align*}
+\lambda \not\in \mathbb{Q}(\sqrt{n}) \leftrightarrow \lambda \not= a + b\sqrt{n}\\
+\end{align*}
+
+My intent is to apply some sort of transformation to both sides, and get to an absurd. I tried several things ($\log$, factorial, $\exp$, etc), but the only clue I got back is that the $\sqrt{n}$ was in the way. Then I realized that, as long as I have $\lambda$ in the form $A + B\sqrt{n}$, I could compare coefficients and try to force an absurd. Trying to square everything:
+
+\begin{align*}
+\leftrightarrow \lambda^2 &\not= (a + b\sqrt{n})^2 \ \dots (*)\\
+\leftrightarrow \lambda^2 &\not= a^2 + b^2n + 2ab\sqrt{n}\\
+\leftrightarrow A + B\sqrt{n} &\not= (a^2 + b^2n) + (2ab)\sqrt{n}
+\end{align*}
+
+Now, the trick is to realize $(a^2 + b^2n) \geq 0 \forall a, b \in \mathbb{Q}, n \in \mathbb{N}$, so I just force it to be zero. And since we want to force the absurd, $2ab$ could be anything non-zero and we would have ourselves a contradiction:
+\begin{align*}
+(A = 0, B = 1) \rightarrow 0 + 1.\sqrt{n} = (a^2 + b^2n) + (2ab)\sqrt{n}
+\end{align*}
+Then:
+$$a = b = 0 \land 2ab = 1$$
+
+Which doesn't make sense! Meaning that (*) the number to choose that is not inside $\mathbb{Q}(\sqrt{n})$ is $$\lambda = \sqrt{0 + 1\sqrt{n}} = \sqrt{\sqrt{n}} = \sqrt[4]{n}$$
+
+Finally, we could define $q = \{x \in \mathbb{Q}(\sqrt{n}), x < \sqrt[4]{n}\}$
+\\
+
+I understand that this might have seemed a bit absurd, and it may have even appeared that we arrived at the solution out of nowhere anyway. I lack the tools and knowledge to construct a more elegant proof for now, but I also saved you the struggle of the blind search I did until I got to this result.
+
+I have the hunch that is possible to find other numbers besides $\sqrt[4]{n}$ that also satisfies to be an outsider supremum. I raised the same comparison for $\lambda$ to the third and fourth exponent, and could only find an absurd scenario for the latter one, making me think that these number live in a set like $\Lambda = \{\sqrt[2k]{n}, k \in \mathbb{N}\}$.
+
+It would need induction to be proven, but I don't have that kind of time.
+
+\end{solution}
+
+\begin{problem}
+Order the set $\mathbb{F}[x]$ of polynomials with rational or real coefficients by specifying that
+\[
+P_m(x)=a_0+a_1x+\cdots+a_mx^m>0,
+\]
+if $a_m>0$.
+\end{problem}
+
+\begin{problem}
+Show that the set $\mathbb{Q}(x)$ of rational fractions
+\[
+\frac{a_0+a_1x+\cdots+a_mx^m}{b_0+b_1x+\cdots+b_nx^n}
+\]
+with coefficients in $\mathbb{Q}$ or $\mathbb{R}$ becomes an ordered field, but not an Archimedean ordered field, when the order relation $R_{m,n}>0$ is defined to mean $a_m b_n>0$ and the usual arithmetic operations are introduced. This means that the principle of Archimedes cannot be deduced from the other axioms for $\mathbb{R}$ without using the axiom of completeness.
+\end{problem}
+
+\begin{problem}
+Show that if $\mathbb{R}$ and $\mathbb{R}'$ are two models of the set of real numbers and $f:\mathbb{R}\rightarrow\mathbb{R}'$ is a mapping such that
+\[
+f(x+y)=f(x)+f(y)
+\]
+and
+\[
+f(xy)=f(x)f(y)
+\]
+for any $x,y\in\mathbb{R}$, then
+\begin{enumerate}[label=\alph*)]
+\item $f(0)=0'$;
+
+\item $f(1)=1'$ if $f(x)\neq0'$;
+
+\item $f(m)=m'$ where $m\in\mathbb{Z}$ and $m'\in\mathbb{Z}'$, and the mapping $f:\mathbb{Z}\rightarrow\mathbb{Z}'$ is injective and preserves the order;
+
+\item
+\[
+f\left(\frac{m}{n}\right)=\frac{m'}{n'},
+\]
+where $m,n\in\mathbb{Z}$, $n\neq0$, $m',n'\in\mathbb{Z}'$, $n'\neq0'$, $f(m)=m'$, and $f(n)=n'$. Thus $f:\mathbb{Q}\rightarrow\mathbb{Q}'$ is a bijection that preserves order;
+
+\item $f:\mathbb{R}\rightarrow\mathbb{R}'$ is a bijective mapping that preserves order.
+\end{enumerate}
+\end{problem}
