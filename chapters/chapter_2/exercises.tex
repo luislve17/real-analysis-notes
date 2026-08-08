@@ -303,48 +303,67 @@ I understand that this might have seemed a bit absurd, and it may have even appe
 I have the hunch that is possible to find other numbers besides $\sqrt[4]{n}$ that also satisfies to be an outsider supremum. I raised the same comparison for $\lambda$ to the third and fourth exponent, and could only find an absurd scenario for the latter one, making me think that these number live in a set like $\Lambda = \{\sqrt[2k]{n}, k \in \mathbb{N}\}$.
 
 It would need induction to be proven, but I don't have that kind of time.
-
 \end{solution}
 
 \begin{problem}
-Order the set $\mathbb{F}[x]$ of polynomials with rational or real coefficients by specifying that
-\[
-P_m(x)=a_0+a_1x+\cdots+a_mx^m>0,
-\]
-if $a_m>0$.
-\end{problem}
-
-\begin{problem}
 Show that the set $\mathbb{Q}(x)$ of rational fractions
-\[
-\frac{a_0+a_1x+\cdots+a_mx^m}{b_0+b_1x+\cdots+b_nx^n}
-\]
-with coefficients in $\mathbb{Q}$ or $\mathbb{R}$ becomes an ordered field, but not an Archimedean ordered field, when the order relation $R_{m,n}>0$ is defined to mean $a_m b_n>0$ and the usual arithmetic operations are introduced. This means that the principle of Archimedes cannot be deduced from the other axioms for $\mathbb{R}$ without using the axiom of completeness.
+
+$$\frac{a_0+a_1x+\cdots+a_mx^m}{b_0+b_1x+\cdots+b_nx^n}$$
+
+with coefficients in $\mathbb{Q}$ or $\mathbb{R}$ becomes an ordered field, but not an Archimedean ordered field, when the order relation $R_{m,n} \succ 0$ is defined to mean $a_m b_n>0$ and the usual arithmetic operations are introduced.
 \end{problem}
 
-\begin{problem}
-Show that if $\mathbb{R}$ and $\mathbb{R}'$ are two models of the set of real numbers and $f:\mathbb{R}\rightarrow\mathbb{R}'$ is a mapping such that
-\[
-f(x+y)=f(x)+f(y)
-\]
-and
-\[
-f(xy)=f(x)f(y)
-\]
-for any $x,y\in\mathbb{R}$, then
-\begin{enumerate}[label=\alph*)]
-\item $f(0)=0'$;
+\begin{solution}
+First lets address the order defined as:
+$$R_{m,n} \succ 0 \leftrightarrow a_mb_n > 0$$
+To prove order, we must check the set's behavior over trichotomy, and  and closure over addition and multiplication.
 
-\item $f(1)=1'$ if $f(x)\neq0'$;
+\begin{enumerate}[label=\roman*)]
+\item Tricotomy:
+Since the given order ``$\succ$'' subtletly misses defining the equality, and we need to check if a given element could be either greater, less than or \textbf{equal} to zero, we have a bit of a gap. This makes sense since the order is defined by $a_m, b_n$, and both of them need to be non-zero to maintain both the numerator and denominator with a given degree, I guess is fine for the exercise to just assume $R_{m, n} \not= 0$.
 
-\item $f(m)=m'$ where $m\in\mathbb{Z}$ and $m'\in\mathbb{Z}'$, and the mapping $f:\mathbb{Z}\rightarrow\mathbb{Z}'$ is injective and preserves the order;
+\begin{align*}
+&a_mb_n > 0 \leftrightarrow R_{m,n} \succ 0 \\
+&a_mb_n < 0 \leftrightarrow -a_mb_n > 0 \leftrightarrow 0 < -a_mb_n \leftrightarrow 0 \succ R_{m,n} \\
+\end{align*}
 
-\item
-\[
-f\left(\frac{m}{n}\right)=\frac{m'}{n'},
-\]
-where $m,n\in\mathbb{Z}$, $n\neq0$, $m',n'\in\mathbb{Z}'$, $n'\neq0'$, $f(m)=m'$, and $f(n)=n'$. Thus $f:\mathbb{Q}\rightarrow\mathbb{Q}'$ is a bijection that preserves order;
+\item Closure over $\oplus$:
 
-\item $f:\mathbb{R}\rightarrow\mathbb{R}'$ is a bijective mapping that preserves order.
+Solving for any pair of $R_{m,n} \oplus R_{p,q}, R_{m,n}, R_{p,q} \succ 0$:
+\begin{align*}
+R_{m,n} \oplus R_{p,q} &= \frac{a_0 + \dots + a_mx^m}{b_0 + \dots + b_nx^n} + \frac{a_0 + \dots + a_px^p}{b_0 + \dots + b_qx^q}\\
+&= \frac{(a_mb_qx^{m+q})+(a_pb_nx^{p+n}) + \mathbb{S}_1}{b_nb_qx^{n+q} + \mathbb{S}_2 }
+\end{align*}
+
+We will just consider the terms containing the leading degree of both sides of the fraction. Since the order just depends on these, we can skip evaluating the rest by indicating a left over expression added up as $\mathbb{S}_{1,2}.$ Then, we have two possibilities here for the coefficient of the leading degree: $a_mb_q \lor a_pb_n$.
+
+Noticing as well that since both $R_{m,n}, R_{p,q} \succ 0 \rightarrow a_mb_n > 0 \land a_pb_q > 0$, we evaluate:
+\begin{itemize}
+	\item $a_mb_q$ leads $\Rightarrow a_mb_qb_nb_q = a_mb_nb_q^2 > 0$
+	\item $a_pb_n$ leads $\Rightarrow a_pb_nb_nb_q = a_pb_qb_n^2 > 0$
+\end{itemize}
+
+Meaning that eaither way, we preserver the order on addition
+
+$$\Rightarrow R_{m,n} \oplus R_{p,q} \succ 0$$
+
+\item Closure over $\otimes$:
+
+\begin{align*}
+R_{m,n} \otimes R_{p,q} &= \frac{a_0 + \dots + a_mx^m}{b_0 + \dots + b_nx^n} . \frac{a_0 + \dots + a_px^p}{b_0 + \dots + b_qx^q}\\
+&= \frac{(a_ma_px^{m+p}) + \mathbb{S}_1}{b_nb_qx^{n+q} + \mathbb{S}_2 }
+\end{align*}
 \end{enumerate}
-\end{problem}
+
+Under the same condition $a_mb_n > 0 \land a_pb_q > 0$, we get that $$a_ma_p.b_nb_q > 0$$
+$$\Rightarrow R_{m,n} \otimes R_{p,q} \succ 0$$
+
+Now, to prove that $\mathbb{Q}(X)$ is not an Archimedean we need to prove that there are some (at least one) element in $R_{m,n} \in \mathbb{Q}(X)$ that is not bounded by $\mathbb{Z}$.
+
+Let $k \in \mathbb{Z}: k + x = R_{1, 0} \in \mathbb{Q}(X):$
+\begin{align*}
+&\rightarrow \exists R_{1,0} \in \mathbb{Q}(x) \leq k, \forall k \in \mathbb{Z}\\
+&\rightarrow \mathbb{Z} \text{ does not bound } \mathbb{Q}(x)\\
+&\therefore \mathbb{Q}(x) \not\equiv \text{Archimedean}
+\end{align*}
+\end{solution}
