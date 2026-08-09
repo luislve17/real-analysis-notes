@@ -40,7 +40,7 @@ Assuming the same sets $X, Y$ from \cref{prob:dedekind}, and now $X \cup Y = \ma
 
 \begin{solution}
 From the previous result, we have: $\sup{X} \leq \inf{Y}$.
-Now, let's assume that $\sup{X} < \inf{Y}$ strictly, and try to reach the absurd. Intuition tells me that the idea is to expect items between $X$ and $Y$, and to proof that this would violate the initial conditions.
+Now, let's assume that $\sup{X} < \inf{Y}$ strictly, and try to reach the absurd. Intuition tells me that the idea is to expect items between $X$ and $Y$, and to prove that this would violate the initial conditions.
 
 \input{assets/dedekind-diagram.tex}
 
@@ -237,7 +237,7 @@ Now, let $x = a + b\sqrt{n} \in \mathbb{Q}(\sqrt{n})$, and $N = N_A + N_B (n + 1
 \therefore \mathbb{Q}(\sqrt{n})&: \text{Archimedean}.
 \end{align*}
 
-Now, to proof that this is not a complete field, we need to form a subset $q \subset \mathbb{Q}(\sqrt{n})$ that somehow has its supremum outside of $\mathbb{Q}(\sqrt{n})$. I found out myself that this could go one of two ways: the \textit{skadoodle-out-of-thin-air} answer, or the \textit{intuitively-looking-for-an-answer} answer. Of course I will do the second one, but in case this is too ugly for the sake of an arbitrary exercise, please feel free to skip (by the way, answer is $\sqrt[4]{n}$).
+Now, to prove that this is not a complete field, we need to form a subset $q \subset \mathbb{Q}(\sqrt{n})$ that somehow has its supremum outside of $\mathbb{Q}(\sqrt{n})$. I found out myself that this could go one of two ways: the \textit{skadoodle-out-of-thin-air} answer, or the \textit{intuitively-looking-for-an-answer} answer. Of course I will do the second one, but in case this is too ugly for the sake of an arbitrary exercise, please feel free to skip (by the way, answer is $\sqrt[4]{n}$).
 
 Now to build $q$ we could start with this rough idea:
 
@@ -247,8 +247,8 @@ Let's first assume there exists a $k$ outside of $\mathbb{Q}(\sqrt{n})$, so that
 
 $$q = \{x \in \mathbb{Q}(\sqrt{n}), x < k\}$$
 
-By doing this, we guarantee that $k$ bounds $q$. Again, we are trying to proof that this is the supremum in such a way that we guarantee its existence outside of $\mathbb{Q}(\sqrt{n})$.
-To proof that this is the lowest upper bound, let's assume the ``real'' supremum is actually a $k'$:
+By doing this, we guarantee that $k$ bounds $q$. Again, we are trying to prove that this is the supremum in such a way that we guarantee its existence outside of $\mathbb{Q}(\sqrt{n})$.
+To prove that this is the lowest upper bound, let's assume the ``real'' supremum is actually a $k'$:
 
 \begin{enumerate}[label=\roman*)]
 \item Assume $\exists k': k' < k$. By density in $\mathbb{Q}:$
@@ -272,7 +272,7 @@ To proof that this is the lowest upper bound, let's assume the ``real'' supremum
 
 And so, just by failing to find a more tight upper bound for $q$, we prove that $k = \sup{(q)}$.
 
-Now, this is just half of the proof. At the beginning we assumed that this $k$ exists, and I don't appreciate left over assumptions. The next proof is to make sure that there is at least a number that allows us to create $q$. Let's call it $\lambda$ and try to proof $\exists \lambda \in \mathbb{R}: \lambda \not\in \mathbb{Q}(\sqrt{n})$.
+Now, this is just half of the proof. At the beginning we assumed that this $k$ exists, and I don't appreciate left over assumptions. The next proof is to make sure that there is at least a number that allows us to create $q$. Let's call it $\lambda$ and try to prove $\exists \lambda \in \mathbb{R}: \lambda \not\in \mathbb{Q}(\sqrt{n})$.
 
 \begin{align*}
 \lambda \not\in \mathbb{Q}(\sqrt{n}) \leftrightarrow \lambda \not= a + b\sqrt{n}\\

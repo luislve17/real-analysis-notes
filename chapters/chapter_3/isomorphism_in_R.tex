@@ -99,7 +99,7 @@ $$\Rightarrow \Phi(r) := \sup\{\phi(q): q \in \mathbb{Q}, q < r \} = \phi(r), \ 
 \end{enumerate}
 \end{bookproof}	
 
-Taking the time to proof this mapping for rationals wasn't a waste of time after all, since it confirms that our intuition about the definition of $\Phi$ isn't arbitrary, but respects the structure we already built.
+Taking the time to prove this mapping for rationals wasn't a waste of time after all, since it confirms that our intuition about the definition of $\Phi$ isn't arbitrary, but respects the structure we already built.
 
 
 \subsubsection{Completeness of $\Phi$}
@@ -122,7 +122,7 @@ $$\Phi(\alpha) := \sup\{S(\alpha)\} = \sup\{\phi(q): q \in \mathbb{Q}, q < \alph
 \end{lemma}
 
 \begin{bookproof}
-To proof this, what matters the most is that $S$ is well-defined in $\mathbb{F}$. That automatically guarantees that $\Phi$ makes sense in $\mathbb{R}$.
+To prove this, what matters the most is that $S$ is well-defined in $\mathbb{F}$. That automatically guarantees that $\Phi$ makes sense in $\mathbb{R}$.
 \begin{enumerate}
 \item $S(\alpha)$ is not empty:
 
@@ -221,7 +221,7 @@ Joining all results:
 Finally, $\alpha < \beta \Rightarrow \Phi(\alpha) < \Phi(\beta)$.
 \end{bookproof}
 
-Now comes the final sprint to proof that $\Phi$ maps $\mathbb{F}$ and $\mathbb{R}$ perfectly. Just as we did with $\phi$, we need to prove isomorphism by proving bijection and homomorphism. From this last part, the only tricky step is for surjectiveness, since it uses a method that we haven't seeing before. We are almost there!
+Now comes the final sprint to prove that $\Phi$ maps $\mathbb{F}$ and $\mathbb{R}$ perfectly. Just as we did with $\phi$, we need to prove isomorphism by proving bijection and homomorphism. From this last part, the only tricky step is for surjectiveness, since it uses a method that we haven't seeing before. We are almost there!
 
 \begin{lemma}[Injectivity in $\Phi$]\label{le:Phi-injective}
 Given $\Phi: \mathbb{R} \rightarrow \mathbb{F}$
@@ -351,7 +351,7 @@ $$
 which proves that $\Phi$ is surjective.
 \end{bookproof}
 
-Now that this is done, we can conclude that $\Phi$ is a bijection. Next we will just cover the requirements to proof homomorphism and finish the whole demonstration. But first, a handy property:
+Now that this is done, we can conclude that $\Phi$ is a bijection. Next we will just cover the requirements to prove homomorphism and finish the whole demonstration. But first, a handy property:
 
 \begin{lemma}\label{le:sup-addition}
 Let sets $X, Y$, then:
@@ -488,7 +488,7 @@ $\Rightarrow \Phi(\alpha)\Phi(\beta)$ is an upper bound for $S(\alpha\beta)$
 
 \textbf{ii. $\Phi(\alpha)\Phi(\beta)$: \textit{L.U.B.} of $S(\alpha\beta)$}
 
-We need to prove that for any $q \in S(\alpha . \beta)$, it will be bounded by $\Phi(\alpha) \cdot \Phi(\beta)$. This is equivalent to proof that there is an $\epsilon _\mathbb{F} > 0$, the smallest of them all, that makes $\phi(q) + \epsilon _\mathbb{F} > \Phi(\alpha) \cdot \Phi(\beta)$.
+We need to prove that for any $q \in S(\alpha . \beta)$, it will be bounded by $\Phi(\alpha) \cdot \Phi(\beta)$. This is equivalent to prove that there is an $\epsilon _\mathbb{F} > 0$, the smallest of them all, that makes $\phi(q) + \epsilon _\mathbb{F} > \Phi(\alpha) \cdot \Phi(\beta)$.
 
 Let $q = q_1 . q_2, q_1 < \alpha \wedge q_2 < \beta$. Next, we define a distance $\delta$ small enough that:
 $$
