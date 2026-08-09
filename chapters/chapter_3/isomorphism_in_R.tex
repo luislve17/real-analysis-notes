@@ -12,7 +12,7 @@ Such that:
 \item Preserves the field's struture (order, addition and multiplication)
 \end{enumerate}
 
-The intuiton to create $\Phi$ was actually mentioned previously, on \cref{ex:s-in-q-not-bounded}. We talked about how a subset $S$ of an ordered field $\mathbb{Q}$ was bounded above by $\sqrt{2}$. The example talks more about how this $S$ won't have a supremum, but the key idea we will be using is how this particular $S$ was \textbf{bounded} by an irrational like $\sqrt{2}$. This is the relationship we need to apply to link irrational and rational numbers: \textbf{the first one bounds the second one}
+The intuition to create $\Phi$ was actually mentioned previously, on \cref{ex:s-in-q-not-bounded}. We talked about how a subset $S$ of an ordered field $\mathbb{Q}$ was bounded above by $\sqrt{2}$. The example talks more about how this $S$ won't have a supremum, but the key idea we will be using is how this particular $S$ was \textbf{bounded} by an irrational like $\sqrt{2}$. This is the relationship we need to apply to link irrational and rational numbers: \textbf{the first one bounds the second one}
 
 With this idea, we can intuit that any \textbf{real number is actually defined by the numbers below it}. Take $\sqrt{2}$ for example:
 
@@ -32,7 +32,7 @@ For any $\alpha \in \mathbb{R}$, define $\Phi: \mathbb{R} \rightarrow \mathbb{F}
 $$\Phi(\alpha) := \sup\{\phi(q): q \in \mathbb{Q}, q < \alpha \}$$
 \end{definition}
 
-This new function $\Phi$ using the former isomorphism $\phi$ defined in $\mathbb{Q}$ does the exact same thing that $\sqrt{2}$ did in our example: bounds $\mathbb{Q}$. Since our main focus is to somehow extend the properties of the original $\phi$, let us take the time to emphazise why this new $\Phi$ is not just an arbitrary function.
+This new function $\Phi$ using the former isomorphism $\phi$ defined in $\mathbb{Q}$ does the exact same thing that $\sqrt{2}$ did in our example: bounds $\mathbb{Q}$. Since our main focus is to somehow extend the properties of the original $\phi$, let us take the time to emphasize why this new $\Phi$ is not just an arbitrary function.
 
 \begin{lemma}
 For $r \in \mathbb{Q}$
@@ -156,7 +156,7 @@ Now, while studying this a question came to me: if we already know that $\phi: \
 
 
 The issue is that the set $S(\alpha)$ is not just any images of rationals, it's specifically:
-$S(\alpha) = \{\phi(q) : q \in \mathbb{Q} \text{ AND } q < \alpha\}$. The constraint $q < \alpha$ obligues us to prove that \textit{there exists at least one rational $q$ with $q < \alpha$}.
+$S(\alpha) = \{\phi(q) : q \in \mathbb{Q} \text{ AND } q < \alpha\}$. The constraint $q < \alpha$ obliges us to prove that \textit{there exists at least one rational $q$ with $q < \alpha$}.
 
 \begin{lemma}[Order-Preservation]\label{le:order-Phi}
 For $\alpha, \beta \in \mathbb{R}$
@@ -521,7 +521,7 @@ Multiplying both inequalities we have:
 &\Phi(\alpha) \cdot \Phi(\beta) < \phi(q_1.q_2) + \phi(\delta(q_1 + q_2) + \delta ^2)
 \end{align*}
 
-let us leave the inequality there to see more deeply what we want to achieve using $\delta$. The intuiton here is to find a value for $\delta$ that allows the inequality to hold, no matter what.
+let us leave the inequality there to see more deeply what we want to achieve using $\delta$. The intuition here is to find a value for $\delta$ that allows the inequality to hold, no matter what.
 
 From the definition:
 $$\delta < 1 \rightarrow \delta ^2 < \delta$$

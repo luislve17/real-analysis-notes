@@ -6,7 +6,7 @@ If $A \subset B \subset \mathbb{R} \Rightarrow \  \sup{A} \leq \sup{B} \wedge \ 
 \end{problem}
 
 \begin{solution}
-Using the definiton for both supremum and infimum:
+Using the definition for both supremum and infimum:
 \begin{align*}
 \sup{A} &:= \min\{S_A \in A / \forall a \in A: a \leq S_A \} \\
 \inf{A} &:= \max\{S_B \in B / \forall b \in B: b \leq S_B \}
@@ -14,10 +14,10 @@ Using the definiton for both supremum and infimum:
 
 \begin{enumerate}[label=\roman*)]
 \item $$\forall a \in A : a \in B.\ \text{Let } a = \sup{A} \rightarrow \sup{A} \in B$$
-$$\text{From the definiton: } \forall b \in B: b \leq \sup{B} \Rightarrow \sup{A} \leq \sup{B}$$
+$$\text{From the definition: } \forall b \in B: b \leq \sup{B} \Rightarrow \sup{A} \leq \sup{B}$$
 
 \item $$\forall a \in A : a \in B.\ \text{Let } a = \inf{A} \rightarrow \inf{A} \in B$$
-$$\text{From the definiton: } \forall b \in B: b \geq \inf{B} \Rightarrow \inf{A} \geq \inf{B}$$
+$$\text{From the definition: } \forall b \in B: b \geq \inf{B} \Rightarrow \inf{A} \geq \inf{B}$$
 \end{enumerate}
 \end{solution}
 
@@ -40,7 +40,7 @@ Assuming the same sets $X, Y$ from \cref{prob:dedekind}, and now $X \cup Y = \ma
 
 \begin{solution}
 From the previous result, we have: $\sup{X} \leq \inf{Y}$.
-Now, lets assume that $\sup{X} < \inf{Y}$ strictly, and try to reach the absurd. Intuition tells me that the idea is to expect items between $X$ and $Y$, and to proof that this would violate the initial conditions.
+Now, let's assume that $\sup{X} < \inf{Y}$ strictly, and try to reach the absurd. Intuition tells me that the idea is to expect items between $X$ and $Y$, and to proof that this would violate the initial conditions.
 
 \input{assets/dedekind-diagram.tex}
 
@@ -209,7 +209,7 @@ Show that, just like the set $\mathbb{Q}$ of rational numbers, the set $\mathbb{
 \begin{solution}
 Considering that $a, b \in \mathbb{Q}$ and that \mathbb{Q} is an Archimedean (Ordered Field), we can conveniently say:
 $$\exists N_a, N_b \in \mathbb{N}: |a| < N_A \land |b| < N_B$$
-And since $n \in \mathbb{N}$ is a fixed number, it also satifies:
+And since $n \in \mathbb{N}$ is a fixed number, it also satisfies:
 $$\sqrt{n} < n + 1$$
 Correctly adding and multiplying these three inequalities:
 
@@ -248,7 +248,7 @@ Let's first assume there exists a $k$ outside of $\mathbb{Q}(\sqrt{n})$, so that
 $$q = \{x \in \mathbb{Q}(\sqrt{n}), x < k\}$$
 
 By doing this, we guarantee that $k$ bounds $q$. Again, we are trying to proof that this is the supremum in such a way that we guarantee its existence outside of $\mathbb{Q}(\sqrt{n})$.
-To proof that this is the lowest upper bound, lets assume the ``real'' supremumis actually a $k'$:
+To proof that this is the lowest upper bound, let's assume the ``real'' supremum is actually a $k'$:
 
 \begin{enumerate}[label=\roman*)]
 \item Assume $\exists k': k' < k$. By density in $\mathbb{Q}:$
@@ -300,7 +300,7 @@ Finally, we could define $q = \{x \in \mathbb{Q}(\sqrt{n}), x < \sqrt[4]{n}\}$
 
 I understand that this might have seemed a bit absurd, and it may have even appeared that we arrived at the solution out of nowhere anyway. I lack the tools and knowledge to construct a more elegant proof for now, but I also saved you the struggle of the blind search I did until I got to this result.
 
-I have the hunch that is possible to find other numbers besides $\sqrt[4]{n}$ that also satisfies to be an outsider supremum. I raised the same comparison for $\lambda$ to the third and fourth exponent, and could only find an absurd scenario for the latter one, making me think that these number live in a set like $\Lambda = \{\sqrt[2k]{n}, k \in \mathbb{N}\}$.
+I have the hunch that is possible to find other numbers besides $\sqrt[4]{n}$ that also satisfy to be an outsider supremum. I raised the same comparison for $\lambda$ to the third and fourth exponent, and could only find an absurd scenario for the latter one, making me think that these numbers live in a set like $\Lambda = \{\sqrt[2k]{n}, k \in \mathbb{N}\}$.
 
 It would need induction to be proven, but I don't have that kind of time.
 \end{solution}
@@ -314,13 +314,13 @@ with coefficients in $\mathbb{Q}$ or $\mathbb{R}$ becomes an ordered field, but 
 \end{problem}
 
 \begin{solution}
-First lets address the order defined as:
+First let's address the order defined as:
 $$R_{m,n} \succ 0 \leftrightarrow a_mb_n > 0$$
-To prove order, we must check the set's behavior over trichotomy, and  and closure over addition and multiplication.
+To prove order, we must check the set's behavior over trichotomy, and closure over addition and multiplication.
 
 \begin{enumerate}[label=\roman*)]
-\item Tricotomy:
-Since the given order ``$\succ$'' subtletly misses defining the equality, and we need to check if a given element could be either greater, less than or \textbf{equal} to zero, we have a bit of a gap. This makes sense since the order is defined by $a_m, b_n$, and both of them need to be non-zero to maintain both the numerator and denominator with a given degree, I guess is fine for the exercise to just assume $R_{m, n} \not= 0$.
+\item Trichotomy:
+Since the given order ``$\succ$'' subtly misses defining the equality, and we need to check if a given element could be either greater, less than or \textbf{equal} to zero, we have a bit of a gap. This makes sense since the order is defined by $a_m, b_n$, and both of them need to be non-zero to maintain both the numerator and denominator with a given degree, I guess is fine for the exercise to just assume $R_{m, n} \not= 0$.
 
 \begin{align*}
 &a_mb_n > 0 \leftrightarrow R_{m,n} \succ 0 \\
@@ -343,7 +343,7 @@ Noticing as well that since both $R_{m,n}, R_{p,q} \succ 0 \rightarrow a_mb_n > 
 	\item $a_pb_n$ leads $\Rightarrow a_pb_nb_nb_q = a_pb_qb_n^2 > 0$
 \end{itemize}
 
-Meaning that eaither way, we preserver the order on addition
+Meaning that either way, we preserve the order on addition
 
 $$\Rightarrow R_{m,n} \oplus R_{p,q} \succ 0$$
 
