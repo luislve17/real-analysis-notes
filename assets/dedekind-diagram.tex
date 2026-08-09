@@ -2,20 +2,18 @@
 \begin{tikzpicture}[scale=.55]
 
     % Number line
-    \draw[thick,->] (-6,0) -- (6,0);
-    \draw[thick,<->] (-6,0) -- (-6.05,0); % left arrow tip
+    \draw[thick,->] (-6,0) -- (6,0); % right arrow tip
+    \draw[thick,->] (-6,0) -- (-6.05,0); % left arrow tip
 
     % X region (yellow)
-    \filldraw[
+    \fill[
         fill=yellow!45,
-        draw=yellow!70!black,
         thick
     ] (-5.2,-0.25) rectangle (-1,0.25);
 
     % Y region (pink)
-    \filldraw[
+    \fill[
         fill=pink!35,
-        draw=pink!70!black,
         thick
     ] (1,-0.25) rectangle (5.2,0.25);
 

@@ -1,7 +1,7 @@
 CONTAINER_NAME := tex
 CONTAINER_IMAGE := registry.fedoraproject.org/fedora-toolbox:latest
 
-.PHONY: setup-tex watch watch-container export
+.PHONY: setup-tex watch watch-container export build-pdf
 
 setup-tex:
 	@if ! distrobox list --no-color 2>/dev/null | grep -qw "$(CONTAINER_NAME)"; then \
@@ -16,10 +16,8 @@ setup-tex:
 		echo "DONE (installed)"; \
 	fi
 
-# watch-container: setup-tex
-# 	find . -name "*.tex" | entr -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -interaction=nonstopmode main.tex
+build-pdf: setup-tex
+	distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -interaction=nonstopmode main.tex
 
 watch-container: setup-tex
-	while true; do \
-		find . -name "*.tex" | entr -d -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -interaction=nonstopmode main.tex; \
-	done
+	find . -name "*.tex" | entr -d -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -f -interaction=nonstopmode main.tex

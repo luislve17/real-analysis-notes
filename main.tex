@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[hidelinks]{hyperref}
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -257,39 +259,42 @@
 \crefname{solution}{Solution}{Solutions}
 
 % ============================================
-% TOC STYLING
+% TOC STYLING — Soviet/Grundlehren classical, restrained
 % ============================================
-% --- Contents title: plain, centered, minimal ---
-\renewcommand{\contentsname}{CONTENTS}
+\setcounter{tocdepth}{3}   % sections + subsections + named theorem/def/proof entries
+
+% --- Title: plain, centered, one hairline rule ---
+\renewcommand{\contentsname}{Contents}
 \renewcommand{\cfttoctitlefont}{\hfill\normalfont\Large\bfseries}
 \renewcommand{\cftaftertoctitle}{%
-  \hfill\null\\[2pt]
-  \rule{\textwidth}{0.8pt}
-  \vspace{1.5em}
+  \hfill\null\\[4pt]
+  \noindent\rule{\textwidth}{0.5pt}
+  \vspace{1.8em}
 }
 
-\renewcommand{\cftdotsep}{\cftnodots}
-
-% --- SECTIONS: plain, bold, no size jump — just weight ---
-\renewcommand{\cftsecfont}{\normalfont\bfseries}
-\renewcommand{\cftsecpagefont}{\normalfont\bfseries}
-\renewcommand{\cftsecpresnum}{\normalfont\bfseries}
+% --- SECTIONS: small caps — the one tier marker, used nowhere else ---
+\renewcommand{\cftsecfont}{\normalfont\scshape}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecpresnum}{\normalfont}
 \renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \setlength{\cftsecnumwidth}{2.2em}
-\setlength{\cftbeforesecskip}{10pt}
+\setlength{\cftbeforesecskip}{12pt}
 \setlength{\cftsecindent}{0pt}
 
-% --- SUBSECTIONS: plain roman, same family, just unbolded ---
+% --- SUBSECTIONS: plain roman, quiet, no competing weight ---
 \renewcommand{\cftsubsecfont}{\normalfont}
 \renewcommand{\cftsubsecpagefont}{\normalfont}
 \renewcommand{\cftsubsecpresnum}{\normalfont}
 \renewcommand{\cftsubsecaftersnum}{.}
-\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftbeforesubsecskip}{2pt}
 \setlength{\cftsubsecindent}{2.2em}
 
-% --- SUBSUBSECTIONS: smaller, quieter, still plain ---
+% --- SUBSUBSECTIONS (named theorems/definitions/proofs): small, plain, quiet ---
 \renewcommand{\cftsubsubsecfont}{\normalfont\small}
 \renewcommand{\cftsubsubsecpagefont}{\normalfont\small}
+\renewcommand{\cftsubsubsecpresnum}{\normalfont\small}
+\setlength{\cftbeforesubsubsecskip}{0pt}
 \setlength{\cftsubsubsecindent}{3.8em}
 
 \begin{document}
