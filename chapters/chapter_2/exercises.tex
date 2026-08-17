@@ -121,40 +121,55 @@ Determine if the following is true:
 \end{problem}
 
 \begin{solution}
-\\i) $\forall a, b \in A, B \ \text{resp.} \rightarrow a \leq \sup{A} \wedge \ b \leq \sup{B}$
+\begin{enumerate}[label=\roman*)]
+	\item $\forall a \in A, b \in B \rightarrow a \leq \sup{A} \wedge b \leq \sup{B}$
 
-Adding up both inequalities:
+	Adding up both inequalities:
+	\begin{align*}
+	a + b \leq \sup{A} + &\sup{B}, \ \forall a \in A, b \in B \\
+	\Rightarrow \sup{A} + \sup{B} &\text{ is upper bound of } A + B
+	\end{align*}
 
-\begin{align*}
-a + b \leq \sup{A} + &\sup{B}, \ \forall a, b \in A, B \\
-\Rightarrow sup{(A + B)}&: \text{upper bound of } A + B
-\end{align*}
+	To show that $\sup{A} + \sup{B}$ is the least upper bound of $A+B$, it is sufficient to show that:
+	$$
+	\forall \epsilon > 0,\ \exists a+b \in A+B:
+	\sup{A} + \sup{B} - \epsilon < a+b \leq \sup{A} + \sup{B}.
+	$$
 
-By definition, the least upper bound suffices that:
-$$\forall \epsilon > 0 , \exists x \in X: \sup{X} - \epsilon < x \leq \sup{X}$$
-Then:
-\begin{align*}
-\forall \epsilon_A > 0, \exists a \in A: \sup{A} - \epsilon_A < a \leq \sup{A}\\
-\forall \epsilon_B > 0, \exists b \in B: \sup{B} - \epsilon_B < b \leq \sup{B}\\
-\end{align*}
+	Let $\epsilon > 0$ be arbitrary. Since $\epsilon/2 > 0$, by the definition of $\sup{A}$:
+	$$
+	\exists a \in A:
+	\sup{A} - \frac{\epsilon}{2} < a \leq \sup{A}.
+	$$
 
-Adding both inequalities, with $\epsilon = \epsilon_A + \epsilon_B$:
-$$
-\forall \epsilon > 0, \exists a+b \in A+ B: \sup{A} + \sup{B} - \epsilon < a+b \leq \sup{A} + \sup{B}
-$$
+	Similarly, by the definition of $\sup{B}$:
+	$$
+	\exists b \in B:
+	\sup{B} - \frac{\epsilon}{2} < b \leq \sup{B}.
+	$$
 
-\begin{align*}
-\Rightarrow sup{A} + \sup{B}&: \text{least upper bound of } A + B \\
-\therefore \ sup{(A + B)} &= sup{A} + \sup{B}
-\end{align*}
+	Adding both inequalities:
+	\begin{align*}
+	\sup{A} + \sup{B} - \frac{\epsilon}{2} - \frac{\epsilon}{2}
+	&< a+b \leq \sup{A} + \sup{B} \\
+	\Rightarrow \sup{A} + \sup{B} - \epsilon
+	&< a+b \leq \sup{A} + \sup{B}
+	\end{align*}
 
+	Therefore:
+	\begin{align*}
+	\Rightarrow \sup{A} + \sup{B}&: \text{least upper bound of } A+B \\
+	\therefore \sup{(A+B)} &= \sup{A} + \sup{B}.
+	\end{align*}
 
-ii) By counter-example, let $A = \{1, 2\}, B = \{-3, -4\}$, then:
-\begin{align*}
-A . B = \{-3, -4&, -6, -8\} \\
-\sup{(A.B)} = -3 &\neq (2 . -3) = \sup{A} . \sup{B}
-\end{align*}
+	\item By counter-example, let $A = \{1,2\}$ and $B = \{-3,-4\}$. Then:
+	\begin{align*}
+	A.B &= \{-3,-4,-6,-8\} \\
+	\sup{(A.B)} &= -3 \neq (2.-3) = \sup{A}.\sup{B}.
+	\end{align*}
 
+	Therefore, the statement is false.
+\end{enumerate}
 \end{solution}
 
 \begin{problem}
