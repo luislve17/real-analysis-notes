@@ -71,6 +71,38 @@ Thus, we have now the following properties from the definitions:
 
 It is important to note that the supremum and infimum of a set, as defined above, may not exist in an arbitrary ordered field $\mathbb{F}$. The definitions above specify what $\sup X$ and $\inf X$ mean \textit{if they exist}, but they do not guarantee existence. We will address this issue shortly.
 
+\begin{theorem}[Characterization of the Supremum]\label{th:sup-characterization}
+Let $X \subset \mathbb{F}$ be a nonempty set in an ordered field $\mathbb{F}$, and let $s \in \mathbb{F}$. Then $s = \sup X$ if and only if
+$$
+\forall x \in X: x \leq s \land \forall \epsilon > 0,\ \exists x \in X: s - \epsilon < x.
+$$
+\end{theorem}
+
+\begin{bookproof}
+Suppose $s = \sup X$. By definition, $s$ is an upper bound of $X$: $$\forall x \in X: x \leq s.$$
+
+Also, by the definition of the least upper bound, no $s' < s$ is an upper bound of $X$. Therefore: $$\forall s' < s,\ \exists x \in X: s' < x.$$
+
+Let $\epsilon > 0$ and take $s' = s - \epsilon$. Since $\epsilon > 0$: $$s - \epsilon < s.$$
+
+Therefore: $$\exists x \in X: s - \epsilon < x.$$
+
+Conversely, suppose that:
+$$\forall x \in X: x \leq s \land \forall \epsilon > 0,\ \exists x \in X: s - \epsilon < x.$$
+
+The first condition shows that $s$ is an upper bound of $X$.
+
+Now, let $s' < s$. Then: $$\epsilon := s - s' > 0.$$
+
+By assumption: $$\exists x \in X: s - \epsilon < x.$$
+
+Since $\epsilon = s - s'$:$$s' < x.$$
+
+Therefore, $s'$ is not an upper bound of $X$. Hence, no number smaller than $s$ is an upper bound of $X$, so $s$ is the least upper bound of $X$.
+
+Therefore: $$s = \sup X.$$
+\end{bookproof}
+
 \begin{theorem}[Uniqueness of Supremum]
 Let $X \subset \mathbb{F}$ be a nonempty set in an ordered field $\mathbb{F}$. If $X$ has a supremum, then this supremum is unique.
 \end{theorem}

@@ -136,13 +136,13 @@ Determine if the following is true:
 	\sup{A} + \sup{B} - \epsilon < a+b \leq \sup{A} + \sup{B}.
 	$$
 
-	Let $\epsilon > 0$ be arbitrary. Since $\epsilon/2 > 0$, by the definition of $\sup{A}$:
+	Let $\epsilon > 0$ be arbitrary. Since $\epsilon/2 > 0$, by the characterization of $\sup{A}$ (\cref{th:sup-characterization}):
 	$$
 	\exists a \in A:
 	\sup{A} - \frac{\epsilon}{2} < a \leq \sup{A}.
 	$$
 
-	Similarly, by the definition of $\sup{B}$:
+	Similarly, by the characterization of $\sup{B}$:
 	$$
 	\exists b \in B:
 	\sup{B} - \frac{\epsilon}{2} < b \leq \sup{B}.
@@ -153,11 +153,7 @@ Determine if the following is true:
 	\sup{A} + \sup{B} - \frac{\epsilon}{2} - \frac{\epsilon}{2}
 	&< a+b \leq \sup{A} + \sup{B} \\
 	\Rightarrow \sup{A} + \sup{B} - \epsilon
-	&< a+b \leq \sup{A} + \sup{B}
-	\end{align*}
-
-	Therefore:
-	\begin{align*}
+	&< a+b \leq \sup{A} + \sup{B} \\
 	\Rightarrow \sup{A} + \sup{B}&: \text{least upper bound of } A+B \\
 	\therefore \sup{(A+B)} &= \sup{A} + \sup{B}.
 	\end{align*}
@@ -165,10 +161,8 @@ Determine if the following is true:
 	\item By counter-example, let $A = \{1,2\}$ and $B = \{-3,-4\}$. Then:
 	\begin{align*}
 	A.B &= \{-3,-4,-6,-8\} \\
-	\sup{(A.B)} &= -3 \neq (2.-3) = \sup{A}.\sup{B}.
+	\sup{(A.B)} &= -3 \neq (2.-3) = \sup{A}.\sup{B}. (\rightarrow\leftarrow)
 	\end{align*}
-
-	Therefore, the statement is false.
 \end{enumerate}
 \end{solution}
 
@@ -203,30 +197,8 @@ Finally:
 
 \end{solution}
 
-\begin{problem}\label{prob:inclusion-partial-order}
-Show that the inclusion relation is a partial ordering relation on sets (but not a linear ordering).
-\end{problem}
-
-\begin{solution}
-By definition of partial ordering, proving each property for arbitrary sets $A, B, C$:
-\begin{enumerate}[label=\roman*)]
-	\item Reflexivity: $A \subset A \equiv$ True
-	\item Transitivity: $A \subset B \land B \subset C \rightarrow A \subset C \equiv$ True
-	\item Antisymmetry: $A \subset B \land B \subset A \rightarrow A = B \equiv$ True
-\end{enumerate}
-
-However, let $A, B:$ disjoint. Then:
-
-\begin{align*}
-\exists a \in A / a \notin B &\rightarrow A \backslash B \neq \O \\
-\rightarrow A \not\subset B &\land B \not\subset A
-\end{align*}
-
-Which fails to confirm the comparability property.
-\end{solution}
-
 \begin{problem}
-Let $A$, $B$, and $C$ be sets such that $A \subset C$, $B \subset C$, $A \setminus B \neq \O$, and $B \setminus A \neq \O$. We introduce a partial ordering into this triple of sets as in \cref{prob:inclusion-partial-order}. Exhibit the maximal and minimal elements of the set $\{A,B,C\}$.
+Let $A$, $B$, and $C$ be sets such that $A \subset C$, $B \subset C$, $A \setminus B \neq \O$, and $B \setminus A \neq \O$. We introduce a partial ordering into this triple of sets. Exhibit the maximal and minimal elements of the set $\{A,B,C\}$.
 \end{problem}
 
 \begin{solution}
@@ -265,7 +237,7 @@ Correctly adding and multiplying these three inequalities:
 \rightarrow |a| + |b|\sqrt{n} &< N_A + N_B (n + 1)
 \end{align*}
 
-On the left side, we can consider $|a| + |b|\sqrt{n} = |a| + |b.\sqrt{n}|$, since we are just working with natural numbers. Then, using the triangle inequality:
+On the left side, we can consider $|a| + |b|\sqrt{n} = |a| + |b.\sqrt{n}|$. Then, using the triangle inequality:
 \begin{align*}
 |a + b.\sqrt{n}| \leq |a| + |b\sqrt{n}| = |a| + |b|\sqrt{n}
 \rightarrow |a + b\sqrt{n}| < N_A + N_B (n + 1)
@@ -282,17 +254,18 @@ Now, let $x = a + b\sqrt{n} \in \mathbb{Q}(\sqrt{n})$, and $N = N_A + N_B (n + 1
 \therefore \mathbb{Q}(\sqrt{n})&: \text{Archimedean}.
 \end{align*}
 
-Now, to prove that this is not a complete field, we need to form a subset $q \subset \mathbb{Q}(\sqrt{n})$ that somehow has its supremum outside of $\mathbb{Q}(\sqrt{n})$. I found out myself that this could go one of two ways: the \textit{skadoodle-out-of-thin-air} answer, or the \textit{intuitively-looking-for-an-answer} answer. Of course I will do the second one, but in case this is too ugly for the sake of an arbitrary exercise, please feel free to skip (by the way, answer is $\sqrt[4]{n}$).
+Now, to prove that this is not a complete field, we need to form a subset $q \subset \mathbb{Q}(\sqrt{n})$ that somehow has its supremum in $\mathbb{R}$, but outside of $\mathbb{Q}(\sqrt{n})$. I found out myself that this could go one of two ways: the \textit{skadoodle-out-of-thin-air} answer, or the \textit{intuitively-looking-for-an-answer} answer. Of course I will do the second one, but in case this is too ugly for the sake of an arbitrary exercise, please feel free to skip (by the way, answer is $\sqrt[4]{n}$).
 
 Now to build $q$ we could start with this rough idea:
 
 \input{assets/q-sqrt-n-not-complete.tex}
 
-Let's first assume there exists a $k$ outside of $\mathbb{Q}(\sqrt{n})$, so that our choosen set $q$ is:
+Let's first assume there exists a $k$ outside of $\mathbb{Q}(\sqrt{n})$, so that our chosen set $q$ is:
 
 $$q = \{x \in \mathbb{Q}(\sqrt{n}), x < k\}$$
 
 By doing this, we guarantee that $k$ bounds $q$. Again, we are trying to prove that this is the supremum in such a way that we guarantee its existence outside of $\mathbb{Q}(\sqrt{n})$.
+
 To prove that this is the lowest upper bound, let's assume the ``real'' supremum is actually a $k'$:
 
 \begin{enumerate}[label=\roman*)]
@@ -304,48 +277,79 @@ To prove that this is the lowest upper bound, let's assume the ``real'' supremum
 \rightarrow x &\in q \\
 \rightarrow k' &\text{not L.U.B of } q
 \end{align*}
-	
-\item Assume $\exists k': k < k'$. Similarly, by density in $\mathbb{Q}:$
-\begin{align*}
-\exists x \in \mathbb{Q}&: k < x < k' \\
-\text{Again, since } \mathbb{Q} \subset \mathbb{Q}(\sqrt{n}) \rightarrow \exists x \in \mathbb{Q}(\sqrt{n})&: k < x < k'. \\
-\rightarrow x &\in q \\
-\rightarrow \exists x \in q: x &\text{ does not bound } q \land x < k' \\
-\rightarrow k' &\text{not L.U.B of } q
-\end{align*}
+
 \end{enumerate}
 
-And so, just by failing to find a more tight upper bound for $q$, we prove that $k = \sup{(q)}$.
+And so, by showing that every number smaller than $k$ fails to be an upper bound for $q$, while $k$ itself is an upper bound, we prove that
+$$k = \sup(q).$$
 
 Now, this is just half of the proof. At the beginning we assumed that this $k$ exists, and I don't appreciate left over assumptions. The next proof is to make sure that there is at least a number that allows us to create $q$. Let's call it $\lambda$ and try to prove $\exists \lambda \in \mathbb{R}: \lambda \not\in \mathbb{Q}(\sqrt{n})$.
 
 \begin{align*}
-\lambda \not\in \mathbb{Q}(\sqrt{n}) \leftrightarrow \lambda \not= a + b\sqrt{n}\\
+\lambda \not\in \mathbb{Q}(\sqrt{n}) \leftrightarrow \lambda \not= a + b\sqrt{n}
 \end{align*}
 
-My intent is to apply some sort of transformation to both sides, and get to an absurd. I tried several things ($\log$, factorial, $\exp$, etc), but the only clue I got back is that the $\sqrt{n}$ was in the way. Then I realized that, as long as I have $\lambda$ in the form $A + B\sqrt{n}$, I could compare coefficients and try to force an absurd. Trying to square everything:
+My intent is to apply some sort of transformation to both sides, and get to an absurd. I tried several things ($\log$, factorial, $\exp$, etc), but the only clue I got back is that the $\sqrt{n}$ was in the way. Then I realized that, as long as I can find a $\lambda$ whose square is of the form $A+B\sqrt{n}$, I could compare coefficients and try to force an absurd.
 
+In other words, I want
 \begin{align*}
-\leftrightarrow \lambda^2 &\not= (a + b\sqrt{n})^2 \ \dots (*)\\
-\leftrightarrow \lambda^2 &\not= a^2 + b^2n + 2ab\sqrt{n}\\
-\leftrightarrow A + B\sqrt{n} &\not= (a^2 + b^2n) + (2ab)\sqrt{n}
+\lambda^2=A+B\sqrt{n}.
 \end{align*}
 
-Now, the trick is to realize $(a^2 + b^2n) \geq 0 \forall a, b \in \mathbb{Q}, n \in \mathbb{N}$, so I just force it to be zero. And since we want to force the absurd, $2ab$ could be anything non-zero and we would have ourselves a contradiction:
+The simplest choice seems to be
 \begin{align*}
-(A = 0, B = 1) \rightarrow 0 + 1.\sqrt{n} = (a^2 + b^2n) + (2ab)\sqrt{n}
+A=0,\qquad B=1,
 \end{align*}
-Then:
-$$a = b = 0 \land 2ab = 1$$
+which gives
+\begin{align*}
+\lambda^2&=\sqrt{n}\\
+\lambda&=\sqrt{\sqrt{n}}\\
+\lambda&=\sqrt[4]{n}.
+\end{align*}
 
-Which doesn't make sense! Meaning that (*) the number to choose that is not inside $\mathbb{Q}(\sqrt{n})$ is $$\lambda = \sqrt{0 + 1\sqrt{n}} = \sqrt{\sqrt{n}} = \sqrt[4]{n}$$
+Now, we still need to prove that this choice of $\lambda$ is actually outside of $\mathbb{Q}(\sqrt{n})$. So, let's assume the opposite and try to force an absurd:
+$$
+\sqrt[4]{n}=a+b\sqrt{n}
+$$
+for some $a,b\in\mathbb{Q}$.
 
-Finally, we could define $q = \{x \in \mathbb{Q}(\sqrt{n}), x < \sqrt[4]{n}\}$
-\\
+Trying to square everything:
+\begin{align*}
+\sqrt{n}&=(a+b\sqrt{n})^2\\
+&=a^2+b^2n+2ab\sqrt{n}\\
+&=(a^2+b^2n)+(2ab)\sqrt{n}.
+\end{align*}
 
-I understand that this might have seemed a bit absurd, and it may have even appeared that we arrived at the solution out of nowhere anyway. I lack the tools and knowledge to construct a more elegant proof for now, but I also saved you the struggle of the blind search I did until I got to this result.
+Now, the trick is to realize that both sides are written in the form $A+B\sqrt{n}$, so we can compare coefficients. Since $\sqrt{n}\notin\mathbb{Q}$, this representation is unique. Therefore:
+\begin{align*}
+0&=a^2+b^2n\\
+1&=2ab.
+\end{align*}
 
-I have the hunch that is possible to find other numbers besides $\sqrt[4]{n}$ that also satisfy to be an outsider supremum. I raised the same comparison for $\lambda$ to the third and fourth exponent, and could only find an absurd scenario for the latter one, making me think that these numbers live in a set like $\Lambda = \{\sqrt[2k]{n}, k \in \mathbb{N}\}$.
+Now, $a^2+b^2n\geq0$ for all $a,b\in\mathbb{Q}$ and $n\in\mathbb{N}$. For it to be zero, we must have
+$$
+a=b=0.
+$$
+But then
+$$
+2ab=0\neq1,
+$$
+which is a contradiction.
+
+Therefore,
+$$
+\sqrt[4]{n}\notin\mathbb{Q}(\sqrt{n}).
+$$
+
+Finally, we can define
+$$
+q=\{x\in\mathbb{Q}(\sqrt{n}),x<\sqrt[4]{n}\}.
+$$
+
+I have the hunch that it is possible to find other numbers besides $\sqrt[4]{n}$ that also satisfy to be an outsider supremum. I raised the same comparison for $\lambda$ to the third and fourth exponent, and could only find an absurd scenario for the latter one, making me think that these numbers live in a set like
+$$
+\Lambda=\{\sqrt[2k]{n},k\in\mathbb{N}\}.
+$$
 
 It would need induction to be proven, but I don't have that kind of time.
 \end{solution}
