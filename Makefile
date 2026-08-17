@@ -21,3 +21,6 @@ build-pdf: setup-tex
 
 watch-container: setup-tex
 	find . -name "*.tex" | entr -d -r distrobox-enter $(CONTAINER_NAME) -- latexmk -pdf -f -interaction=nonstopmode main.tex
+
+watch-local:
+	find . -name "*.tex" | entr -d -r latexmk -pdf -interaction=nonstopmode main.tex

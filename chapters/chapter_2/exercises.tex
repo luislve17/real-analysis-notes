@@ -6,36 +6,60 @@ If $A \subset B \subset \mathbb{R} \Rightarrow \  \sup{A} \leq \sup{B} \wedge \ 
 \end{problem}
 
 \begin{solution}
-Using the definition for both supremum and infimum:
-\begin{align*}
-\sup{A} &:= \min\{S_A \in A / \forall a \in A: a \leq S_A \} \\
-\inf{A} &:= \max\{S_B \in B / \forall b \in B: b \leq S_B \}
-\end{align*}
-
 \begin{enumerate}[label=\roman*)]
-\item $$\forall a \in A : a \in B.\ \text{Let } a = \sup{A} \rightarrow \sup{A} \in B$$
-$$\text{From the definition: } \forall b \in B: b \leq \sup{B} \Rightarrow \sup{A} \leq \sup{B}$$
+\item Since $\sup{B}$ is an upper bound of $B: \forall b \in B: b \leq \sup{B}$
 
-\item $$\forall a \in A : a \in B.\ \text{Let } a = \inf{A} \rightarrow \inf{A} \in B$$
-$$\text{From the definition: } \forall b \in B: b \geq \inf{B} \Rightarrow \inf{A} \geq \inf{B}$$
+Since $A \subset B, \forall a \in A$ also belongs to $B \rightarrow \forall a \in A: a \leq \sup{B}$.
+
+Therefore, $\sup{B}:$ upper bound of $A$. Finally, since $\sup{A} \in A \rightarrow \sup{A} \leq \sup{B}$ as well.
+$$
+\Rightarrow \sup{A} \leq \sup{B}.
+$$
+
+\item Since $\inf{B}$ is a lower bound of $B: \forall b \in B: \inf{B} \leq b$
+
+Since $A \subset B, \forall a \in A$ also belongs to $B \rightarrow \forall a \in A: \inf{B} \leq a$.
+
+Therefore, $\inf{B}:$ lower bound of $A$. Finally, since $\inf{A} \in A \rightarrow \inf{B} \leq \inf{A}$ as well.
+$$
+\Rightarrow \inf{A} \geq \inf{B}.
+$$
 \end{enumerate}
 \end{solution}
 
-\begin{problem}\label{prob:dedekind}
-Let $X, Y \neq \O \subset \mathbb{R}$. If $\forall x, y \in X, Y \  \text{respectively: } x \leq y$\\
-$\Rightarrow X:$ bounded above, $Y:$ bounded below, and $\sup{X} \leq \inf{Y}$
+\begin{problem}
+Let $X, Y \subset \mathbb{R}$ be non empty sets, such that $x \leq y, \ \forall x \in X, \forall y \in Y $\\
+Then, proof the following hold: $X$ is bounded above, $Y$ is bounded below, and $\sup{X} \leq \inf{Y}$
 \end{problem}
 
 \begin{solution}
 \begin{enumerate}[label=\roman*)]
-	\item $\forall x \in X, \exists y \in Y\text{: bounds X from the top}$
-	\item $\forall y \in Y, \exists x \in X\text{: bounds Y from the bottom}$
-	\item $\forall x \in X: x \leq \sup{X} \  \wedge \sup{X} \in X \rightarrow \sup{X} \leq y \ (\forall y \in Y)$. Taking $y = \inf{Y} \Rightarrow \sup{X} \leq \inf{Y}$
+	\item Since $Y$ is non-empty, $\exists y \in Y$. Then $\forall x \in X: x \leq y$
+	$\rightarrow y$ is an upper bound of $X$, so $X$ is bounded above.
+
+	\item Since $X$ is non-empty, $\exists x \in X$. Similarly $\forall y \in Y: x \leq y$
+	$\rightarrow x$ is a lower bound of $Y$, so $Y$ is bounded below.
+
+	\item Since $Y$ is bounded below and $X$ is bounded above: $\exists \inf{Y} \land \sup{X}$ so that:
+	\begin{align*}
+	\forall x \in X,\ \forall y \in Y: x \leq y
+	\rightarrow \forall x \in X&: \left(\forall y \in Y: x \leq y\right)\\
+	\rightarrow \forall x \in X&: x \text{ is a lower bound of } Y\\
+	\rightarrow \forall x \in X&: x \leq \inf{Y}
+	\end{align*}
+
+	Thus, $\inf{Y}$ is an upper bound of $X$.
+
+	By the definition of $\sup{X}$ being the least upper bound, any other upper bound will be greater:
+
+	$$\Rightarrow \sup{X} \leq \inf{Y}.$$
 \end{enumerate}
 \end{solution}
 
 \begin{problem}\label{prob:dedekind-2}
-Assuming the same sets $X, Y$ from \cref{prob:dedekind}, and now $X \cup Y = \mathbb{R}$, then $\sup{X} = \inf{Y}$
+Let $X, Y \subset \mathbb{R}$ be non empty sets, such that
+$x \leq y, \ \forall x \in X, \forall y \in Y$, and suppose that
+$X \cup Y = \mathbb{R}$. Prove that $\sup{X} = \inf{Y}.$
 \end{problem}
 
 \begin{solution}
@@ -46,14 +70,20 @@ Now, let's assume that $\sup{X} < \inf{Y}$ strictly, and try to reach the absurd
 
 Assuming $\sup{X} < \inf{Y}:$
 \begin{align*}
-\exists r \in \mathbb{R}: \sup{X} < r \ &\wedge r < \inf{Y} \\
-\rightarrow \mathcal{R} := \{r \in \mathbb{R} / \sup{X} < r \ &\wedge r < \inf{Y}\} \neq \O \\
-\rightarrow X \cup Y = \mathbb{R} &\cup \mathcal{R} \neq \mathbb{R} \ (\rightarrow\leftarrow)
+\exists r \in \mathbb{R}: \sup{X} < r &\wedge r < \inf{Y} \\
+\rightarrow \mathcal{R} := \{r \in \mathbb{R} / \sup{X} < r &\wedge r < \inf{Y}\} \neq \O \\
+\rightarrow r \not\in X &\land r \not\in Y \\
+\rightarrow r \not\in X &\cup Y \\
+\rightarrow r \not\in \ \mathbb{R}& \ (\rightarrow\leftarrow)
 \end{align*}
+
+$$\therefore \sup{X} = \inf{Y}.$$
 \end{solution}
 
 \begin{problem}
-\textit{Dedekind's Theorem}: Assuming the same sets $X, Y$ from \cref{prob:dedekind-2}, then either $X$ has a maximal element, or $Y$ has a minimal element.
+\textit{Dedekind's Theorem}: Let $X, Y \subset \mathbb{R}$ be non empty sets, such that
+$x \leq y, \ \forall x \in X, \forall y \in Y$, and suppose that
+$X \cup Y = \mathbb{R}$. Then either $X$ has a maximal element, or $Y$ has a minimal element.
 \end{problem}
 
 \begin{solution}
@@ -64,7 +94,7 @@ Assuming $X$ is not bounded above:
 \text{Then } \exists \ y = \inf{Y} \in Y : y < x' \ (\rightarrow\leftarrow)
 \end{align*}
 
-Similarly, assuming $Y$ is not bounded: 
+Similarly, assuming $Y$ is not bounded below:
 \begin{align*}
 \exists \ y' \in Y / y' < \inf{Y} \\
 \text{Since } \sup{X} = \inf{Y} \rightarrow y' < \sup{X} \\
