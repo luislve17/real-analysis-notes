@@ -365,54 +365,98 @@ with coefficients in $\mathbb{Q}$ or $\mathbb{R}$ becomes an ordered field, but 
 \begin{solution}
 First let's address the order defined as:
 $$R_{m,n} \succ 0 \leftrightarrow a_mb_n > 0$$
-To prove order, we must check the set's behavior over trichotomy, and closure over addition and multiplication.
+To prove order, we must check the set's behavior over trichotomy, and closure over addition and multiplication (\cref{th:ordered-field-criterion}). We must also make sure that the order is well-defined, since the same rational function can have more than one representation.
 
 \begin{enumerate}[label=\roman*)]
-\item Trichotomy:
-Since the given order ``$\succ$'' subtly misses defining the equality, and we need to check if a given element could be either greater, less than or \textbf{equal} to zero, we have a bit of a gap. This makes sense since the order is defined by $a_m, b_n$, and both of them need to be non-zero to maintain both the numerator and denominator with a given degree, I guess is fine for the exercise to just assume $R_{m, n} \not= 0$.
+\item \textbf{Well-definedness:}
 
+Suppose that the same rational function can be written in two different ways:
+$$\frac{P(x)}{Q(x)}=\frac{R(x)}{S(x)}.$$
+Then
+$$P(x)S(x)=R(x)Q(x).$$
+
+Let the leading coefficients of $P,Q,R,S$ be respectively $a_m,b_n,c_p,d_q$. Comparing the leading coefficients on both sides gives:
+$$a_md_q=c_pb_n.$$
+
+Therefore, the two representations have the same sign under the proposed order. Hence, whether $R_{m,n}\succ0$ or $R_{m,n}\prec0$ does not depend on the particular representation chosen.
+
+\item \textbf{Trichotomy:}
+
+Since the given order ``$\succ$'' subtly misses defining the equality, and we need to check if a given element could be either greater, less than or \textbf{equal} to zero, we need to consider the case where the numerator is the zero polynomial.
+
+If the numerator is zero, then:
+$$R_{m,n}=0.$$
+
+Otherwise, the leading coefficients $a_m,b_n$ are both non-zero, and therefore exactly one of $a_mb_n>0$ or $a_mb_n<0$ holds. We have:
 \begin{align*}
 &a_mb_n > 0 \leftrightarrow R_{m,n} \succ 0 \\
-&a_mb_n < 0 \leftrightarrow -a_mb_n > 0 \leftrightarrow 0 < -a_mb_n \leftrightarrow 0 \succ R_{m,n} \\
+&a_mb_n < 0 \leftrightarrow -a_mb_n > 0 \leftrightarrow -R_{m,n} \succ 0 \leftrightarrow 0 \succ R_{m,n}.
 \end{align*}
 
-\item Closure over $\oplus$:
+Therefore, exactly one of $$R_{m,n}=0,\qquad R_{m,n}\succ0,\qquad 0\succ R_{m,n}$$
+holds, satisfying trichotomy.
 
-Solving for any pair of $R_{m,n} \oplus R_{p,q}, R_{m,n}, R_{p,q} \succ 0$:
+\item \textbf{Closure over $\oplus$:}
+
+Solving for any pair of $R_{m,n} \oplus R_{p,q}$, $R_{m,n}, R_{p,q} \succ 0$:
 \begin{align*}
-R_{m,n} \oplus R_{p,q} &= \frac{a_0 + \dots + a_mx^m}{b_0 + \dots + b_nx^n} + \frac{a_0 + \dots + a_px^p}{b_0 + \dots + b_qx^q}\\
-&= \frac{(a_mb_qx^{m+q})+(a_pb_nx^{p+n}) + \mathbb{S}_1}{b_nb_qx^{n+q} + \mathbb{S}_2 }
+R_{m,n} \oplus R_{p,q}
+&= \frac{a_0 + \dots + a_mx^m}{b_0 + \dots + b_nx^n}
++ \frac{c_0 + \dots + c_px^p}{d_0 + \dots + d_qx^q}\\
+&= \frac{(a_md_qx^{m+q})+(c_pb_nx^{p+n}) + \mathbb{S}_1}
+{b_nd_qx^{n+q} + \mathbb{S}_2}.
 \end{align*}
 
-We will just consider the terms containing the leading degree of both sides of the fraction. Since the order just depends on these, we can skip evaluating the rest by indicating a left over expression added up as $\mathbb{S}_{1,2}.$ Then, we have two possibilities here for the coefficient of the leading degree: $a_mb_q \lor a_pb_n$.
+We will just consider the terms containing the leading degree of both sides of the fraction. Since the order just depends on these, we can skip evaluating the rest by indicating a left over expression added up as $\mathbb{S}_{1,2}$. Then, we have two possibilities for the coefficient of the leading degree: $a_md_q$ or $c_pb_n$.
 
-Noticing as well that since both $R_{m,n}, R_{p,q} \succ 0 \rightarrow a_mb_n > 0 \land a_pb_q > 0$, we evaluate:
+If the degrees $m+q$ and $p+n$ are different, the term with the larger degree leads. If they are equal, the two leading terms are added together. In this case, we need to make sure that they do not cancel.
+
+Noticing as well that since both $R_{m,n}, R_{p,q} \succ 0 \rightarrow a_mb_n > 0 \land c_pd_q > 0$, we evaluate:
 \begin{itemize}
-	\item $a_mb_q$ leads $\Rightarrow a_mb_qb_nb_q = a_mb_nb_q^2 > 0$
-	\item $a_pb_n$ leads $\Rightarrow a_pb_nb_nb_q = a_pb_qb_n^2 > 0$
+	\item If $a_md_q$ leads:
+	$$a_md_qb_nd_q = a_mb_n d_q^2 > 0.$$
+
+	\item If $c_pb_n$ leads:
+	$$c_pb_nb_nd_q = c_pd_q b_n^2 > 0.$$
 \end{itemize}
 
-Meaning that either way, we preserve the order on addition
+Therefore, in either case, the leading coefficient of the numerator has the same sign as the leading coefficient of the denominator. If $m+q=p+n$, then both leading coefficients have the same sign, so they cannot cancel and their sum preserves that sign.
 
-$$\Rightarrow R_{m,n} \oplus R_{p,q} \succ 0$$
+Meaning that either way, we preserve the order on addition:
+$$\Rightarrow R_{m,n} \oplus R_{p,q} \succ 0.$$
 
-\item Closure over $\otimes$:
+\item \textbf{Closure over $\otimes$:}
 
 \begin{align*}
-R_{m,n} \otimes R_{p,q} &= \frac{a_0 + \dots + a_mx^m}{b_0 + \dots + b_nx^n} . \frac{a_0 + \dots + a_px^p}{b_0 + \dots + b_qx^q}\\
-&= \frac{(a_ma_px^{m+p}) + \mathbb{S}_1}{b_nb_qx^{n+q} + \mathbb{S}_2 }
+R_{m,n} \otimes R_{p,q}
+&= \frac{a_0 + \dots + a_mx^m}{b_0 + \dots + b_nx^n}
+\cdot \frac{c_0 + \dots + c_px^p}{d_0 + \dots + d_qx^q}\\
+&= \frac{(a_mc_px^{m+p}) + \mathbb{S}_1}
+{b_nd_qx^{n+q} + \mathbb{S}_2}.
 \end{align*}
+
+Under the same condition $a_mb_n > 0 \land c_pd_q > 0$, we get that
+$$a_mc_pb_nd_q=(a_mb_n)(c_pd_q)>0.$$
+
+Therefore:
+$$\Rightarrow R_{m,n} \otimes R_{p,q} \succ 0.$$
+
 \end{enumerate}
 
-Under the same condition $a_mb_n > 0 \land a_pb_q > 0$, we get that $$a_ma_p.b_nb_q > 0$$
-$$\Rightarrow R_{m,n} \otimes R_{p,q} \succ 0$$
+The usual arithmetic operations on rational functions give the usual field structure, and the properties above show that the proposed order is compatible with addition and multiplication. Therefore, $\mathbb{Q}(x)$ is an ordered field.
 
-Now, to prove that $\mathbb{Q}(X)$ is not an Archimedean we need to prove that there are some (at least one) element in $R_{m,n} \in \mathbb{Q}(X)$ that is not bounded by $\mathbb{Z}$.
+Now, to prove that $\mathbb{Q}(x)$ is not an Archimedean ordered field, we need to prove that there is at least one element in $\mathbb{Q}(x)$ that is larger than every element of $\mathbb{N}$.
 
-Let $k \in \mathbb{Z}: k + x = R_{1, 0} \in \mathbb{Q}(X):$
+Let $k\in\mathbb{N}$. Consider $x-k\in\mathbb{Q}(x)$:
+$$x-k=\frac{x-k}{1}.$$
+
+The leading coefficient of the numerator is $1$, and the leading coefficient of the denominator is also $1$, so:
+$$1\cdot1>0 \Rightarrow x-k\succ0.$$
+
+Therefore:
 \begin{align*}
-&\rightarrow \exists R_{1,0} \in \mathbb{Q}(x) \leq k, \forall k \in \mathbb{Z}\\
-&\rightarrow \mathbb{Z} \text{ does not bound } \mathbb{Q}(x)\\
-&\therefore \mathbb{Q}(x) \not\equiv \text{Archimedean}
+&x-k\succ0 \Rightarrow x\succ k,\qquad \forall k\in\mathbb{N}\\
+&\Rightarrow \exists x\in\mathbb{Q}(x): x>k,\qquad \forall k\in\mathbb{N}\\
+&\therefore \mathbb{Q}(x)\text{ is not Archimedean}.
 \end{align*}
 \end{solution}

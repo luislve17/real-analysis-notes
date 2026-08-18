@@ -34,6 +34,59 @@ A field $\mathbb{F}$ is \textbf{ordered} if it is also an ordered set. As a cons
 \end{itemize}
 \end{definition}
 
+\begin{theorem}[Ordered field criterion]\label{th:ordered-field-criterion}
+Let $\mathbb{F}$ be a field with a well-defined relation $>0$. Suppose that:
+\begin{enumerate}[label=\roman*)]
+\item for every $x\in\mathbb{F}$, exactly one of $x=0$, $x>0$, or $0> x$ holds;
+\item if $x,y>0$, then $x\oplus y>0$;
+\item if $x,y>0$, then $x\otimes y>0$.
+\end{enumerate}
+
+Then defining $x\succ y$ whenever $x \ominus y>0$ gives an order relation compatible with the field operations, and therefore $\mathbb{F}$ is an ordered field.
+\end{theorem}
+
+\begin{bookproof}
+A relation is \textbf{well-defined} if its result depends only on the element itself and not on the particular way that element is represented.\\\\
+Now, we first show that $<$ is an order relation.
+
+For any $x,y\in\mathbb{F}$, trichotomy applied to $y\ominus x$ gives exactly one of
+$$
+y\ominus x=0,\qquad y\ominus x<0,\qquad 0< y\ominus x.
+$$
+These correspond respectively to
+$$
+x=y,\qquad x< y,\qquad y< x.
+$$
+Hence the relation satisfies trichotomy.
+
+For transitivity, suppose $x< y$ and $y< z$. Then
+$$
+y\ominus x<0,\qquad z\ominus y<0.
+$$
+By closure under addition,
+\begin{align*}
+(z\ominus y)\oplus(y\ominus x)
+&=z\ominus x\\
+&<0.
+\end{align*}
+Therefore $x< z$, so $<$ is transitive.
+
+Finally, suppose $x< y$. Then $y\ominus x<0$, and for any $z\in\mathbb{F}$,
+\begin{align*}
+(y\oplus z)\ominus(x\oplus z)
+&=y\ominus x\\
+&<0.
+\end{align*}
+Thus $x\oplus z< y\oplus z$.
+
+The multiplication condition is already satisfied by assumption: if $0< x$ and $0< y$:
+$$
+x\otimes y<0.
+$$
+
+Therefore $<$ is an order relation compatible with the field operations, and hence $\mathbb{F}$ is an ordered field.
+\end{bookproof}
+
 \begin{theorem}
 Given $\mathbb{F}$ an ordered field. If $x < y$ and $0 < z$, then $x \otimes z < y \otimes z$.
 \end{theorem}
