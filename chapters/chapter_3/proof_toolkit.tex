@@ -10,7 +10,7 @@ I wanted to take the time to review the proof techniques used per chapter. This 
 For any complete ordered field $F$, given any $x \in F$, there exists $n \in \mathbb{N}_F$ such that $n > x$.
 
 \textbf{Intuition:}
-No matter how large a number you pick, you can always find a natural number bigger than it. This means the natural numbers are unbounded—they grow without limit.
+No matter how large a number you pick, you can always find a natural number bigger than it. This means the natural numbers are unbounded, they grow without limit.
 
 Used to:
 \begin{itemize}
@@ -35,7 +35,7 @@ Between any two real numbers $\alpha < \beta$, there exists a rational number $r
 Formally: $\forall \alpha, \beta \in \mathbb{R}$ with $\alpha < \beta$, $\exists r \in \mathbb{Q}$ such that $\alpha < r < \beta$.
 
 \textbf{Intuition:}
-The rationals are ``everywhere'' in the reals—no matter how close two real numbers are, you can always squeeze a rational between them. This allows us to:
+The rationals are ``everywhere'' in the reals, no matter how close two real numbers are, you can always squeeze a rational between them. This allows us to:
 \begin{itemize}
     \item Approximate irrational numbers by rational numbers
     \item Find elements ``as close as we want'' to a target value
@@ -91,7 +91,7 @@ To prove a statement $P(n)$ holds for all $n \in \mathbb{N}$:
 \end{enumerate}
 
 \textbf{Intuition:}
-Like dominoes—if the first one falls (base case) and each falling domino knocks over the next (inductive step), then all dominoes fall. We use induction for:
+Like dominoes, if the first one falls (base case) and each falling domino knocks over the next (inductive step), then all dominoes fall. We use induction for:
 \begin{itemize}
     \item Constructing $\mathbb{N}_F$ step-by-step
     \item Proving properties that hold ``for all natural numbers''
@@ -130,7 +130,7 @@ To prove $s = \sup(S)$, we must show:
 Equivalently for (2): For any $s' < s$, there exists $x \in S$ with $x > s'$ (so $s'$ is not an upper bound).
 
 \textbf{Intuition:}
-The supremum is the ``ceiling'' of a set—nothing in the set exceeds it, but you can get arbitrarily close to it from below. This technique is used constantly to:
+The supremum is the ``ceiling'' of a set. Nothing in the set exceeds it, but you can get arbitrarily close to it from below. This technique is used constantly to:
 \begin{itemize}
     \item Define functions via suprema of rational approximations
     \item Show that bounds are tight (no smaller bound works)
@@ -164,7 +164,7 @@ In an ordered field $F$, for any $x, y \in F$, exactly one of the following hold
 \end{enumerate}
 
 \textbf{Intuition:}
-Any two elements are either equal or one is strictly larger—no other options exist. This fundamental property is used in:
+Any two elements are either equal or one is strictly larger, no other options exist. This fundamental property is used in:
 \begin{itemize}
     \item Proof by cases (exhaustively considering all three possibilities)
     \item Proving injectivity (if $f(x) = f(y)$, then $x$ cannot be $<$ or $>$ than $y$)

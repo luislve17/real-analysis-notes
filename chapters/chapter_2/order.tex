@@ -10,11 +10,11 @@ A set $S$ is \textbf{ordered} when it has an ordering ``$<$'' such that for all 
 \end{definition}
 
 \begin{definition}[Partial Ordering]
-A relation ``$<$'' between pairs of elements of a set $X$ is called a partial Ordering if it follows the properties:
+A relation ``$<$'' between pairs of elements of a set $X$ is called a (strict) partial ordering if it follows the properties:
 \begin{enumerate}
-\item $a<a$ (reflexivity);
-\item $(a<b) \wedge (b<c) \Rightarrow a < c $ (transitivity);
-\item $(a<b) \wedge (b<a) \Rightarrow a <> c $ (antisymmetry).
+\item $\neg(a<a)$ (irreflexivity);
+\item $(a<b) \wedge (b<c) \Rightarrow a < c$ (transitivity);
+\item $(a<b) \Rightarrow \neg(b<a)$ (asymmetry).
 \end{enumerate}
 \end{definition}
 
@@ -22,7 +22,7 @@ A relation ``$<$'' between pairs of elements of a set $X$ is called a partial Or
 A relation ``$<$'' between pairs of elements of a set $X$ is called a total ordering (or just \textit{Ordering}) if it follows the properties:
 \begin{enumerate}
 \item $<$ is a partial ordering;
-\item $\forall a, b \in X: a < b \lor b < a$ (Comparability).
+\item $\forall a, b \in X: a = b \lor a < b \lor b < a$ (Comparability).
 \end{enumerate}
 \end{definition}
 
@@ -81,7 +81,7 @@ Thus $x\oplus z< y\oplus z$.
 
 The multiplication condition is already satisfied by assumption: if $0< x$ and $0< y$:
 $$
-x\otimes y<0.
+x\otimes y > 0.
 $$
 
 Therefore $<$ is an order relation compatible with the field operations, and hence $\mathbb{F}$ is an ordered field.

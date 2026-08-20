@@ -2,7 +2,7 @@
 
 \begin{definition}[Bounds]
 
-A set $X \subset \mathbb{F}$ ($\mathbb{F}$ ordered field) is said to be \textit{bounded above} (or respectively, \textit{bounded below}) if $\exists \ c \in \mathbb{F}$ such that $\forall a \in \mathbb{F}, a \leq x$ (or respectively, $x \leq a$). $c$ is called upper (or respectively lower) bound of $X$.
+A set $X \subset \mathbb{F}$ ($\mathbb{F}$ ordered field) is said to be \textit{bounded above} (or respectively, \textit{bounded below}) if $\exists \ c \in \mathbb{F}$ such that $\forall a \in X, a \leq c$ (or respectively, $c \leq a$). $c$ is called upper (or respectively lower) bound of $X$.
 
 \end{definition}
 
@@ -33,7 +33,7 @@ Only has a minimal element ($0$), but no maximal element, since $1 \notin X$
 The smallest $s \in X \subset \mathbb{F}$ that bounds $X$ from above is called the \textit{least upper bound} of $X$, and denoted $\sup{X}$ (read "the supremum of $X$")
 
 \begin{align*}
-(s = \sup{X}) := \forall x \in X ((x \leq s) \wedge (\forall s^{\prime} < s \  \exists x^{\prime} \in X (s^{\prime} < x^{\prime}))
+(s = \sup X) := \left(\forall x \in X, \ x \leq s\right) \ \wedge \ \left(\forall s' < s, \ \exists x' \in X, \ s' < x'\right)
 \end{align*}
 \end{definition}
 
@@ -57,7 +57,7 @@ So in summary, $s$ is $\sup{X}$ if and only if, $s$ is an upper bound, and no sm
 Similarly, the greatest $i \in X \subset \mathbb{F}$ that bounds $X$ below is called the \textit{greatest lower bound of X}, and denoted $\inf X$ (read "the infimum of X")
 
 \begin{align*}
-(i = \inf X) := \forall x \in X ((i \leq x) \wedge (\forall i^\prime < i \ \exists x^\prime \in X (x^\prime < i^\prime))
+(i = \inf X) := \left(\forall x \in X, \ i \leq x\right) \ \wedge \ \left(\forall i' > i, \ \exists x' \in X, \ x' < i'\right)
 \end{align*}
 
 \end{definition}

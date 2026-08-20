@@ -399,16 +399,17 @@ $\Rightarrow \sup X + \sup Y$ is the \textit{L.U.B} of $X + Y$
 \end{enumerate}
 \end{bookproof}
 
-\begin{lemma}[Homomorphism in $\Phi$]\label{le:Phi-homomorphism}
-$\Phi: \mathbb{R} \rightarrow \mathbb{F}$ is an homomorphism
+% \begin{lemma}[Homomorphism in $\Phi$]\label{le:Phi-homomorphism}
+% $\Phi: \mathbb{R} \rightarrow \mathbb{F}$ is an homomorphism
+% \end{lemma}
+
+\begin{lemma}[Additivity of $\Phi$]\label{le:Phi-additive}
+$\Phi: \mathbb{R} \rightarrow \mathbb{F}$ preserves addition:
+$$\Phi(\alpha + \beta) = \Phi(\alpha) + \Phi(\beta), \quad \forall \alpha, \beta \in \mathbb{R}$$
 \end{lemma}
 
 \begin{bookproof}
-As we already know, we need to prove preservation of addition and multiplication. Let $\alpha, \beta \in \mathbb{R}$
-\begin{enumerate}
-\item $\Phi(\alpha + \beta) = \Phi(\alpha) + \Phi(\beta)$
-
-\textbf{Claim:} Recalling the definition of $S(\alpha) := \{\phi(q), q \in \mathbb{Q}, q < \alpha\}$, we will proof $S(\alpha + \beta) = S(\alpha) + S(\beta)$
+\textbf{Claim:} Recalling the definition of $S(\alpha) := \{\phi(q), q \in \mathbb{Q}, q < \alpha\}$, we will proof $$S(\alpha + \beta) = S(\alpha) + S(\beta)$$
 
 \textbf{i. $\subseteq$:}
 
@@ -450,17 +451,28 @@ And from \cref{le:sup-addition}:
 
 $$\sup(S(\alpha + \beta)) = \sup(S(\alpha)) + \sup(S(\beta))$$
 $$\Rightarrow \Phi(\alpha + \beta) = \Phi(\alpha) + \Phi(\beta)$$
-\end{enumerate}
 \end{bookproof}
 
+\begin{lemma}[Multiplicativity of $\Phi$]\label{le:Phi-multiplicative}
+$\Phi: \mathbb{R} \rightarrow \mathbb{F}$ preserves multiplication:
+$$\Phi(\alpha \cdot \beta) = \Phi(\alpha) \cdot \Phi(\beta), \quad \forall \alpha, \beta \in \mathbb{R}$$
+\end{lemma}
+
 \begin{bookproof}
-\begin{enumerate}
-\setcounter{enumi}{1}
-\item $\Phi(\alpha \cdot \beta) = \Phi(\alpha) \cdot \Phi(\beta)$
+Before splitting into cases, note a consequence of \cref{le:Phi-additive}: since $\Phi$ preserves addition,
+$$\Phi(\alpha)+\Phi(-\alpha) = \Phi(\alpha + (-\alpha)) = \Phi(0)$$
+Taking $\alpha = 0$ gives $\Phi(0) = 0_\mathbb{F}$, and substituting back:
+$$\Phi(-\alpha) = -\Phi(\alpha), \quad \forall \alpha \in \mathbb{R}$$
+We will use this freely below.
+
+\textbf{Case 1: $\alpha = 0$ or $\beta = 0$.} Then $\alpha\beta = 0$, and
+$$\Phi(\alpha)\Phi(\beta) = 0_\mathbb{F} = \Phi(0) = \Phi(\alpha\beta)$$
+
+\textbf{Case 2: $\alpha, \beta > 0$.}\\
 
 \textbf{i. $\Phi(\alpha)\Phi(\beta)$: Upper Bound for $S(\alpha\beta)$}
 
-let us take any $\phi(q) \in S(\alpha\beta)$ where $q < \alpha\beta$.
+Let us take any $\phi(q) \in S(\alpha\beta)$ where $q < \alpha\beta$.
 
 By density of $\mathbb{Q}$ in $\mathbb{R}$, we can write:
 $$q = q_1 \cdot q_2$$
@@ -478,14 +490,17 @@ $$\phi(q_2) \leq \Phi(\beta)$$
 Since $\phi$ preserves multiplication on rationals:
 $$\phi(q) = \phi(q_1 q_2) = \phi(q_1) \cdot \phi(q_2)$$
 
-Since all values are positive, we can multiply the inequalities:
+Since $\alpha, \beta > 0$, and $q_1, q_2$ may be taken positive (density of $\mathbb{Q}$ lets us choose $q_1, q_2$ arbitrarily close to $\alpha, \beta$, in particular positive), we can multiply the inequalities:
 $$\phi(q) = \phi(q_1) \cdot \phi(q_2) \leq \Phi(\alpha) \cdot \Phi(\beta)$$
 
 This holds for every element of $S(\alpha\beta)$.
 
+\begin{center}
 $\Rightarrow \Phi(\alpha)\Phi(\beta)$ is an upper bound for $S(\alpha\beta)$
-\\
+\end{center}
+\end{bookproof}
 
+\begin{bookproof}
 \textbf{ii. $\Phi(\alpha)\Phi(\beta)$: \textit{L.U.B.} of $S(\alpha\beta)$}
 
 We need to prove that for any $q \in S(\alpha . \beta)$, it will be bounded by $\Phi(\alpha) \cdot \Phi(\beta)$. This is equivalent to prove that there is an $\epsilon _\mathbb{F} > 0$, the smallest of them all, that makes $\phi(q) + \epsilon _\mathbb{F} > \Phi(\alpha) \cdot \Phi(\beta)$.
@@ -509,10 +524,7 @@ Identically, we make the same operation for $\beta$ and $q_2$
 &\rightarrow \Phi(\alpha) < \phi(q_1 + \delta) \\
 &\rightarrow \Phi(\beta) < \phi(q_2 + \delta)
 \end{align*}
-\end{enumerate}
-\end{bookproof}
 
-\begin{bookproof}
 Multiplying both inequalities we have:
 \begin{align*}
 &\Phi(\alpha) \cdot \Phi(\beta) < \phi(q_1 + \delta) \cdot \phi(q_2 + \delta) \\
@@ -538,7 +550,9 @@ Now allow me to do a \textquotedblleft cleanup\textquotedblright. let us redefin
 $$0 < \delta < min\{\frac{\epsilon}{\alpha + \beta + 1}, 1\}, \epsilon >0 \in \mathbb{Q}$$
 
 But why? Just to do a clean simplification and end up with an isolated $\epsilon \in \mathbb{Q}$, independent from anything else.
+\end{bookproof}
 
+\begin{bookproof}
 Going back to the inequality, we notice that the terms start to unfold:
 
 \begin{align*}
@@ -549,11 +563,34 @@ Going back to the inequality, we notice that the terms start to unfold:
 \end{align*} 
 This means that, by choosing a correct $\delta$ dependent of $\alpha$ and $\beta$, we get an arbitrary positive distance (margin) $\epsilon$, which shows that $\Phi(\alpha) \cdot \Phi(\beta)$ is \textit{L.U.B.} of $\phi(q)$.
 
-$$\Rightarrow \Phi(\alpha . \beta) = \sup\{\phi(q),q \in \mathbb{Q}, q < \alpha.\beta\} = \Phi(\alpha) \cdot \Phi(\beta)$$
-$$\Rightarrow \Phi: \text{ Homomorphism}$$
+$$\Rightarro2 \Phi(\alpha . \beta) = \sup\{\phi(q),q \in \mathbb{Q}, q < \alpha.\beta\} = \Phi(\alpha) \cdot \Phi(\beta), \quad \forall \alpha, \beta > 0$$
+
+\textbf{Case 3: $\alpha, \beta < 0$.} Then $-\alpha, -\beta > 0$, so by the case just proven:
+$$\Phi((-\alpha)(-\beta)) = \Phi(-\alpha)\Phi(-\beta) = (-\Phi(\alpha))(-\Phi(\beta)) = \Phi(\alpha)\Phi(\beta)$$
+Since $(-\alpha)(-\beta) = \alpha\beta$, this gives $\Phi(\alpha\beta) = \Phi(\alpha)\Phi(\beta)$.\\
+
+\textbf{Case 4: $\alpha > 0, \beta < 0$} (the case $\alpha < 0, \beta > 0$ is symmetric):\\
+
+Write $\beta = -\gamma$ with $\gamma > 0$. Then $\alpha\beta = -(\alpha\gamma)$, and by the case $\alpha, \gamma > 0$ proven above:
+$$\Phi(\alpha\gamma) = \Phi(\alpha)\Phi(\gamma)$$
+So:
+$$\Phi(\alpha\beta) = \Phi(-(\alpha\gamma)) = -\Phi(\alpha\gamma) = -\Phi(\alpha)\Phi(\gamma) = \Phi(\alpha)(-\Phi(\gamma)) = \Phi(\alpha)\Phi(-\gamma) = \Phi(\alpha)\Phi(\beta)$$
+
+$$\Rightarrow \Phi(\alpha\beta) = \Phi(\alpha)\Phi(\beta), \quad \forall \alpha, \beta \in \mathbb{R}$$
 \end{bookproof}
 
-\newpage
+\begin{lemma}[Homomorphism in $\Phi$]\label{le:Phi-homomorphism}
+$\Phi: \mathbb{R} \rightarrow \mathbb{F}$ is an homomorphism
+\end{lemma}
+
+\begin{bookproof}
+\begin{enumerate}
+	\item By \cref{le:Phi-additive}, $\Phi$ preserves addition.
+	\item By \cref{le:Phi-multiplicative}, $\Phi$ preserves multiplication.
+\end{enumerate}
+$$\Rightarrow \Phi \text{ is a homomorphism.}$$
+\end{bookproof}
+
 Finally, we reached Rome
 
 \begin{lemma}[Isomorphism $\Phi$]

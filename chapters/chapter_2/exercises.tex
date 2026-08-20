@@ -87,21 +87,23 @@ $X \cup Y = \mathbb{R}$. Then either $X$ has a maximal element, or $Y$ has a min
 \end{problem}
 
 \begin{solution}
-Assuming $X$ is not bounded above: 
+Let $s := \sup X = \inf Y$ (by the previous problem), and since $X \cup Y = \mathbb{R}$, and $s \in \mathbb{R}$, we must have $s \in X$ or $s \in Y$.
+
+\textbf{Case 1: $s \in X$.}
+
+Since $s = \sup X$ is an upper bound of $X$, and $s \in X$:
 \begin{align*}
-\exists \ x' \in X / \sup{X} < x' \\
-\text{Since } \sup{X} = \inf{Y} \rightarrow \inf{Y} < x' \\
-\text{Then } \exists \ y = \inf{Y} \in Y : y < x' \ (\rightarrow\leftarrow)
+\forall x \in X, \ x \leq s \quad \wedge \quad s \in X \Rightarrow s = \max X
 \end{align*}
 
-Similarly, assuming $Y$ is not bounded below:
+\textbf{Case 2: $s \in Y$.}
+
+Since $s = \inf Y$ is a lower bound of $Y$, and $s \in Y$:
 \begin{align*}
-\exists \ y' \in Y / y' < \inf{Y} \\
-\text{Since } \sup{X} = \inf{Y} \rightarrow y' < \sup{X} \\
-\text{Then } \exists \ x = \sup{X} \in X : y' < x \ (\rightarrow\leftarrow)
+\forall y \in Y, \ s \leq y \quad \wedge \quad s \in Y \Rightarrow s = \min Y
 \end{align*}
 
-$$\Rightarrow X \text{ has a maximal element, or } Y \text{ has a minimal element.}$$
+$$\therefore X \text{ has a maximal element, or } Y \text{ has a minimal element.}$$
 \end{solution}
 
 \begin{problem}
@@ -173,26 +175,26 @@ Show that $\sup{(-A)} = -\inf{A}$.
 \end{problem}
 
 \begin{solution}
-Having $\sup{(-A)} := \{-a' \in -A / \forall -a \in A: -a \leq -a' \}$
+Let $s := \sup{(-A)}$, so that $\forall -a \in A: -a \leq s$.
 \begin{align*}
-\forall -a \in A: -a \leq \sup{(-A)} \\
-\rightarrow -(-a) \geq -\sup{(-A)} \\
-\rightarrow -sup(-A) \leq a \\
-\rightarrow -sup(-A) : \text{lower bound of } A
+\forall -a \in A: -a \leq s \\
+\rightarrow -(-a) \geq -s \\
+\rightarrow -s \leq a \\
+\rightarrow -s : \text{lower bound of } A
 \end{align*}
 
-Additionally, for $-A$ we have by the supremum definition:
+Additionally, for $-A$ we have by the supremum's characterization:
 \begin{align*}
-\forall \epsilon > 0, &\exists x \in -A: \sup{(-A)} - \epsilon < x \leq \sup{(-A)}\\
-(\text{mul.} -1)&: -\sup{(-A)} + \epsilon > -x \geq -\sup{(-A)}, -x \in A\\
-(\text{fixing ineq. side})&: -\sup{(-A)} \leq -x < -\sup{(-A)} + \epsilon \\
-\Rightarrow -sup{(-A)}&: \text{greatest lower bound of } A \\
+\forall \epsilon > 0, &\exists x \in -A: s - \epsilon < x \leq s\\
+(\text{mul.} -1)&: -s + \epsilon > -x \geq -s, \ -x \in A\\
+(\text{fixing ineq. side})&: -s \leq -x < -s + \epsilon \\
+\Rightarrow -s&: \text{greatest lower bound of } A \\
 \end{align*}
 
 Finally:
 \begin{align*}
--sup(-A) = inf(A) \\
-\therefore sup(-A) = -\inf(A)
+-s = \inf(A) \\
+\therefore \sup(-A) = -\inf(A)
 \end{align*}
 
 \end{solution}
