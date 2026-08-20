@@ -474,9 +474,17 @@ $$\Phi(\alpha)\Phi(\beta) = 0_\mathbb{F} = \Phi(0) = \Phi(\alpha\beta)$$
 
 Let us take any $\phi(q) \in S(\alpha\beta)$ where $q < \alpha\beta$.
 
-By density of $\mathbb{Q}$ in $\mathbb{R}$, we can write:
-$$q = q_1 \cdot q_2$$
-where $q_1, q_2 \in \mathbb{Q}$ with $q_1 < \alpha$ and $q_2 < \beta$.
+If $q \leq 0$: since $\alpha, \beta > 0$, density of $\mathbb{Q}$ in $\mathbb{R}$ lets us pick positive rationals $q_1 < \alpha$ and $q_2 < \beta$. Then $q_1 q_2 > 0 \geq q$, so
+$$\phi(q) \leq \phi(q_1 q_2) = \phi(q_1)\phi(q_2)$$
+
+If $q > 0$: since $\beta > 0$ and $q < \alpha\beta$, dividing by $\beta$ gives $\dfrac{q}{\beta} < \alpha$. By density of $\mathbb{Q}$ in $\mathbb{R}$, we can locate a rational squeezed in between:
+$$\frac{q}{\beta} < q_1 < \alpha, \quad q_1 \in \mathbb{Q}$$
+Since $q_1 > q/\beta > 0$, dividing by $q_1$ gives $\dfrac{q}{q_1} < \beta$. Applying density once more:
+$$\frac{q}{q_1} < q_2 < \beta, \quad q_2 \in \mathbb{Q}$$
+Rearranging $q_2 > q/q_1$ we get $q < q_1 q_2$, with $q_1 < \alpha$ and $q_2 < \beta$ (and both may be taken positive, since $\alpha, \beta > 0$). By order preservation of $\phi$:
+$$\phi(q) < \phi(q_1 q_2) = \phi(q_1)\phi(q_2)$$
+
+In either case, we land on rationals $q_1 < \alpha$ and $q_2 < \beta$ with $\phi(q) \leq \phi(q_1)\phi(q_2)$.
 
 Since $q_1 < \alpha$ and $q_1 \in \mathbb{Q}$:
 $$\phi(q_1) \in S(\alpha)$$
@@ -487,11 +495,11 @@ $$\phi(q_1) \leq \sup S(\alpha) = \Phi(\alpha)$$
 Similarly, since $q_2 < \beta$ and $q_2 \in \mathbb{Q}$:
 $$\phi(q_2) \leq \Phi(\beta)$$
 
-Since $\phi$ preserves multiplication on rationals:
-$$\phi(q) = \phi(q_1 q_2) = \phi(q_1) \cdot \phi(q_2)$$
+Since $q_1, q_2$ were taken positive, multiplying these two inequalities preserves their direction:
+$$\phi(q_1) \cdot \phi(q_2) \leq \Phi(\alpha) \cdot \Phi(\beta)$$
 
-Since $\alpha, \beta > 0$, and $q_1, q_2$ may be taken positive (density of $\mathbb{Q}$ lets us choose $q_1, q_2$ arbitrarily close to $\alpha, \beta$, in particular positive), we can multiply the inequalities:
-$$\phi(q) = \phi(q_1) \cdot \phi(q_2) \leq \Phi(\alpha) \cdot \Phi(\beta)$$
+Chaining everything together:
+$$\phi(q) \leq \phi(q_1) \cdot \phi(q_2) \leq \Phi(\alpha) \cdot \Phi(\beta)$$
 
 This holds for every element of $S(\alpha\beta)$.
 
