@@ -1,3 +1,4 @@
+\newpage
 \subsection{Consequences of completeness}
 
 Being completely honest, Proving $\mathbb{R}$ uniqueness drained me completely, so it is fair to just check a few smaller extensions (consequence of this proof) to see how the visited properties are used in other, more specific lemmas. They also use cool last names to name them, so we can brag about knowing the \textit{Weierstrass-Cauchy-DiCaprio-Cumberbatch principle of boiling water in $\mathbb{R}^6$}. It is also a great excuse to give some color to the notes with some diagrams.
@@ -12,7 +13,7 @@ $$f(n) := x_n, x_n \in X$$
 Let $X_1, X_2, \dots, X_n, \dots$ be a sequence of sets. If $X_1 \supset X_2 \supset \dots X_n \dots \supset \dots, \forall n \in \mathbb{N}$, we say the sequence is \textit{nested}.
 \end{definition}
 
-\begin{lemma}[Cauchy-Cantor principle]
+\begin{lemma}[Cauchy-Cantor principle]\label{le:cauchy-cantor}
 \textbf{Nested Interval Lemma:}
 Let a sequence of closed intervals:
 $$
@@ -58,4 +59,68 @@ Then, the distance between $c_1$ and $c_2$ must be less than any positive number
 &\rightarrow c_2 - c_1 = 0 \\
 &\Rightarrow c = c_2 = c_1 \text{ is unique.}
 \end{align*}
+\end{bookproof}
+
+\begin{definition}[Covering systems]
+A system $\mathcal{S} = \{X\}$ of sets $X$ is said to cover a set $Y$ if
+
+$$Y \subset \bigcup_{X \in S} X$$
+
+Additionally, a subset of $\mathcal{S} = \{X\}$ will be called a \textit{subsystem}, which is itself a system of sets of the same type.
+\end{definition}
+
+\begin{lemma}[Borel-Lebesgue principle]
+Every system of open intervals covering a closed interval contains a finite subsystem that covers the closed interval.
+\end{lemma}
+
+\begin{bookproof}
+What the lemma implies is just that if we consider a system $\mathcal{S} = \{\theta\}$ of open intervals ($\theta$) that covers a closed interval $[a,b]$, there will exist a finite subsystem that also covers $[a,b]$:
+
+$$\mathcal{S} = \{\theta\} \text{ covers } [a,b] \rightarrow \exists S_{\mathcal{S}}: \text{finite} \ / S_{\mathcal{S}} \text{ covers } [a,b]$$
+
+Proving by contradiction, lets assume there is no finite subsystem that covers $[a,b] = I_1$. Since $[a,b]$ is not contained, at least one half of it (any half, doesn't matter) is not contained within $\mathcal{S}$ (if both halves were contained, we would have used a finite amount of intervals already, not following the assumption). Then, the half we choose ($I_2$) once again cannot be contained in a finite set of intervals from $\mathcal{S}$, otherwise we're back to the same contradiction.
+
+Notice that we can repeat this process indefinitely, ending up with the sequence:
+
+$$I_1 \supset I_2 \supset I_3 \supset \cdots \supset I_n \supset \cdots$$
+
+of nested closed intervals, where \textbf{each $I_n$ still cannot be covered by any finite subsystem of $\mathcal{S}$}. Moreover, since each step halves the length of the previous interval, we have $|I_n| = |I_1|/2^{n}$, so the lengths shrink to $0$ as $n \to \infty$. Let's keep this thought for a minute.
+
+Now, we can apply Cauchy-Cantor (\cref{le:cauchy-cantor}) into this sequence of closed intervals to assert that:
+
+\begin{align*}
+\exists c \in I_k, \forall I_k \text{ in the sequence}\\
+\rightarrow c \in I_1 = [a, b]
+\end{align*}
+
+And from the definition of covering systems:
+$$ [a, b] \subset \bigcup_{\theta \in \mathcal{S}} \theta$$
+Meaning that any point from $[a,b]$ lands on a $\theta$. Since $c$ is a point, we get:
+
+\begin{align*}
+\exists \theta_i \ / c \in \theta_i = ]\alpha, \beta[\\
+\rightarrow \exists \theta_i = ]\alpha, \beta[ \ / \alpha < c < \beta
+\end{align*}
+
+Now comes the trick. Since $I_n$ keeps shrinking alongside the sequence, its length is arbitrarily smaller than any $\epsilon > 0$. We can conveniently take $\epsilon = min\{c - \alpha, \beta - c \}.$, having:
+
+\begin{itemize}
+	\item $c \in I_n$ (Since it is in any interval $I_k$)
+	\item $|I_n| < min\{c - \alpha, \beta - c \}$
+\end{itemize}
+
+Since $I_n$ is tied to keep $c$ inside it, and we fixed is length to be the minimum room $c$ still has inside our open interval $]\alpha, \beta[$, we assert:
+
+\input{assets/borel-lebesgue-narrowing.tex}
+
+\begin{center}
+\begin{footnotesize}
+(Picture sliding the blue interval sideways, keeping $c$ in it. Since we chose a proper $\epsilon$, it will fit between $\alpha$ and $\beta$)
+\end{footnotesize}
+\end{center}
+
+$$I_n \subset \ ]\alpha, \beta[$$
+$$\Rightarrow \exists \theta \subset \mathcal{S}, I_n \subset I_1 \ / I_n \subset \theta$$
+
+$I_n$ was originally one of the many halves that were not contained within system $\mathcal{S}$, meaning that this result contradicts the initial assumption.
 \end{bookproof}
