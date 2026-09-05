@@ -19,6 +19,7 @@
 \usepackage{float}
 \usepackage{tocloft}
 \usepackage{enumitem}
+\usepackage{pgfplots}
 
 % ============================================
 % STYLE OPTION 1: Classic Palatino
@@ -31,6 +32,7 @@
 % ============================================
 \definecolor{exampleshade}{RGB}{245,245,250}   % Very light blue-gray
 \definecolor{accentline}{RGB}{180,180,180}     % Light gray for lines
+\pgfplotsset{compat=1.18}
 
 \tcbuselibrary{skins,breakable}
 
@@ -128,42 +130,42 @@
 \NewEnviron{theorem}[1][]{%
   \sidetheorembox{theorem}{Theorem}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thetheorem}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
 \NewEnviron{definition}[1][]{%
   \sidetheorembox{definition}{Definition}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thedefinition}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
 \NewEnviron{axiom}[1][]{%
   \sidetheorembox{axiom}{Axiom}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theaxiom}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
 \NewEnviron{proposition}[1][]{%
   \sidetheorembox{proposition}{Proposition}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theproposition}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
 \NewEnviron{corollary}[1][]{%
   \sidetheorembox{corollary}{Corollary}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thecorollary}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
 \NewEnviron{lemma}[1][]{%
   \sidetheorembox{lemma}{Lemma}{\ifx\relax#1\relax\else#1\\\fi}{\BODY}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\thelemma}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
@@ -177,7 +179,7 @@
   \quad\BODY%
   \par\vspace{0.4\baselineskip}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theproblem}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
 }
 
@@ -223,7 +225,7 @@
   \end{minipage}
   \end{tcolorbox}%
   \ifx\relax#1\relax\else%
-    \addcontentsline{toc}{subsubsection}{\protect\numberline{\theexample}#1}%
+    \addcontentsline{toc}{subsubsection}{#1}%
   \fi%
   \par\vspace{0.5\baselineskip}%
 }

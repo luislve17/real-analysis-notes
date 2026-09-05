@@ -1,7 +1,7 @@
 \newpage
 \subsection{Consequences of completeness}
 
-Being completely honest, Proving $\mathbb{R}$ uniqueness drained me completely, so it is fair to just check a few smaller extensions (consequence of this proof) to see how the visited properties are used in other, more specific lemmas. They also use cool last names to name them, so we can brag about knowing the \textit{Weierstrass-Cauchy-DiCaprio-Cumberbatch principle of boiling water in $\mathbb{R}^6$}. It is also a great excuse to give some color to the notes with some diagrams.
+Being completely honest, proving $\mathbb{R}$ uniqueness drained me completely, so it is fair to just check a few smaller extensions (consequence of this proof) to see how the visited properties are used in other, more specific lemmas. They also use cool last names to name them, so we can brag about knowing the \textit{Weierstrass-Cauchy-DiCaprio-Cumberbatch principle of boiling water in $\mathbb{R}^6$}. It is also a great excuse to give some color to the notes with some diagrams.
 
 \begin{definition}
 A function $f: \mathbb{N} \rightarrow X$ is a \textit{sequence} of elements of $X$.
@@ -124,3 +124,31 @@ $$\Rightarrow \exists \theta \subset \mathcal{S}, I_n \subset I_1 \ / I_n \subse
 
 $I_n$ was originally one of the many halves that were not contained within system $\mathcal{S}$, meaning that this result contradicts the initial assumption.
 \end{bookproof}
+
+\begin{definition}
+The neighborhood of a point $x \in \mathbb{R}$ is a open interval containing the point, and the $\delta$-neighborhood about. That is:
+
+\begin{align*}
+\delta_x = \ ] x - \delta, x + \delta [
+\end{align*}
+
+\end{definition}
+
+\begin{definition}[Limit point]
+A point $p \in \mathbb{R}$ is a \textit{limit point} of the set $X \subset \mathbb{R}$ if every neighborhood of the point contains an infinite subset of $X$. That is:
+\begin{align*}
+p: \text{limit point of } X \iff \forall \delta_p, X \subset \delta_p
+\end{align*}
+\end{definition}
+
+Think it this way: a point will be limit point of a set $X$ if we find out that no matter where you place it (it doesn't even need to be inside the set itself), you can \textit{check} that around that point there are elements of $X$. If you \textit{check} a neighborhood big enough, of course you expect to get elements of $X$ as you hug more and more space in $\mathbb{R}$. The important detail happens when you hug less and less space. If you zoom in and check a tiny neighborhood aroud the point, and \textit{still} find elements of $X$ there, it means that it is a limit point.
+
+The bibliography uses the set $X = \{1/n, n \in \mathbb{N}\}$ to exemplify this, but it doesn't show the intuition behind it. Graphically, we can say that these items try to reach zero as $n$ grows, to eventually get infinitelly close to, but never reaching it. We say that $0$ is the limit point of this set because no matter how tiny I force the neighborhood around it, I will always get a point from $X$.
+
+\input{assets/limit-point-ex.tex}
+
+Adjacent to this, we can also declare that:
+\begin{itemize}
+\item For every open interval $]a, b[$, every point of the closed interval $[a, b]$ is a limit point of it, and there are no others.
+\item Any point of $\mathbb{R}$ is a limit point of $\mathbb{Q}$, as we know that every open interval of the real numbers contains rational numbers.
+\end{itemize}
