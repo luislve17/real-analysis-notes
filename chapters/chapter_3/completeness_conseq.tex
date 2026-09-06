@@ -69,7 +69,7 @@ $$Y \subset \bigcup_{X \in S} X$$
 Additionally, a subset of $\mathcal{S} = \{X\}$ will be called a \textit{subsystem}, which is itself a system of sets of the same type.
 \end{definition}
 
-\begin{lemma}[Borel-Lebesgue principle]
+\begin{lemma}[Borel-Lebesgue principle]\label{le:borel-lebesgue}
 Every system of open intervals covering a closed interval contains a finite subsystem that covers the closed interval.
 \end{lemma}
 
@@ -129,15 +129,15 @@ $I_n$ was originally one of the many halves that were not contained within syste
 The neighborhood of a point $x \in \mathbb{R}$ is a open interval containing the point, and the $\delta$-neighborhood about. That is:
 
 \begin{align*}
-\delta_x = \ ] x - \delta, x + \delta [
+U_\delta(x) = \ ] x - \delta, x + \delta [
 \end{align*}
 
 \end{definition}
 
 \begin{definition}[Limit point]
-A point $p \in \mathbb{R}$ is a \textit{limit point} of the set $X \subset \mathbb{R}$ if every neighborhood of the point contains an infinite subset of $X$. That is:
+A point $p \in \mathbb{R}$ is a \textit{limit point} of the set $X \subset \mathbb{R}$ if every neighborhood of $p$ contains infinitely many points of $X$. That is:
 \begin{align*}
-p: \text{limit point of } X \iff \forall \delta_p, X \subset \delta_p
+p \text{ is a limit point of } X \iff \forall\, \delta > 0,\ \left| U_\delta(p) \cap X \right| = \infty
 \end{align*}
 \end{definition}
 
@@ -152,3 +152,42 @@ Adjacent to this, we can also declare that:
 \item For every open interval $]a, b[$, every point of the closed interval $[a, b]$ is a limit point of it, and there are no others.
 \item Any point of $\mathbb{R}$ is a limit point of $\mathbb{Q}$, as we know that every open interval of the real numbers contains rational numbers.
 \end{itemize}
+
+\begin{lemma}[Bolzano-Weierstrass]
+Every bounded infinite set of real numbers has at least one limit point.
+\end{lemma}
+
+\begin{bookproof}
+For this, it is equivalent to prove:
+$$\forall X \subset \mathbb{R}, X: \textbf{infinite and bounded} \Rightarrow \exists p \in \mathbb{R}: \text{ limit point of } X$$
+
+First, $X \subset \mathbb{R}$ will be bounded if there is a closed interval $I = [a, b]$ such that $X \subset I$.
+
+Now, let's suppose that no limit point $p$ exists, meaning that every point in $\mathbb{R}$ is not a limit point, having either no point or a finite amount of points of $X$ within its neighborhood.
+
+\begin{align*}
+\forall p \in \mathbb{R} : U_\delta(p) &\cap X \text{ is finite.}\\
+\text{Let } p \in I \subset \mathbb{R} &\rightarrow p \in U_\delta(p)\\
+p \in I &\rightarrow p \in \bigcup_{x \in [a,b]} U_\delta(x)\\
+\rightarrow I \subset &\bigcup_{x \in [a,b]} U_\delta(x)\\
+\rightarrow \text{The system } &\{U_\delta(x)\} \text{ covers } I
+\end{align*}
+
+We built this setup to start from a non-limit point $p \in I$ (conveniently since it could have being any point in $\mathbb{R}$). By definition, the point itself is part of its own neighborhood, and hence part of the union of neighborhoods, reaching the shape of a covering system.
+
+Notice how $I$ (a closed interval) is covered by a system of open intervals $\{U_\delta(x)\}$. With this we can apply Borel-Lebesgue (\cref{le:borel-lebesgue}).
+
+\begin{align*}
+\exists \, x_1, \dots, x_n \in I : \quad I &\subset U_{\delta}(x_1) \cup \cdots \cup U_{\delta}(x_n)\\
+\rightarrow X \subset I &\subset \bigcup_{i=1}^n U_{\delta}(x_i)
+\end{align*}
+
+Intersecting both sides with $X$:
+
+$$X = X \cap \bigcup_{i=1}^n U_{\delta}(x_i) = \bigcup_{i=1}^n \big(X \cap U_{\delta}(x_i)\big)$$
+
+By construction, each $x_i$ is not a limit point of $X$, so each set $X \cap U_{\delta}(x_i)$ is finite. Since $X$ is a finite union ($n$ terms) of finite sets:
+
+$$\Rightarrow X \text{ is finite. } (\rightarrow\leftarrow)$$
+
+\end{bookproof}
