@@ -4,29 +4,27 @@ Self-study notes on real analysis. Every proof is written out in full.
 
 ## Checklist
 
-**Foundations**
-- [x] Fields
-- [x] Ordered fields
-- [x] Supremum and infimum
+**Chapter 1. Introduction**
+- [x] Introduction
+
+**Chapter 2. Base knowledge**
+- [x] What is a Field
+- [x] Formal definition
+- [x] Order
 - [x] Completeness
 - [x] Archimedean property
+- [x] Problems & Exercises
 
-**Uniqueness of $\mathbb{R}$**
-- [x] $\mathbb{N}_\mathbb{F}$, $\mathbb{Z}_\mathbb{F}$, $\mathbb{Q}_\mathbb{F}$
-- [x] Isomorphism $\mathbb{Q} \to \mathbb{Q}_\mathbb{F}$
-- [x] Isomorphism $\mathbb{R} \to \mathbb{F}$
-
-**Consequences of completeness**
-- [x] Cauchy–Cantor
-- [x] Borel–Lebesgue
-- [x] Bolzano–Weierstrass
-
-**Exercises**
-- [x] Chapter 2, with solutions
-- [ ] Chapter 3, solutions
+**Chapter 3. $\mathbb{R}$ as the complete ordered field**
+- [x] $\mathbb{F}$ is $\mathbb{R}$
+- [x] Sets construction
+- [x] Isomorphism in $\mathbb{Q}$
+- [x] Isomorphism in $\mathbb{R}$
+- [x] Consequences of completeness
+- [ ] Problems & Exercises
 
 **Appendix**
-- [x] Proof techniques toolkit
+- [x] A. Proof Techniques Toolkit
 
 ---
 
